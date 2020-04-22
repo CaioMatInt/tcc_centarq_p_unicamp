@@ -1,0 +1,51 @@
+.test-border{
+    border: solid 1px black;
+}
+
+
+.main-session-titles{
+    font-weight: 500;
+    color: #343a40;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+    font-family: "Roboto", sans-serif;
+    font-size: 21px;
+}
+
+.hall-town-health-unit-titles{
+    color: #656966 !important;
+    font-size: 15px;
+}
+
+.exams-title{
+    color: #515452 !important;
+    font-size: 15px;
+}
+
+
+
+.purple-button-w-purple-border{
+    border-radius: 5px;
+    background: rgba(81,82,135,0.95);
+    border-color: rgba(143,145,184,1);
+}
+
+.purple-button-w-purple-border-xl{
+    font-size: 21px;
+    padding-top: 6%; padding-bottom: 6%;
+}
+
+.purple-button-w-purple-border-md{
+    font-size: 18px;
+    padding-top: 3%; padding-bottom: 3%;
+}
+
+.btn-green-alternative{
+    color: white;
+    background-color: #74ab86 !important;
+    border: solid 1px darkgrey;
+}
+
+.no-content-warning{
+    color: #c4a664;
+}

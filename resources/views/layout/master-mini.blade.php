@@ -23,6 +23,7 @@
 
   <!-- common css -->
     <script src="{{asset('/css/app.css')}}"></script>
+    <script src="{{asset('/css/main.css')}}"></script>
   <!-- end common css -->
 
   @stack('style')
