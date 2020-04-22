@@ -1,47 +1,75 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
+    <div class="row" style="height: 400px; background-color: white" >
+        <div class="container center">
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+            <div class="item">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                <div class="col-12 text-center" style="background-color: white">
+                    <img style="height: 100px" alt="logo" src="{{asset('assets/images/logo/logocentarq.svg')}}">
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="text-center">
+
+        <div class="row">
+            <div class="offset-md-4 col-md-4 mt-5">
+                <div class="card" style="width: 100%; border-color: #323366">
+                    <div class="card-body">
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+
+                                <div class="panel-body">
+
+
+                                    @if (session('status'))
+                                        <div class="alert alert-success">
+                                            {{ session('status') }}
+                                        </div>
+                                    @endif
+
+                                    <form class="form-horizontal" method="POST" action="{{ route('password.email') }}">
+                                        {{ csrf_field() }}
+
+                                        <div class="text-left form-group {{ $errors->has('email') ? ' has-error' : '' }}">
+                                            <label for="email" class="col-md-12 control-label label-recuperacao">Recuperar senha</label>
+
+                                            <div class="col-md-12">
+                                                <input id="email" placeholder="&#xf0e0; E-mail" type="email" class="font-awesome-default form-control" name="email" value="{{ old('email') }}" required>
+
+                                                @if ($errors->has('email'))
+                                                    <span class="help-block">
+                                        <p class="error-returned">{{ $errors->first('email') }}</p>
                                     </span>
-                                @enderror
-                            </div>
-                        </div>
+                                                @endif
+                                            </div>
+                                        </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
+                                        <div class="form-group">
+                                            <div class="col-12">
+                                                <button type="submit" class="purple-button-w-purple-border purple-button-w-purple-border-md btn btn-primary">
+                                                    <i class="fa fa-share-square"></i> Enviar link de recuperação
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+                                </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
+

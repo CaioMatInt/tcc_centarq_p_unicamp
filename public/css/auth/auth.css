@@ -1,0 +1,70 @@
+body{
+    background: rgb(81,82,135);
+    background: linear-gradient(90deg, rgba(81,82,135,1) 0%, rgba(114,116,173,1) 35%, rgba(143,145,184,1) 100%);
+
+
+}
+.center {
+    align-items: center;
+}
+
+/* Flex Container */
+.container {
+    display: flex;
+}
+
+/* Flex Item */
+.item {
+    flex: 1;
+    margin: 5px;
+    padding: 0 10px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.item:first-child {
+    padding-top: 20px;
+}
+
+.border-strong-purple{
+    border-color: #323366;
+}
+
+.background-white{
+    background-color: white;
+}
+.h-400px{
+    height: 400px;
+}
+.h-100px{
+    height: 100px;
+}
+.font-awesome-default{
+    font-family: Arial, 'Font Awesome 5 Free';
+}
+
+.purple-button-w-purple-border{
+    border-radius: 5px;
+    background: rgba(81,82,135,0.95);
+    border-color: rgba(143,145,184,1);
+}
+
+.purple-button-w-purple-border-xl{
+    font-size: 21px;
+    padding-top: 6%; padding-bottom: 6%;
+}
+
+.purple-button-w-purple-border-md{
+    font-size: 18px;
+    padding-top: 3%; padding-bottom: 3%;
+}
+
+.label-recuperacao{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.error-returned{
+    color: red;
+    font-weight: bold;
+}
