@@ -23,7 +23,11 @@ class TownHallController extends Controller
      */
     public function index()
     {
-        $data = $this->townHallService->renderList();
+        $data = [
+            'resources' => $this->townHallService->renderList(),
+            'pageTitle' => 'Cadastro de ' . $this->plural_name
+
+        ];
 
         return view('dashboard.townHall.index', $data);
     }

@@ -7,8 +7,17 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Hoverable Table</h4>
-                    <p class="card-description"> Add class <code>.table-hover</code> </p>
+
+                    <div class="row">
+
+                        <div class="col-10">
+                        <h3 class="page-table-title mb-5">{{$pageTitle}}</h3>
+                        </div>
+                        <div class="col-2 text-right">
+                            <button class="btn btn-success btn-block"><i class="fa fa-plus"></i> Cadastrar</button>
+                        </div>
+                    </div>
+
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>

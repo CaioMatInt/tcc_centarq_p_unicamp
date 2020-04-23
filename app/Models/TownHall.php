@@ -10,7 +10,7 @@ class TownHall extends Model
      * @var array
      */
     protected $dates = ['created_at', 'updated_at'];
-    protected $fillable = ['city_id', 'image'];
+    protected $fillable = ['city_id', 'image', 'name'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
