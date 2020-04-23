@@ -1,50 +1,54 @@
 <?php
 
-/**
- * Created by Reliese Model.
- * Date: Thu, 21 Mar 2019 16:52:47 +0000.
- */
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class Cover
- *
- * @property int $id
- * @property string $type
- * @property string $name
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
- *
- * @package App\Models
- */
 class TownHall extends Model
 {
-    protected $casts = [
-        'insurers_id' => 'int'
-    ];
+    /**
+     * @var array
+     */
+    protected $dates = ['created_at', 'updated_at'];
+    protected $fillable = ['city_id', 'image'];
 
-    protected $fillable = [
-        'name',
-        'insurers_id'
-    ];
-
-    protected $with = ['insureer'];
-
-    public function losses()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function city()
     {
-        return $this->hasMany(Loss::class, 'covers_id');
+        return $this->belongsTo('App\City');
     }
 
-    public function insureer()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function healthUnits()
     {
-        return $this->belongsTo(Insureer::class, 'insurers_id');
+        return $this->hasMany('App\HealthUnit');
     }
 
-    public function setNameAttribute($value)
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function medicalExams()
     {
-        return $this->attributes['name'] = strtoupper($value);
+        return $this->hasMany('App\MedicalExam');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function usersHealthUnits()
+    {
+        return $this->hasMany('App\UsersHealthUnit', 'health_unit_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function usersTownHalls()
+    {
+        return $this->hasMany('App\UsersTownHall');
     }
 }

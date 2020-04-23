@@ -18,7 +18,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'town_hall'], function(){
+Route::group(['prefix' => 'prefeituras'], function(){
     Route::resource('', 'TownHallController');
 });
 
