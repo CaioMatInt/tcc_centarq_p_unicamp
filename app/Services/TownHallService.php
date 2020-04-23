@@ -25,13 +25,7 @@ class TownHallService
      */
     public function renderList()
     {
-
-        $data = [
-            'pageTitle' => 'Cadastro de' . $this->plural_name,
-            'resources' => $this->TownHallRepository->getAll()
-        ];
-
-        return $data;
+        return $this->TownHallRepository->getAllWithCityRelation();
     }
 
     /**
@@ -40,12 +34,7 @@ class TownHallService
      */
     public function renderEdit($id)
     {
-        $data = [
-            'pageTitle' => 'Editar' . $this->name,
-            'resource' => $this->TownHallRepository->getById($id)
-        ];
-
-        return $data;
+        return $this->TownHallRepository->getById($id);
 
     }
 

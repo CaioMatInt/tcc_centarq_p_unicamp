@@ -1,3 +1,9 @@
+.table .thead-light-dark th {
+    color: #fff;
+    background-color: #555d66;
+    border-color: #454d55;
+}
+
 .page-table-title{
     font-size: 23px;
     font-weight: bold;

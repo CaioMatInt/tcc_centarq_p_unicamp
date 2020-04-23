@@ -78,7 +78,10 @@ class TownHallController extends Controller
      */
     public function edit($id)
     {
-        $data = $this->townHallService->renderEdit($id);
+        $data = [
+            'pageTitle' => 'Editar' . $this->name,
+            'resource' => $this->townHallService->renderEdit($id)
+        ];
 
         return view('dashboard.townHall.edit', $data);
     }

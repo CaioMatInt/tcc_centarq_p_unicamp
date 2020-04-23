@@ -18,4 +18,9 @@ class TownHallRepository extends EloquentRepository
         parent::__construct($model);
     }
 
+
+    public function getAllWithCityRelation(){
+        return $this->model->with('city')->get();
+    }
+
 }

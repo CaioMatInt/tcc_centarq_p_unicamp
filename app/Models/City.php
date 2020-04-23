@@ -17,6 +17,6 @@ class City extends Model
      */
     public function townHalls()
     {
-        return $this->hasMany('App\TownHall');
+        return $this->hasMany('App\Models\TownHall');
     }
 }

@@ -15,8 +15,7 @@ class CreateTableTownHalls extends Migration
     {
         Schema::create('town_halls', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('image');
-            $table->string('name');
+            $table->string('image')->nullable();
             $table->integer('city_id')->unsigned();
             $table->foreign('city_id')->references('id')->on('cities');
             $table->timestamps();
