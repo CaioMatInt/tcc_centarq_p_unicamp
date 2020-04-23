@@ -15,15 +15,10 @@ class CreateTableUserPersonalInformations extends Migration
     {
         Schema::create('user_personal_informations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('image');
             $table->integer('user_id')->unsigned();
-
             $table->foreign('user_id')->references('id')->on('users');
 
-
             $table->integer('address_id')->unsigned();
-
             $table->foreign('address_id')->references('id')->on('addresses');
 
             $table->timestamps();

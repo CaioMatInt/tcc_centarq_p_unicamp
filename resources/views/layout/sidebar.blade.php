@@ -4,13 +4,13 @@
       <div class="nav-link">
         <div class="user-wrapper">
           <div class="profile-image">
-            <img src="{{ url('assets/images/faces/face8.jpg') }}" alt="profile image">
+            <img src="{{ url(auth()->user()->image) }}" alt="profile image">
           </div>
           <div class="text-wrapper">
-            <p class="profile-name">Caio Matheus Intrebartoli</p>
+            <p class="profile-name">{{ auth()->user()->name  }}</p>
             <div class="dropdown" data-display="static">
               <a href="#" class="nav-link d-flex user-switch-dropdown-toggler" id="UsersettingsDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <small class="designation text-muted">Manager</small>
+                <small class="designation text-muted">Usuário</small>
                 <span class="status-indicator online"></span>
               </a>
               <div class="dropdown-menu" aria-labelledby="UsersettingsDropdown">
@@ -46,6 +46,13 @@
         <span class="menu-title">Painel</span>
       </a>
     </li>
+
+      <li class="nav-item">
+          <a class="nav-link" href="">
+              <i class="menu-icon fa fa-city"></i>
+              <span class="menu-title">Prefeituras</span>
+          </a>
+      </li>
 
     <li class="nav-item">
       <a class="nav-link" href="">
@@ -87,12 +94,7 @@
           </a>
       </li>
 
-      <li class="nav-item">
-          <a class="nav-link" href="">
-              <i class="menu-icon mdi mdi-chart-line"></i>
-              <span class="menu-title">Prefeituras</span>
-          </a>
-      </li>
+
 
 
     <li class="nav-item">

@@ -18,6 +18,10 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::group(['prefix' => 'town_hall'], function(){
+    Route::resource('', 'TownHallController');
+});
+
 Route::group(['prefix' => 'basic-ui'], function(){
     Route::get('accordions', function () { return view('pages.basic-ui.accordions'); });
     Route::get('buttons', function () { return view('pages.basic-ui.buttons'); });
