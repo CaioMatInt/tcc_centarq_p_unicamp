@@ -9,7 +9,7 @@
             <div class="item">
 
                 <div class="col-12 text-center background-white">
-                    <img class="h-100px" alt="logo" src="{{asset('assets/images/logo/logocentarq.svg')}}">
+                    <img class="logo-auth-pages" alt="logo" src="{{asset('assets/images/logo/logocentarq.svg')}}">
 
                 </div>
 
@@ -21,7 +21,7 @@
     <div class="text-center">
 
         <div class="row">
-            <div class="offset-md-4 col-md-4 mt-5">
+            <div class="hd-screen-hack offset-0 col-12 offset-sm-1 col-sm-10 offset-xl-4 col-xl-4 mt-5">
                 <div class="card w-100 border-strong-purple">
                     <div class="card-body">
                         <div class="col-md-12">
@@ -79,7 +79,7 @@
 
                                                 <div class="col-md-6 text-right">
 
-                                                    <button type="submit" class="pr-4 pl-4 btn-info purple-button-w-purple-border purple-button-w-purple-border-xl">
+                                                    <button type="submit" class="pr-4 pl-4 btn-info purple-button-w-green-border purple-button-w-border-xl">
                                                         <i class="fa fa-sign-in-alt"></i>
                                                         Entrar
                                                     </button>

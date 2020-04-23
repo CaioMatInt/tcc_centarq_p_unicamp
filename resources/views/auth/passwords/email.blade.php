@@ -55,7 +55,7 @@
 
                                         <div class="form-group">
                                             <div class="col-12">
-                                                <button type="submit" class="purple-button-w-purple-border purple-button-w-purple-border-md btn btn-primary">
+                                                <button type="submit" class="purple-button-w-green-border purple-button-w-border-md btn btn-primary">
                                                     <i class="fa fa-share-square"></i> Enviar link de recuperação
                                                 </button>
                                             </div>

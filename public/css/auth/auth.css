@@ -43,18 +43,24 @@ body{
     font-family: Arial, 'Font Awesome 5 Free';
 }
 
+.purple-button-w-green-border{
+    border-radius: 5px;
+    background: #74AB86;
+    border: solid 1px #65679F;
+}
+
 .purple-button-w-purple-border{
     border-radius: 5px;
     background: rgba(81,82,135,0.95);
     border-color: rgba(143,145,184,1);
 }
 
-.purple-button-w-purple-border-xl{
+.purple-button-w-border-xl{
     font-size: 21px;
     padding-top: 6%; padding-bottom: 6%;
 }
 
-.purple-button-w-purple-border-md{
+.purple-button-w-border-md{
     font-size: 18px;
     padding-top: 3%; padding-bottom: 3%;
 }
@@ -68,3 +74,32 @@ body{
     color: red;
     font-weight: bold;
 }
+
+@media (min-width: 1200px) and (max-width: 1440px) {
+    .hd-screen-hack{
+        -ms-flex: 0 0 50% !important;
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        margin-left: 25% !important;
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    .logo-auth-pages{
+        height: 50px;
+
+    }
+}
+
+
+@media (min-width: 577px) {
+    .logo-auth-pages{
+        height: 100px;
+
+    }
+}
+
+
