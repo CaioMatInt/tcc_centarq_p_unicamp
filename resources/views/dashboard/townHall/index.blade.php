@@ -14,7 +14,7 @@
                             <h3 class="page-table-title mb-5"><i class="fa fa-city"></i> <span class="ml-2">{{$pageTitle}}</span></h3>
                         </div>
                         <div class="col-12 col-xl-2 text-right mb-2">
-                            <button class="btn btn-success btn-block"><i class="fa fa-plus"></i> Cadastrar</button>
+                            <a href="{{route('prefeituras.create')}}" class="btn btn-success btn-block text-white"><i class="fa fa-plus"></i> Cadastrar</a>
                         </div>
                     </div>
 
@@ -34,8 +34,8 @@
                         <tr>
 
                             <td>{{$resource->city->name}}</td>
-                            <td>{{$resource->city->name}}</td>
-                            <td>{{$resource->city->name}}</td>
+                            <td>{{$resource->image}}</td>
+                            <td>{{$resource->created_at}}</td>
                         </tr>
                         @endforeach
                         </tbody>

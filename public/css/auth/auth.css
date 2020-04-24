@@ -1,3 +1,27 @@
+@media (min-width: 1200px) and (max-width: 1440px) {
+    .hd-screen-hack{
+        -ms-flex: 0 0 50% !important;
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        margin-left: 25% !important;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .logo-auth-pages{
+        height: 50px;
+
+    }
+}
+
+@media (min-width: 577px) {
+    .logo-auth-pages{
+        height: 100px;
+
+    }
+}
+
 body{
     background: rgb(81,82,135);
     background: linear-gradient(90deg, rgba(81,82,135,1) 0%, rgba(114,116,173,1) 35%, rgba(143,145,184,1) 100%);
@@ -73,33 +97,6 @@ body{
 .error-returned{
     color: red;
     font-weight: bold;
-}
-
-@media (min-width: 1200px) and (max-width: 1440px) {
-    .hd-screen-hack{
-        -ms-flex: 0 0 50% !important;
-        flex: 0 0 50% !important;
-        max-width: 50% !important;
-        margin-left: 25% !important;
-    }
-
-}
-
-
-@media (max-width: 576px) {
-
-    .logo-auth-pages{
-        height: 50px;
-
-    }
-}
-
-
-@media (min-width: 577px) {
-    .logo-auth-pages{
-        height: 100px;
-
-    }
 }
 
 

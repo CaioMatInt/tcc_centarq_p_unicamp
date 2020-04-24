@@ -18,9 +18,9 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'prefeituras'], function(){
-    Route::resource('', 'TownHallController');
-});
+
+    Route::resource('prefeituras', 'TownHallController');
+
 
 Route::group(['prefix' => 'basic-ui'], function(){
     Route::get('accordions', function () { return view('pages.basic-ui.accordions'); });

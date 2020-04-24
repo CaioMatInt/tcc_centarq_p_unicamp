@@ -41,14 +41,14 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{{ url('/home') }}">
+      <a class="nav-link" href="{{ route('home') }}">
         <i class="menu-icon mdi mdi-television"></i>
         <span class="menu-title">Painel</span>
       </a>
     </li>
 
       <li class="nav-item">
-          <a class="nav-link" href="">
+          <a class="nav-link" href="{{route('prefeituras.index')}}">
               <i class="menu-icon fa fa-city"></i>
               <span class="menu-title">Prefeituras</span>
           </a>

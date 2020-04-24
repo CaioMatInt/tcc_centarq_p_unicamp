@@ -2,19 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\IbgeApiService;
 use App\Services\TownHallService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class TownHallController extends Controller
 {
     private $townHallService;
+    private $ibgeApiService;
+    const stateOfSaoPauloIbgeId = 35;
+
     public $plural_name = 'Prefeituras';
     public $name = 'Prefeitura';
 
-    public function __construct(TownHallService $townHallService)
+    public function __construct(TownHallService $townHallService, IbgeApiService $ibgeApiService)
     {
+
         $this->townHallService = $townHallService;
+        $this->ibgeApiService = $ibgeApiService;
     }
 
 
@@ -23,6 +30,8 @@ class TownHallController extends Controller
      */
     public function index()
     {
+
+
         $data = [
             'resources' => $this->townHallService->renderList(),
             'pageTitle' => 'Cadastro de ' . $this->plural_name
@@ -38,7 +47,8 @@ class TownHallController extends Controller
     public function create()
     {
         $data = [
-            'pageTitle' => 'Criar nova ' . $this->name
+            'pageTitle' => 'Cadastrar nova ' . $this->name,
+            'ibgeCitiesArray' => $this->ibgeApiService->renderListOfCitiesByIbgeStateId(self::stateOfSaoPauloIbgeId)
         ];
 
         return view('dashboard.townHall.create', $data);
