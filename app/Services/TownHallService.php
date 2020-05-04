@@ -4,67 +4,25 @@ namespace App\Services;
 
 use App\Repositories\TownHallRepository;
 
-class TownHallService
+class TownHallService extends EloquentService
 {
 
-    private $TownHallRepository;
-    public $plural_name = 'Prefeituras';
-    public $name = 'Prefeitura';
+    private $townHallRepository;
 
     /**
-     * AdministratorService constructor.
-     * @param TownHallRepository $TownHallRepository
+     * TownHallService constructor.
+     * @param townHallRepository $townHallRepository
      */
-    public function __construct(TownHallRepository $TownHallRepository)
+    public function __construct(TownHallRepository $townHallRepository)
     {
-        $this->TownHallRepository = $TownHallRepository;
+        $this->townHallRepository = $townHallRepository;
+        parent::__construct($townHallRepository);
     }
 
-    /**
-     * @return mixed
-     */
-    public function renderList()
+    public function renderListWithCityRelation()
     {
-        return $this->TownHallRepository->getAllWithCityRelation();
+        return $this->townHallRepository->getAllWithCityRelation();
     }
 
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function renderEdit($id)
-    {
-        return $this->TownHallRepository->getById($id);
-
-    }
-
-    /**
-     * @param $id
-     * @param $data
-     * @return bool
-     */
-    public function buildUpdate($id, $data)
-    {
-        $this->TownHallRepository->update($id, $data);
-
-    }
-
-    /**
-     * @param $data
-     * @return mixed
-     */
-    public function buildInsert($data)
-    {
-        return $this->TownHallRepository->create($data);
-    }
-
-    /**
-     * @param $id
-     * @return bool
-     */
-    public function buildDelete($id)
-    {
-        return $this->TownHallRepository->delete($id);
-    }
 
 }

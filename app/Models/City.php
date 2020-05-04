@@ -10,7 +10,7 @@ class City extends Model
      * @var array
      */
     protected $dates = ['created_at', 'updated_at'];
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'ibge_city_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

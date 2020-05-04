@@ -13,9 +13,12 @@ class TownHallController extends Controller
     private $townHallService;
     private $ibgeApiService;
     const stateOfSaoPauloIbgeId = 35;
-
+    /* Name of this CRUD, in plural */
     public $plural_name = 'Prefeituras';
+    /* Name of this CRUD*/
     public $name = 'Prefeitura';
+    /* Name of the this CRUD folder, in resources, used along this class in "return views" */
+    public $crudFolder = 'townhall';
 
     public function __construct(TownHallService $townHallService, IbgeApiService $ibgeApiService)
     {
@@ -31,14 +34,13 @@ class TownHallController extends Controller
     public function index()
     {
 
-
         $data = [
-            'resources' => $this->townHallService->renderList(),
+            'resources' => $this->townHallService->renderListWithCityRelation(),
             'pageTitle' => 'Cadastro de ' . $this->plural_name
 
         ];
 
-        return view('dashboard.townHall.index', $data);
+        return view('dashboard.' . $this->crudFolder . '.index', $data);
     }
 
     /**
@@ -51,7 +53,7 @@ class TownHallController extends Controller
             'ibgeCitiesArray' => $this->ibgeApiService->renderListOfCitiesByIbgeStateId(self::stateOfSaoPauloIbgeId)
         ];
 
-        return view('dashboard.townHall.create', $data);
+        return view('dashboard.' . $this->crudFolder . '.create', $data);
     }
 
     /**
@@ -67,7 +69,7 @@ class TownHallController extends Controller
 
             $request->session()->flash('msg', [
                 'type' => 'success',
-                'text' => $this->name . ' ' . $request->name . ' cadastrada com sucesso',
+                'text' => $this->name . ' de ' . $request->name . ' cadastrada com sucesso',
             ]);
 
 
@@ -93,7 +95,7 @@ class TownHallController extends Controller
             'resource' => $this->townHallService->renderEdit($id)
         ];
 
-        return view('dashboard.townHall.edit', $data);
+        return view('dashboard.' . $this->crudFolder . '.edit', $data);
     }
 
     /**
@@ -114,8 +116,6 @@ class TownHallController extends Controller
             ]);
 
         } catch (\Exception $e) {
-
-            \Log::error($e->getFile() . "\n" . $e->getLine() . "\n" . $e->getMessage());
 
             $request->session()->flash('msg', [
                 'type' => 'danger',
@@ -141,8 +141,6 @@ class TownHallController extends Controller
                 'text' => $this->name . ' removida com sucesso',
             ]);
         } catch (\Exception $e) {
-
-            \Log::error($e->getFile() . "\n" . $e->getLine() . "\n" . $e->getMessage());
 
             session()->flash('msg', [
                 'type' => 'danger',
