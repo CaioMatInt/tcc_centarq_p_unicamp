@@ -4,7 +4,7 @@
     <a class="navbar-brand brand-logo" href="{{ url('/') }}">
       <img src="{{ url('assets/images/logo/logocentarq.svg') }}" alt="logo" /> </a>
     <a class="navbar-brand brand-logo-mini" href="{{ url('/') }}">
-      <img src="{{ url('assets/images/logo-mini.svg') }}" alt="logo" /> </a>
+      <img src="{{ url('assets/images/logo/mini-logocentarq.svg') }}" alt="logo" /> </a>
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">

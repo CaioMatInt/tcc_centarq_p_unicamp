@@ -63,5 +63,17 @@
 }
 
 
+@media (max-width: 1200px) {
+
+    .content-head-title-breadcumb-reverse {
+        flex-direction: column-reverse;
+    }
+
+    .pageTitle{
+        padding-bottom: 40px;
+
+    }
+
+}
 
 

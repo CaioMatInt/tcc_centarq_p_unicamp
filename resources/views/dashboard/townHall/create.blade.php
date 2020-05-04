@@ -17,11 +17,11 @@
                         <form action="" method="post" enctype="multipart/form-data">
                             {{ @csrf_field() }}
                             <div class="row">
-                                <div class="col-12 col-sm-4">
+                                <div class="col-12 col-sm-12 col-md-4">
                                     <x-input-select-component :name="'city_id'" :label="'Cidade'" :options="$ibgeCitiesArray" />
                                 </div>
 
-                                <div class="col-12 col-sm-4">
+                                <div class="col-12 col-sm-12 col-md-4">
                                     <x-input-image-component :name="'image'" :label="'Imagem'" />
                                 </div>
 
@@ -29,11 +29,11 @@
 
                             <div class="card mt-2">
                                 <div class="card-header">
-                                    Administradores da prefeitura
+                                    Administradores da prefeitura <a href="#" class="ml-3 btn btn-primary"><i class="fa fa-plus"></i> Adicionar novo</a>
                                 </div>
                                 <div class="card-body">
 
-                                    <div class="row" style="border: solid 1px black;">
+                                    <div class="row p-1" style="background: #fcfcfc; border-radius: 5px;">
 
                                         <div class="col-12 col-sm-4">
 
@@ -47,15 +47,7 @@
 
                                         </div>
 
-                                        <div class="col-12 col-sm-4">
-
-                                            <a href="#" class="btn btn-primary"><i class="fa fa-plus"></i> Adicionar</a>
-
-                                        </div>
-
-
                                     </div>
-
 
                                 </div>
                             </div>

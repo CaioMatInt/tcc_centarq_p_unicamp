@@ -13953,10 +13953,15 @@ body {
   flex-grow: 1;
 }
 
-@media (max-width: 991px) {
+/*@media (max-width: 991px) {
   .content-wrapper {
     padding: 1.6rem 1.4rem 0 1.4rem;
   }
+}*/
+@media (max-width: 991px) {
+    .content-wrapper {
+        padding: 10px;
+    }
 }
 
 .container-scroller {
