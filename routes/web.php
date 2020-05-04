@@ -19,7 +19,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 
-    Route::resource('prefeituras', 'TownHallController');
+Route::resource('prefeituras', 'TownHallController');
 
 
 Route::group(['prefix' => 'basic-ui'], function(){

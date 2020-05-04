@@ -11,12 +11,13 @@ use Illuminate\Support\Facades\Http;
 class CityController extends Controller
 {
     private $cityService;
-    /* Name of this CRUD, in plural */
+    /* Name of this CRUD in Portuguese and in plural */
     public $plural_name = 'Cidades';
-    /* Name of this CRUD*/
+    /* Name of this CRUD in Portuguese*/
     public $name = 'Cidade';
     /* Name of the this CRUD folder, in resources, used along this class in "return views" */
-    public $crudFolder = 'townhall';
+    public $crudFolder = 'cities';
+    public $crudRouteName = 'cidades';
 
     public function __construct(CityService $cityService)
     {
@@ -38,5 +39,5 @@ class CityController extends Controller
 
         return view('dashboard.' . $this->crudFolder . '.index', $data);
     }
-    
+
 }

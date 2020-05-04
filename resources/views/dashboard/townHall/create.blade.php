@@ -26,6 +26,43 @@
                                 </div>
 
                             </div>
+
+                            <div class="card mt-2">
+                                <div class="card-header">
+                                    Administradores da prefeitura
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="row" style="border: solid 1px black;">
+
+                                        <div class="col-12 col-sm-4">
+
+                                            <x-input-type-component :name="'adminName[]'" :label="'Nome'" :type="'text'" :id="'adminName1'" />
+
+                                        </div>
+
+                                        <div class="col-12 col-sm-4">
+
+                                            <x-input-type-component :name="'adminEmail[]'" :label="'E-mail'" :type="'email'" :id="'adminEmail1'" />
+
+                                        </div>
+
+                                        <div class="col-12 col-sm-4">
+
+                                            <a href="#" class="btn btn-primary"><i class="fa fa-plus"></i> Adicionar</a>
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+
+
                             <br>
                             <div class="form-group">
 

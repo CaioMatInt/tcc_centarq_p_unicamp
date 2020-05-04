@@ -13,12 +13,13 @@ class TownHallController extends Controller
     private $townHallService;
     private $ibgeApiService;
     const stateOfSaoPauloIbgeId = 35;
-    /* Name of this CRUD, in plural */
-    public $plural_name = 'Prefeituras';
-    /* Name of this CRUD*/
+    /* Name of this CRUD in Portuguese and in plural */
+    public $pluralName = 'Prefeituras';
+    /* Name of this CRUD in Portuguese*/
     public $name = 'Prefeitura';
     /* Name of the this CRUD folder, in resources, used along this class in "return views" */
     public $crudFolder = 'townhall';
+    public $crudRouteName = 'townhall';
 
     public function __construct(TownHallService $townHallService, IbgeApiService $ibgeApiService)
     {
@@ -36,7 +37,7 @@ class TownHallController extends Controller
 
         $data = [
             'resources' => $this->townHallService->renderListWithCityRelation(),
-            'pageTitle' => 'Cadastro de ' . $this->plural_name
+            'pageTitle' => 'Cadastro de ' . $this->pluralName
 
         ];
 
@@ -72,6 +73,7 @@ class TownHallController extends Controller
                 'text' => $this->name . ' de ' . $request->name . ' cadastrada com sucesso',
             ]);
 
+            return redirect()->route($this->crudRouteName);
 
         } catch (\Exception $e) {
 
@@ -80,8 +82,7 @@ class TownHallController extends Controller
                 'text' => 'Erro ao cadastrar ' . $this->name . ' ' . $request->name,
             ]);
 
-        } finally {
-            return redirect()->route('prefeituras');
+            return redirect()->route($this->crudRouteName . '.create');
         }
     }
 
@@ -122,7 +123,7 @@ class TownHallController extends Controller
                 'text' => 'Erro ao atualizar ' . $this->name . ' de ' . $request->name,
             ]);
         } finally {
-            return redirect()->route('coberturas');
+            return redirect()->route($this->crudRouteName);
         }
 
     }
@@ -147,7 +148,7 @@ class TownHallController extends Controller
                 'text' => 'Erro ao remover ' . $this->name,
             ]);
         } finally {
-            return redirect()->route('prefeituras');
+            return redirect()->route($this->crudRouteName);
         }
     }
 

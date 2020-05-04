@@ -24,5 +24,9 @@ class TownHallService extends EloquentService
         return $this->townHallRepository->getAllWithCityRelation();
     }
 
+    public function buildInsert($data)
+    {
+        return $this->repository->create($data);
+    }
 
 }
