@@ -53,10 +53,32 @@
 }*/
 
 .btn-green-alternative{
-    color: white;
+    color: white !important;
     background-color: #74ab86 !important;
     border: solid 1px darkgrey;
 }
+
+.btn-danger-alternative{
+    color: white !important;
+    background-color: #f0545f !important;
+    border: none !important;
+}
+
+.btn-info-alternative{
+    color: white !important;
+    background-color: #66a4d4 !important;
+    border: none !important;
+}
+.btn-warning-alternative{
+    color: white !important;
+    background-color: #e6ab2c !important;
+    border: none !important;
+}
+
+.strippedAdminLine{
+    background: #fcfcfc; border-radius: 5px;
+}
+
 
 .no-content-warning{
     color: #c4a664;
