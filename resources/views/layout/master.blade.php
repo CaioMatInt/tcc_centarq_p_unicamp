@@ -14,6 +14,7 @@
   <!-- plugin css -->
     <link rel="stylesheet" href="{{asset('assets/plugins/@mdi/font/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.css">
     <link rel="stylesheet" href="{{asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.css')}}">
 
   <!-- end plugin css -->
@@ -64,6 +65,18 @@
   <script src="{{asset('assets/js/settings.js')}}"></script>
   <script src="{{asset('assets/js/todolist.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/js/all.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.js"></script>
+  <script src="{{asset('assets/js/dashboard/globalHelpers/globalHelpers.js')}}"></script>
+
+
+  <script>
+
+      @if($errors->any())
+        let jsonOfErrorMessages = '{!! json_encode($errors->all(':message'))!!}';
+      notyMsgWithArrayOfErrors('error', 10000, jsonOfErrorMessages);
+
+      @endif
+  </script>
 
   <!-- end common js -->
 

@@ -8,6 +8,6 @@
            value="{{ old($name) ?: (!empty($value) ? $value : '') }}"
            placeholder=" {{$label}}">
     @if ($errors->has($name))
-        <span class="help-block">{{ $errors->first($name) }}</span>
+        <span class="help-block text-danger">{{ $errors->first($name) }}</span>
     @endif
 </div>

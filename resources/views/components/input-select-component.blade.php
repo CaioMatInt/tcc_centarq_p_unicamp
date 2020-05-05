@@ -3,7 +3,7 @@
     <label for="{{$id}}">{{$label}} </label>
     <select class="form-control" name="{{$name}}" id="{{$id}}">
         @if(!$current)
-            <option selected value="-1">Selecione...</option>
+            <option selected value="">Selecione...</option>
         @endif
 
         @foreach($options as $key => $option)
@@ -15,8 +15,9 @@
         @endforeach
 
     </select>
-    @if ($errors->has('"' . $name . '"'))
-        <span class="help-block">{{ $errors->first('"' . $name . '"') }}</span>
+
+    @if ($errors->has($name))
+        <span class="help-block text-danger">{{ $errors->first($name) }}</span>
     @endif
 </div>
 

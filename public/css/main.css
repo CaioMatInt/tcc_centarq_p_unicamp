@@ -35,23 +35,6 @@
 }
 
 
-
-/*.purple-button-w-purple-border{
-    border-radius: 5px;
-    background: rgba(81,82,135,0.95);
-    border-color: rgba(143,145,184,1);
-}
-
-.purple-button-w-border-xl{
-    font-size: 21px;
-    padding-top: 6%; padding-bottom: 6%;
-}
-
-.purple-button-w-border-md{
-    font-size: 18px;
-    padding-top: 3%; padding-bottom: 3%;
-}*/
-
 .btn-green-alternative{
     color: white !important;
     background-color: #74ab86 !important;
@@ -84,6 +67,9 @@
     color: #c4a664;
 }
 
+.red-error-color{
+    color: #B45B59 !important;
+}
 
 @media (max-width: 1200px) {
 

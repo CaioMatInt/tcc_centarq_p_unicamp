@@ -11,9 +11,15 @@ class InputHiddenComponent extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $name;
+    public $value;
+    public $id;
+
+    public function __construct($name, $value = null, $id = null)
     {
-        //
+        $this->name = $name;
+        $this->value = $value;
+        $this->id = $id;
     }
 
     /**
@@ -23,6 +29,9 @@ class InputHiddenComponent extends Component
      */
     public function render()
     {
+        if(!$this->id){
+            $this->id = $this->name;
+        }
         return view('components.input-hidden-component');
     }
 }

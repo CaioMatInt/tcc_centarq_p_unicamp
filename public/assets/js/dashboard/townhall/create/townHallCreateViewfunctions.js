@@ -2,6 +2,24 @@ $( document ).ready(function() {
 
     let body = $('body');
     let totalOfAdminLines = 1;
+    let cityIdSelector = $( "#city_id" );
+
+
+    $('#btnSaveTownHall').click(function() {
+
+        if(checkIfHaveEmptyInputsInAdminInformartions()){
+            notyMsg('error',10000,'Por favor, é necessário inserir ao menos um administrador e preencher nome e e-mail para todos os administradores inseridos.');
+        }else{
+            $('#formTwonHall').submit();
+        }
+
+
+    });
+
+
+    cityIdSelector.change(function() {
+       $("#name").val($( "#city_id option:selected" ).text());
+    });
 
     body.on('click', '.removeAdminButton', function() {
 
@@ -51,5 +69,33 @@ $( document ).ready(function() {
           </div>`);
 
     });
+
+    /*Validates if all the created inputs for admins are filled*/
+    function checkIfHaveEmptyInputsInAdminInformartions(){
+
+        try {
+            $( "[name='adminName[]'" ).each(function() {
+                if($( this ).val().length === 0){
+                    throw true;
+                }
+            });
+
+            $("[name='adminEmail[]'").each(function () {
+                if ($(this).val().length === 0) {
+                    validationError = true;
+                    throw true;
+                }
+            });
+
+            return false;
+
+        }
+        catch(e) {
+            return true;
+        }
+
+    }
+
+
 
 });

@@ -14,11 +14,12 @@
                         <x-breadcumb-user-location-component :previousLinks="[0 => ['link' => route('prefeituras.index'), 'name' =>
                         'Cadastro de Prefeituras'] ]" :pageTitle="$pageTitle"/>
 
-                        <form action="{{route('prefeituras.store')}}" method="post" enctype="multipart/form-data">
+                        <form id="formTwonHall" action="{{route('prefeituras.store')}}" method="post" enctype="multipart/form-data">
                             {{ @csrf_field() }}
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-4">
-                                    <x-input-select-component :name="'city_id'" :label="'Cidade'" :options="$ibgeCitiesArray" />
+                                    <x-input-hidden-component :name="'name'" />
+                                    <x-input-select-component :name="'ibge_city_id'" :label="'Cidade'" :options="$ibgeCitiesArray" />
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-4">
@@ -55,7 +56,7 @@
 
                                         <div class="col-12 col-sm-3">
 
-                                            <label for="adminActions0">Ações</label>
+                                            <label for="adminActions1">Ações</label>
                                             <div class="row" id="adminActions1">
                                                 <a class="ml-3 btn btn-danger-alternative removeAdminButton" data-id-admin-selector="1"><i class="fa fa-trash"></i> Remover</a>
                                                 <a class="ml-3 btn btn-warning-alternative cleanAdminInputsButton" data-id-admin-selector="1"><i class="fa fa-eraser"></i> Limpar</a>
@@ -69,13 +70,11 @@
                             </div>
 
 
-
-
                             <br>
                             <div class="form-group">
 
                                 <button type='button' class="btn btn-light"><a href="{{ URL::previous() }}">Cancelar</a></button>
-                                <button type="submit" class="btn btn-success mr-2 float-right">Salvar</button>
+                                <button type="button" class="btn btn-success mr-2 float-right" id="btnSaveTownHall">Salvar</button>
                             </div>
                         </form>
                     </div>

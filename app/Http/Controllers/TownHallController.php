@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTownHall;
 use App\Services\IbgeApiService;
 use App\Services\TownHallService;
 use App\Http\Controllers\Controller;
@@ -61,10 +62,9 @@ class TownHallController extends Controller
      * @param Request $request
      * @return void
      */
-    public function store(Request $request)
+    public function store(StoreTownHall $request)
     {
 
-        dd($request->all());
         try {
             $data = $request->all();
 
