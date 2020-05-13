@@ -2,38 +2,65 @@
 
 namespace App;
 
+use App\Models\TownHall;
+use App\Models\UserType;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-
     /**
-     * The attributes that are mass assignable.
-     *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $fillable = ['name', 'image', 'email', 'email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at', 'rg'];
 
     /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    public function doctors()
+    {
+        return $this->hasMany('App\Doctor');
+    }
 
     /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function medicalExams()
+    {
+        return $this->hasMany('App\MedicalExam');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function userPersonalInformations()
+    {
+        return $this->hasMany('App\UserPersonalInformation');
+    }
+
+    /**
+     * The roles that belong to the user.
+     */
+    public function userTypes()
+    {
+        return $this->belongsToMany(UserType::class, 'user_user_types');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function usersHealthUnits()
+    {
+        return $this->hasMany('App\UsersHealthUnit');
+    }
+
+
+    public function townHalls()
+    {
+        return $this->belongsToMany(TownHall::class, 'users_town_halls');
+
+    }
 }
+
+

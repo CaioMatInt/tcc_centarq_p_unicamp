@@ -21,7 +21,7 @@ class IbgeApiService
      */
     public function renderListOfCitiesByIbgeStateId($ibge_state_id)
     {
-        return [1 => 'Campinas'];
+        /*return [1 => 'Campinas'];*/
         try {
             $ibgeCitiesArray =  Http::get('https://servicodados.ibge.gov.br/api/v1/localidades/estados/' . $ibge_state_id . '/municipios')->json();
             $rearrengedIbgeCitiesArray = [];

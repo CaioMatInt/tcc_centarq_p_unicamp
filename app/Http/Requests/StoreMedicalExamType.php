@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class StoreTownHall extends FormRequest
+class StoreMedicalExamType extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,11 +25,7 @@ class StoreTownHall extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|',
-            'ibge_city_id' => 'required|unique:cities|max:255',
-            'image' => 'required|image|max:2048',
-            'adminName' => 'required',
-            'adminEmail' => 'required',
+            'name' => 'required|max:255|unique:medical_exam_types',
         ];
     }
 }

@@ -27,16 +27,14 @@
                     </div>
                   </div>
                 </a>
-                <a class="dropdown-item mt-2"> Manage Accounts </a>
-                <a class="dropdown-item"> Change Password </a>
-                <a class="dropdown-item"> Check Inbox </a>
-                <a class="dropdown-item"> Sign Out </a>
+                <a class="dropdown-item mt-2"> Alterar senha </a>
+                <a class="dropdown-item"> Sair </a>
               </div>
             </div>
           </div>
         </div>
           <div class="progress"><div role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-info" style="width: 100%;"></div></div>
-          <button class="btn btn-success btn-block">New Project <i class="mdi mdi-plus"></i>
+          <button class="btn btn-success btn-block"><i style="font-size: 13px !important" class="fa fa-list mr-1"></i><span>Meus Exames</span>
           </button>
       </div>
     </li>
@@ -54,30 +52,32 @@
           </a>
       </li>
 
-    <li class="nav-item">
-      <a class="nav-link" href="">
-        <i class="menu-icon mdi mdi-chart-line"></i>
-        <span class="menu-title">Meus Exames</span>
-      </a>
-    </li>
       <li class="nav-item">
-          <a class="nav-link" href="">
-              <i class="menu-icon mdi mdi-chart-line"></i>
-              <span class="menu-title">Exames de Terceiros</span>
+          <a class="nav-link" href="{{route('unidades-de-saude.index')}}">
+              <i class="menu-icon fa fa-hospital"></i>
+              <span class="menu-title">Unidades de Saúde</span>
           </a>
       </li>
 
       <li class="nav-item">
-          <a class="nav-link" href="">
-              <i class="menu-icon mdi mdi-chart-line"></i>
+          <a class="nav-link" href="{{route('tipos-de-exame.index')}}">
+              <i class="menu-icon fa fa-briefcase-medical"></i>
               <span class="menu-title">Tipos de Exame</span>
           </a>
       </li>
 
+
       <li class="nav-item">
           <a class="nav-link" href="">
-              <i class="menu-icon mdi mdi-chart-line"></i>
-              <span class="menu-title">Clientes</span>
+              <i class="menu-icon fa fa-file-medical"></i>
+              <span class="menu-title">Exames de Pacientes</span>
+          </a>
+      </li>
+
+      <li class="nav-item">
+          <a class="nav-link" href="">
+              <i class="menu-icon fa fa-user-md"></i>
+              <span class="menu-title">Médicos</span>
           </a>
       </li>
       <li class="nav-item">

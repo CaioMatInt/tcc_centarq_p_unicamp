@@ -14,7 +14,7 @@
                         <x-breadcumb-user-location-component :previousLinks="[0 => ['link' => route('prefeituras.index'), 'name' =>
                         'Cadastro de Prefeituras'] ]" :pageTitle="$pageTitle"/>
 
-                        <form id="formTwonHall" action="{{route('prefeituras.store')}}" method="post" enctype="multipart/form-data">
+                        <form id="formTwonHall" action="{{route(''.$crudRouteName.'.store')}}" method="post" enctype="multipart/form-data">
                             {{ @csrf_field() }}
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-4">
@@ -50,7 +50,7 @@
 
                                         <div class="col-12 col-sm-3">
 
-                                            <x-input-image-component :name="'adminImage[]'" :label="'Imagem'" :id="'adminImage1'" />
+                                            <x-input-type-component :name="'adminRG[]'" :label="'RG'" :type="'number'" :id="'adminRG1'" />
 
                                         </div>
 

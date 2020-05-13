@@ -14827,9 +14827,8 @@ small {
 
 .table th img,
 .table td img {
-  width: 36px;
-  height: 36px;
-  border-radius: 100%;
+  width: 45px;
+  height: 45px;
 }
 
 .table th .badge,
@@ -18733,7 +18732,7 @@ small {
 .sidebar .nav .nav-item .nav-link .menu-title {
   color: inherit;
   display: inline-block;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1;
   vertical-align: middle;
   cursor: pointer;

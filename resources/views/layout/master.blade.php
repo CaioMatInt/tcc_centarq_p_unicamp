@@ -71,11 +71,20 @@
 
   <script>
 
+      @php
+      $sessionMsg = session()->has('msg') ? session('msg') : null;
+      @endphp
+
       @if($errors->any())
         let jsonOfErrorMessages = '{!! json_encode($errors->all(':message'))!!}';
       notyMsgWithArrayOfErrors('error', 10000, jsonOfErrorMessages);
-
       @endif
+
+      @if($sessionMsg)
+
+      notyMsg('{{$sessionMsg['type']}}', 10000, '{{$sessionMsg['text']}}');
+      @endif
+
   </script>
 
   <!-- end common js -->

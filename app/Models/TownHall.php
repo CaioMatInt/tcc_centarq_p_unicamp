@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class TownHall extends Model
@@ -44,11 +45,8 @@ class TownHall extends Model
         return $this->hasMany('App\UsersHealthUnit', 'health_unit_id');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function usersTownHalls()
+    public function users()
     {
-        return $this->hasMany('App\UsersTownHall');
+        return $this->belongsToMany(User::class, 'users_town_halls');
     }
 }

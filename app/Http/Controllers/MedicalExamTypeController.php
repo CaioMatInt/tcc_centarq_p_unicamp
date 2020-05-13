@@ -2,38 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreTownHall;
+use App\Http\Requests\StoreMedicalExamType;
 use App\Services\CityService;
 use App\Services\IbgeApiService;
-use App\Services\TownHallService;
-use App\Http\Controllers\Controller;
+use App\Services\MedicalExamTypeService;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
 
-class TownHallController extends Controller
+
+class MedicalExamTypeController extends Controller
 {
-    private $townHallService;
-    private $ibgeApiService;
-    private $userService;
-    private $cityService;
-    const stateOfSaoPauloIbgeId = 35;
+    private $medicalExamTypeService;
     /* Name of this CRUD in Portuguese and in plural */
-    public $pluralName = 'Prefeituras';
+    public $pluralName = 'Tipos de Exame';
     /* Name of this CRUD in Portuguese*/
-    public $name = 'Prefeitura';
+    public $name = 'Tipo de Exame';
     /* Name of the this CRUD folder, in resources, used along this class in "return views" */
-    public $crudFolder = 'townhall';
-    public $crudRouteName = 'prefeituras';
+    public $crudFolder = 'medicalExam';
+    public $crudRouteName = 'tipos-de-exame';
 
-    public function __construct(TownHallService $townHallService, IbgeApiService $ibgeApiService, UserService $userService, CityService $cityService)
+    public function __construct(MedicalExamTypeService $medicalExamTypeService)
     {
-
-        $this->townHallService = $townHallService;
-        $this->ibgeApiService = $ibgeApiService;
-        $this->userService = $userService;
-        $this->cityService = $cityService;
+        $this->medicalExamTypeService = $medicalExamTypeService;
     }
 
 
@@ -44,7 +35,7 @@ class TownHallController extends Controller
     {
 
         $data = [
-            'resources' => $this->townHallService->renderListWithCityRelation(),
+            'resources' => $this->medicalExamTypeService->renderList(),
             'pageTitle' => 'Cadastro de ' . $this->pluralName,
             'crudRouteName' => $this->crudRouteName
 
@@ -59,8 +50,7 @@ class TownHallController extends Controller
     public function create()
     {
         $data = [
-            'pageTitle' => 'Cadastrar nova ' . $this->name,
-            'ibgeCitiesArray' => $this->ibgeApiService->renderListOfCitiesByIbgeStateId(self::stateOfSaoPauloIbgeId),
+            'pageTitle' => 'Cadastrar novo ' . $this->name,
             'crudRouteName' => $this->crudRouteName
         ];
 
@@ -71,7 +61,7 @@ class TownHallController extends Controller
      * @param Request $request
      * @return void
      */
-    public function store(StoreTownHall $request)
+    public function store(StoreMedicalExamType $request)
     {
 
         try {
@@ -79,18 +69,12 @@ class TownHallController extends Controller
 
             $data = $request->all();
 
-            $cityInserted = $this->cityService->buildInsert($data);
+            $this->medicalExamTypeService->buildInsert($data);
 
-            $dataToCreateATownHall['image'] = $data['image'];
-            $dataToCreateATownHall['city_id'] = $cityInserted->id;
-
-            $townHallPersistance = $this->townHallService->buildInsert($dataToCreateATownHall);
-
-            $this->userService->buildInsertTownHallAdmins($data['adminRG'], $data['adminEmail'], $data['adminName'], $townHallPersistance->id);
 
             $request->session()->flash('msg', [
                 'type' => 'success',
-                'text' => $this->name . ' de ' . $request->name . ' cadastrada com sucesso',
+                'text' => $this->name . '  ' . $request->name . ' cadastrada com sucesso',
             ]);
 
 
@@ -101,7 +85,7 @@ class TownHallController extends Controller
 
             $request->session()->flash('msg', [
                 'type' => 'danger',
-                'text' => 'Erro ao cadastrar ' . $this->name . ' de ' . $request->name . '. Por favor, contate o administrador do sistema.',
+                'text' => 'Erro ao cadastrar ' . $this->name . '  ' . $request->name . '. Por favor, contate o administrador do sistema.',
             ]);
 
             return redirect()->route($this->crudRouteName . '.create');
@@ -119,7 +103,7 @@ class TownHallController extends Controller
     {
         $data = [
             'pageTitle' => 'Editar' . $this->name,
-            'resource' => $this->townHallService->renderEdit($id)
+            'resource' => $this->medicalExamTypeService->renderEdit($id)
         ];
 
         return view('dashboard.' . $this->crudFolder . '.edit', $data);
@@ -135,7 +119,7 @@ class TownHallController extends Controller
 
         try {
             $data = $request->all();
-            $this->townHallService->buildUpdate($id, $data);
+            $this->medicalExamTypeService->buildUpdate($id, $data);
 
             $request->session()->flash('msg', [
                 'type' => 'success',
@@ -161,7 +145,7 @@ class TownHallController extends Controller
     public function destroy($id)
     {
         try {
-            $this->townHallService->buildDelete($id);
+            $this->medicalExamTypeService->buildDelete($id);
 
             session()->flash('msg', [
                 'type' => 'success',

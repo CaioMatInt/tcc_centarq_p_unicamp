@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class UserType extends Model
@@ -12,11 +13,10 @@ class UserType extends Model
     protected $dates = ['created_at', 'updated_at'];
     protected $fillable = ['name'];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function userUserTypes()
+
+    public function users()
     {
-        return $this->hasMany('App\UserUserType');
+        return $this->belongsToMany(User::class, 'user_user_types');
     }
+
 }

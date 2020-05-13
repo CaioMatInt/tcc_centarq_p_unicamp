@@ -1,2 +1,7 @@
 <input type="hidden" class="form-control" name='{{$name}}' id="{{$id}}"
-       value="{{ (isset($value) ? $value : '') }}">
+       value="
+@if(old($name))
+{{old($name)}}
+@elseif(isset($value))
+{{$value}}
+@endif">

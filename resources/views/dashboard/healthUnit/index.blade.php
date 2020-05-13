@@ -24,10 +24,7 @@
                         <thead class="thead-light-dark">
                         <tr>
 
-                            <th width="40%">Cidade</th>
-                            <th width="20%">Imagem</th>
-                            <th width="20%">Data Ativação</th>
-                            <th width="20%">Ações</th>
+                            <th>Nome</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -35,13 +32,7 @@
 
                         <tr>
 
-                            <td>{{$resource->city->name}}</td>
-                            <td><img src="{{ url('storage/'.$resource->image) }}"></td>
-                            <td>{{$resource->created_at->format('d/m/Y')}}</td>
-                            <td>
-                                <a class="btn btn-warning-alternative"><i class="fa fa-edit mr-1"></i>Editar</a>
-                                <a class="btn btn-info-alternative"><i class="fa fa-users mr-1"></i>Administradores</a>
-                            </td>
+                            <td>{{$resource->name}}</td>
                         </tr>
                         @endforeach
                         </tbody>

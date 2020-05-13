@@ -16,10 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
 
+    Route::get('/', 'HomeController@index')->name('home');
 
-Route::resource('prefeituras', 'TownHallController');
+    Route::resource('prefeituras', 'TownHallController');
+    Route::resource('tipos-de-exame', 'MedicalExamTypeController');
+    Route::resource('unidades-de-saude', 'HealthUnitController');
+});
 
 
 Route::group(['prefix' => 'basic-ui'], function(){

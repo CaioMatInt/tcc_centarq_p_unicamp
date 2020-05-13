@@ -18,8 +18,9 @@ class InputTypeComponent extends Component
     public $class;
     public $name;
     public $value;
+    public $customAttributes;
 
-    public function __construct($label, $type, $name, $value = null, $class = null, $id = null)
+    public function __construct($label, $type, $name, $value = null, $class = null, $id = null, $customAttributes = '')
     {
         $this->id = $id;
         $this->label = $label;
@@ -27,6 +28,7 @@ class InputTypeComponent extends Component
         $this->class = $class;
         $this->name = $name;
         $this->value = $value;
+        $this->customAttributes = $customAttributes;
     }
 
     /**

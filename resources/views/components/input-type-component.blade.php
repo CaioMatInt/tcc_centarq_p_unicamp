@@ -6,7 +6,8 @@
            name="{{$name}}"
            id="{{$id}}"
            value="{{ old($name) ?: (!empty($value) ? $value : '') }}"
-           placeholder=" {{$label}}">
+           placeholder=" {{$label}}"
+           {!! $customAttributes !!} >
     @if ($errors->has($name))
         <span class="help-block text-danger">{{ $errors->first($name) }}</span>
     @endif
