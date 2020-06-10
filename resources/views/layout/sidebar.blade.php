@@ -68,7 +68,7 @@
 
 
       <li class="nav-item">
-          <a class="nav-link" href="">
+          <a class="nav-link" href="{{route('exames.index')}}">
               <i class="menu-icon fa fa-file-medical"></i>
               <span class="menu-title">Exames de Pacientes</span>
           </a>
@@ -82,15 +82,8 @@
       </li>
       <li class="nav-item">
           <a class="nav-link" href="">
-              <i class="menu-icon mdi mdi-chart-line"></i>
+              <i class="menu-icon fa fa-users"></i>
               <span class="menu-title">Usuários</span>
-          </a>
-      </li>
-
-      <li class="nav-item">
-          <a class="nav-link" href="">
-              <i class="menu-icon mdi mdi-chart-line"></i>
-              <span class="menu-title">Unidades Médicas</span>
           </a>
       </li>
 

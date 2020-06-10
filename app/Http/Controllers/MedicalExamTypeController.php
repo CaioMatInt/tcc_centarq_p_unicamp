@@ -19,7 +19,7 @@ class MedicalExamTypeController extends Controller
     /* Name of this CRUD in Portuguese*/
     public $name = 'Tipo de Exame';
     /* Name of the this CRUD folder, in resources, used along this class in "return views" */
-    public $crudFolder = 'medicalExam';
+    public $crudFolder = 'medicalExamType';
     public $crudRouteName = 'tipos-de-exame';
 
     public function __construct(MedicalExamTypeService $medicalExamTypeService)

@@ -6,29 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- CSRF Token -->
   <meta name="_token" content="{{ csrf_token() }}">
 
   <link rel="shortcut icon" href="{{ url('assets/images/logo/mini-logocentarq.svg') }}">
 
-  <!-- plugin css -->
     <link rel="stylesheet" href="{{asset('assets/plugins/@mdi/font/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.css">
     <link rel="stylesheet" href="{{asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.css')}}">
 
-  <!-- end plugin css -->
 
   @stack('plugin-styles')
 
-  <!-- common css -->
     <link rel="stylesheet" href="{{asset('/css/app.css')}}">
     <link rel="stylesheet" href="{{asset('/css/main.css')}}">
 
-  <!-- end common css -->
-
   @stack('style')
-
 
 </head>
 <body data-base-url="{{url('/')}}">

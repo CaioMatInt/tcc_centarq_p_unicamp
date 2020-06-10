@@ -12,7 +12,7 @@
 
 
                         <x-breadcumb-user-location-component :previousLinks="[0 => ['link' => route('prefeituras.index'), 'name' =>
-                        'Cadastro de Prefeituras'] ]" :pageTitle="$pageTitle"/>
+                        'Cadastro de ' . $crudRouteName] ]" :pageTitle="$pageTitle"/>
 
                         <form id="formTwonHall" action="{{route(''.$crudRouteName.'.store')}}" method="post" enctype="multipart/form-data">
                             {{ @csrf_field() }}

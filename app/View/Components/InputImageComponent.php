@@ -18,7 +18,7 @@ class InputImageComponent extends Component
     public $name;
     public $value;
 
-    public function __construct($label, $name, $value = null, $class = null, $id = null)
+    public function __construct($name, $value = null, $class = null, $id = null, $label = null)
     {
         $this->id = $id;
         $this->label = $label;
@@ -37,7 +37,6 @@ class InputImageComponent extends Component
         if(!$this->id){
             $this->id = $this->name;
         }
-
         return view('components.input-image-component');
     }
 }

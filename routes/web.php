@@ -22,6 +22,7 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
 
     Route::resource('prefeituras', 'TownHallController');
     Route::resource('tipos-de-exame', 'MedicalExamTypeController');
+    Route::resource('exames', 'MedicalExamController');
     Route::resource('unidades-de-saude', 'HealthUnitController');
 });
 

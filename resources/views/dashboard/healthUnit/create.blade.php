@@ -12,7 +12,7 @@
 
 
                         <x-breadcumb-user-location-component :previousLinks="[0 => ['link' => route('tipos-de-exame.index'), 'name' =>
-                        'Cadastro de Tipos de Exame'] ]" :pageTitle="$pageTitle"/>
+                        'Cadastro de ' . $crudRouteName]" :pageTitle="$pageTitle"/>
 
                         <form action="{{route(''.$crudRouteName.'.store')}}" method="post" enctype="multipart/form-data">
                             {{ @csrf_field() }}

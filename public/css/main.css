@@ -118,6 +118,17 @@
     font-size: 19px !important;
 }
 
+.border-solid-1px-black{
+    border: solid 1px black;
+}
+
+.max-width-100pct{
+    max-width: 100%;
+}
+.max-width-150px{
+    max-width: 150px;
+}
+
 @media (max-width: 1200px) {
 
     .content-head-title-breadcumb-reverse {

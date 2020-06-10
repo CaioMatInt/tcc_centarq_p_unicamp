@@ -12,7 +12,7 @@
                     <div class="row">
 
                         <div class="col-12 col-xl-10">
-                            <h3 class="page-table-title mb-5"><i class="fa fa-file-medical"></i> <span class="ml-2">{{$pageTitle}}</span></h3>
+                            <h3 class="page-table-title mb-5"><i class="fa fa-city"></i> <span class="ml-2">{{$pageTitle}}</span></h3>
                         </div>
                         <div class="col-12 col-xl-2 text-right mb-2">
                             <a href="{{route(''.$crudRouteName.'.create')}}" class="btn btn-success btn-block text-white"><i class="fa fa-plus"></i> Cadastrar</a>
@@ -29,28 +29,19 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($resources as $resource)
 
+                        <tr>
 
-                            @forelse($resources as $resource)
+                            <td>{{$resource->name}}</td>
 
-                            <tr>
+                            <td class="text-center">
+                                <a class="btn btn-warning-alternative"><i class="fa fa-edit mr-1"></i>Editar</a>
+                                <a class="btn btn-danger-alternative"><i class="fa fa-trash mr-1"></i>Remover</a>
+                            </td>
 
-                                <td>{{$resource->name}}</td>
-
-                                <td class="text-center">
-                                    <a class="btn btn-warning-alternative"><i class="fa fa-edit mr-1"></i>Editar</a>
-                                    <a class="btn btn-danger-alternative"><i class="fa fa-trash mr-1"></i>Remover</a>
-                                </td>
-
-                            </tr>
-
-
-                            @empty
-
-                            <td>Nenhum resultado.</td>
-
-                            @endforelse
-
+                        </tr>
+                        @endforeach
                         </tbody>
                     </table>
                     </div>
