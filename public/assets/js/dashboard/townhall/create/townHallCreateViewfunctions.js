@@ -112,5 +112,36 @@ $( document ).ready(function() {
     }
 
 
+    /**Code for select2 Input to search for users **/
+
+    let _token = $('meta[name="_token"]').attr('content');
+
+    $( "#selectUser" ).select2({
+        minimumInputLength: 3,
+        ajax: {
+            url: window.location.origin + '/painel/renderizar-lista-usuarios-rg-e-id-por-rg',
+            type: "post",
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    _token: _token,
+                    rg: params.term
+                };
+            },
+            processResults: function (response) {
+                return {
+                    results:  $.map(response, function (item) {
+                        return {
+                            text: item['rg'],
+                            id: item['id']
+                        }
+                    })
+                };
+            },
+            cache: true
+        }
+
+    });
 
 });

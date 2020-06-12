@@ -20,7 +20,7 @@ class TownHallRepository extends EloquentRepository
 
 
     public function getAllWithCityRelation(){
-        return $this->model->with('city')->get();
+        return $this->model->with('city')->paginate(10);
     }
 
 }

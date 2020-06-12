@@ -18,8 +18,18 @@
                             {{ @csrf_field() }}
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-xl-4">
-                                    <x-input-type-component :name="'name'" :label="'Nome'" :type="'text'" />
+                                    <label for="selectUser">RG</label>
+                                    <select id="selectUser" style="width:100%!important;">
+
+                                    </select>
                                 </div>
+
+
+                                <div class="col-12 col-sm-12 col-md-12 col-xl-4">
+                                    <x-input-file-component :name="'exam'" :label="'Exame'" />
+                                </div>
+
+
 
                             </div>
 
@@ -40,5 +50,11 @@
 
 @push('custom-scripts')
     <script src="{{asset('/assets/js/dashboard/townhall/create/townHallCreateViewfunctions.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/i18n/pt-BR.min.js"></script>
+@endpush
+
+@push('custom-css')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 @endpush
 

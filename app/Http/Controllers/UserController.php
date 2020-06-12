@@ -17,4 +17,14 @@ class UserController extends Controller
         $this->userService = $userService;
     }
 
+    /**
+     * @return array
+     */
+    public function renderUsersListWithRGAndIdByLikeRG(Request $request)
+    {
+        $rg = $request->all()['rg'];
+        return $this->userService->renderJsonListWithRGAndIdByLikeRG($rg);
+
+    }
+
 }

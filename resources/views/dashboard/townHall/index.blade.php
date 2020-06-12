@@ -45,8 +45,14 @@
                         @endforeach
                         </tbody>
                     </table>
+
                     </div>
 
+                    <hr />
+
+                    <div class="d-flex justify-content-end mt-5">
+                        {{ $resources->links() }}
+                    </div>
 
                 </div>
             </div>

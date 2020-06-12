@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Notifications\UserRegisteredNotification;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Str;
 
@@ -41,9 +40,18 @@ class UserService extends EloquentService
             $insertedUser->userTypes()->withTimestamps()->sync([$this->townHallAdminUserTypeId]);
             $insertedUser->townHalls()->withTimestamps()->sync([$townHallId]);
 
-            $insertedUser->notify(new UserRegisteredNotification($insertedUser));
+            //Every created account triggers created() at UserObserver
+
         }
 
+    }
+
+    /**
+     * @return mixed
+     */
+    public function renderJsonListWithRGAndIdByLikeRG($rg)
+    {
+        return $this->userRepository->getRGAndIdByLikeRG($rg);
     }
 
 }

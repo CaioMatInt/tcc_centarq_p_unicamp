@@ -20,7 +20,7 @@ class MedicalExamController extends Controller
     public $name = 'Exame';
     /* Name of the this CRUD folder, in resources, used along this class in "return views" */
     public $crudFolder = 'medicalExam';
-    public $crudRouteName = 'Exames';
+    public $crudRouteName = 'exames';
 
     public function __construct(MedicalExamService $medicalExamService)
     {

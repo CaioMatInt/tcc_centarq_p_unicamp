@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+Route::get('/', function () {
+    return redirect('painel');
+});
+
 Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
 
     Route::get('/', 'HomeController@index')->name('home');
@@ -24,6 +28,8 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
     Route::resource('tipos-de-exame', 'MedicalExamTypeController');
     Route::resource('exames', 'MedicalExamController');
     Route::resource('unidades-de-saude', 'HealthUnitController');
+
+    Route::post('renderizar-lista-usuarios-rg-e-id-por-rg', 'UserController@renderUsersListWithRGAndIdByLikeRG');
 });
 
 

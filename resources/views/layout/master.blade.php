@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.css">
     <link rel="stylesheet" href="{{asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.css')}}">
 
+    @stack('custom-css')
+
 
   @stack('plugin-styles')
 
@@ -60,6 +62,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/js/all.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.js"></script>
   <script src="{{asset('assets/js/dashboard/globalHelpers/globalHelpers.js')}}"></script>
+
 
 
   <script>
