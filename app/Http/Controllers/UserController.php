@@ -20,10 +20,10 @@ class UserController extends Controller
     /**
      * @return array
      */
-    public function renderUsersListWithRGAndIdByLikeRG(Request $request)
+    public function renderUsersListWithRGAndIdByLikeName(Request $request)
     {
-        $rg = $request->all()['rg'];
-        return $this->userService->renderJsonListWithRGAndIdByLikeRG($rg);
+        $name = $request->all()['name'];
+        return $this->userService->renderJsonListWithRGAndIdByLikeName($name);
 
     }
 

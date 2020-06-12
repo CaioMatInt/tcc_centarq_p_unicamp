@@ -49,9 +49,9 @@ class UserService extends EloquentService
     /**
      * @return mixed
      */
-    public function renderJsonListWithRGAndIdByLikeRG($rg)
+    public function renderJsonListWithRGAndIdByLikeName($name)
     {
-        return $this->userRepository->getRGAndIdByLikeRG($rg);
+        return $this->userRepository->getRGAndIdByLikeName($name);
     }
 
 }

@@ -6,6 +6,8 @@ use App\Http\Requests\StoreMedicalExam;
 use App\Services\CityService;
 use App\Services\IbgeApiService;
 use App\Services\MedicalExamService;
+use App\Services\MedicalExamTypeService;
+use App\Services\TownHallService;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,6 +16,8 @@ use Illuminate\Support\Facades\DB;
 class MedicalExamController extends Controller
 {
     private $medicalExamService;
+    private $townHallService;
+    private $medicalExamTypeService;
     /* Name of this CRUD in Portuguese and in plural */
     public $pluralName = 'Exames';
     /* Name of this CRUD in Portuguese*/
@@ -22,9 +26,11 @@ class MedicalExamController extends Controller
     public $crudFolder = 'medicalExam';
     public $crudRouteName = 'exames';
 
-    public function __construct(MedicalExamService $medicalExamService)
+    public function __construct(MedicalExamService $medicalExamService, TownHallService $townHallService, MedicalExamTypeService $medicalExamTypeService)
     {
         $this->medicalExamService = $medicalExamService;
+        $this->townHallService = $townHallService;
+        $this->medicalExamTypeService = $medicalExamTypeService;
     }
 
 
@@ -51,7 +57,9 @@ class MedicalExamController extends Controller
     {
         $data = [
             'pageTitle' => 'Cadastrar novo ' . $this->name,
-            'crudRouteName' => $this->crudRouteName
+            'crudRouteName' => $this->crudRouteName,
+            'townHallsArray' => $this->townHallService->renderArrayForSelectInputWithOnlyNameAndID(),
+            'medicalExamTypesArray' =>  $this->medicalExamTypeService->renderListWithOnlyNameAndID(),
         ];
 
         return view('dashboard.' . $this->crudFolder . '.create', $data);

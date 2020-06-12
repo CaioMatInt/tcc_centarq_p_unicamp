@@ -15,9 +15,9 @@ class UserRepository extends EloquentRepository
     /**
      * @return mixed
      */
-    public function getRGAndIdByLikeRG($rg)
+    public function getRGAndIdByLikeName($name)
     {
-        return $this->model->select(['id', 'rg'])->where('RG', 'like', '%' . $rg . '%')->get();
+        return $this->model->select(['id', 'name'])->where('name', 'like', '%' . $name . '%')->get();
     }
 
 

@@ -23,4 +23,13 @@ class TownHallRepository extends EloquentRepository
         return $this->model->with('city')->paginate(10);
     }
 
+    public function getAllWithOnlyNameAndID(){
+
+            return \DB::table('town_halls')
+            ->join('cities', 'town_halls.city_id', '=', 'cities.id')
+            ->select('town_halls.id', 'cities.name')
+            ->get();
+
+    }
+
 }

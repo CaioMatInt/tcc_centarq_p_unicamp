@@ -29,7 +29,7 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
     Route::resource('exames', 'MedicalExamController');
     Route::resource('unidades-de-saude', 'HealthUnitController');
 
-    Route::post('renderizar-lista-usuarios-rg-e-id-por-rg', 'UserController@renderUsersListWithRGAndIdByLikeRG');
+    Route::post('renderizar-lista-usuarios-nome-e-id-por-nome', 'UserController@renderUsersListWithRGAndIdByLikeName');
 });
 
 

@@ -17,15 +17,26 @@
                         <form action="{{route(''.$crudRouteName.'.store')}}" method="post" enctype="multipart/form-data">
                             {{ @csrf_field() }}
                             <div class="row">
-                                <div class="col-12 col-sm-12 col-md-12 col-xl-4">
-                                    <label for="selectUser">RG</label>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-xl-3">
+                                    <x-input-select-component :name="'town_hall_id'" :label="'Prefeitura'" :options="$townHallsArray" />
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-xl-3">
+
+                                </div>
+
+
+
+                                <div class="col-12 col-sm-12 col-md-12 col-xl-3">
+                                    <label for="selectUser">Nome do paciente</label>
                                     <select id="selectUser" style="width:100%!important;">
 
                                     </select>
                                 </div>
 
 
-                                <div class="col-12 col-sm-12 col-md-12 col-xl-4">
+                                <div class="col-12 col-sm-12 col-md-12 col-xl-3">
                                     <x-input-file-component :name="'exam'" :label="'Exame'" />
                                 </div>
 

@@ -19,5 +19,9 @@ class MedicalExamTypeService extends EloquentService
         parent::__construct($medicalExamTypeRepository);
     }
 
+    public function renderListWithOnlyNameAndID()
+    {
+        return $this->medicalExamTypeRepository->getAllWithOnlyNameAndID();
+    }
 
 }

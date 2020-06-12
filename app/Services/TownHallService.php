@@ -11,17 +11,19 @@ class TownHallService extends EloquentService
     private $townHallRepository;
     private $cityService;
     private $imageUploadService;
+    private $objectArrayManipulationService;
 
     /**
      * TownHallService constructor.
      * @param townHallRepository $townHallRepository
      */
-    public function __construct(TownHallRepository $townHallRepository, CityService $cityService, ImageUploadService $imageUploadService)
+    public function __construct(TownHallRepository $townHallRepository, CityService $cityService, ImageUploadService $imageUploadService, ObjectArrayManipulationService $objectArrayManipulationService)
     {
         $this->townHallRepository = $townHallRepository;
         parent::__construct($townHallRepository);
         $this->cityService = $cityService;
         $this->imageUploadService = $imageUploadService;
+        $this->objectArrayManipulationService = $objectArrayManipulationService;
     }
 
     public function renderListWithCityRelation()
@@ -36,6 +38,13 @@ class TownHallService extends EloquentService
             $townHallPersistance =  $this->townHallRepository->create($dataTownHallToInsert);
 
             return $townHallPersistance;
+    }
+
+    public function renderArrayForSelectInputWithOnlyNameAndID()
+    {
+        $arrayOfTownHallsWithIdAndRelatedCityName = $this->townHallRepository->getAllWithOnlyNameAndID();
+
+        return $this->objectArrayManipulationService->arrangeObjectToSelectInputComponent($arrayOfTownHallsWithIdAndRelatedCityName, 'id', 'name');
     }
 
 }

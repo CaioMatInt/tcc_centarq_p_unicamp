@@ -119,21 +119,21 @@ $( document ).ready(function() {
     $( "#selectUser" ).select2({
         minimumInputLength: 3,
         ajax: {
-            url: window.location.origin + '/painel/renderizar-lista-usuarios-rg-e-id-por-rg',
+            url: window.location.origin + '/painel/renderizar-lista-usuarios-nome-e-id-por-nome',
             type: "post",
             dataType: 'json',
             delay: 250,
             data: function (params) {
                 return {
                     _token: _token,
-                    rg: params.term
+                    name: params.term
                 };
             },
             processResults: function (response) {
                 return {
                     results:  $.map(response, function (item) {
                         return {
-                            text: item['rg'],
+                            text: item['name'],
                             id: item['id']
                         }
                     })
