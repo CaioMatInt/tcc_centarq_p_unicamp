@@ -59,7 +59,7 @@ class MedicalExamController extends Controller
             'pageTitle' => 'Cadastrar novo ' . $this->name,
             'crudRouteName' => $this->crudRouteName,
             'townHallsArray' => $this->townHallService->renderArrayForSelectInputWithOnlyNameAndID(),
-            'medicalExamTypesArray' =>  $this->medicalExamTypeService->renderListWithOnlyNameAndID(),
+            'medicalExamTypesArray' =>  $this->medicalExamTypeService->renderArrayForSelectInputWithOnlyNameAndID(),
         ];
 
         return view('dashboard.' . $this->crudFolder . '.create', $data);
@@ -88,7 +88,7 @@ class MedicalExamController extends Controller
 
 
         } catch (\Exception $e) {
-
+dd($e);
             DB::rollBack();
 
             $request->session()->flash('msg', [

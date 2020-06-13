@@ -23,14 +23,14 @@
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-xl-3">
-
+                                    <x-input-select-component :name="'medical_exam_type_id'" :label="'Tipo de Exame'" :options="$medicalExamTypesArray" />
                                 </div>
 
 
 
                                 <div class="col-12 col-sm-12 col-md-12 col-xl-3">
                                     <label for="selectUser">Nome do paciente</label>
-                                    <select id="selectUser" style="width:100%!important;">
+                                    <select name="user_id" id="selectUser" style="width:100%!important;">
 
                                     </select>
                                 </div>

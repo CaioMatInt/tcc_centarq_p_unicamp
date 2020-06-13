@@ -35,11 +35,10 @@
 
                             <tr>
 
-                                <td>{{$resource->name}}</td>
+                                <td>{{$resource->user_id}}</td>
 
                                 <td class="text-center">
-                                    <a class="btn btn-warning-alternative"><i class="fa fa-edit mr-1"></i>Editar</a>
-                                    <a class="btn btn-danger-alternative"><i class="fa fa-trash mr-1"></i>Remover</a>
+                                    <a download href="{{ url('storage/'.$resource->path) }}" class="btn btn-info-alternative"><i class="fa fa-download mr-1"></i>Efetuar Download</a>
                                 </td>
 
                             </tr>

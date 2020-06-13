@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Notifications\UserRegisteredNotification;
 use App\Repositories\PasswordResetRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Str;

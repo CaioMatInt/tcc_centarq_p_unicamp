@@ -8,20 +8,25 @@ class MedicalExamTypeService extends EloquentService
 {
 
     private $medicalExamTypeRepository;
+    private $objectArrayManipulationService;
 
     /**
      * MedicalExamTypeService constructor.
      * @param medicalExamTypeRepository $medicalExamTypeRepository
      */
-    public function __construct(MedicalExamTypeRepository $medicalExamTypeRepository)
+    public function __construct(MedicalExamTypeRepository $medicalExamTypeRepository, ObjectArrayManipulationService $objectArrayManipulationService)
     {
         $this->medicalExamTypeRepository = $medicalExamTypeRepository;
         parent::__construct($medicalExamTypeRepository);
+        $this->objectArrayManipulationService = $objectArrayManipulationService;
     }
 
-    public function renderListWithOnlyNameAndID()
+    public function renderArrayForSelectInputWithOnlyNameAndID()
     {
-        return $this->medicalExamTypeRepository->getAllWithOnlyNameAndID();
+        $arrayOfMedicalTypesWithIdAndName = $this->medicalExamTypeRepository->getAllWithOnlyNameAndID();
+
+        return $this->objectArrayManipulationService->arrangeObjectToSelectInputComponent($arrayOfMedicalTypesWithIdAndName, 'id', 'name');
+
     }
 
 }
