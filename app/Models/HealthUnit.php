@@ -4,19 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $created_at
+ * @property string $updated_at
+ * @property MedicalExam[] $medicalExams
+ */
 class HealthUnit extends Model
 {
     /**
      * @var array
      */
-    protected $dates = ['created_at', 'updated_at'];
-    protected $fillable = ['town_hall_id', 'name'];
+    protected $fillable = ['name', 'created_at', 'updated_at'];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function townHall()
+    public function medicalExams()
     {
-        return $this->belongsTo('App\TownHall');
+        return $this->hasMany('App\MedicalExam');
     }
 }

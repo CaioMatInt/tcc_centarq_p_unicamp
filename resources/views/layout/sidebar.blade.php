@@ -39,16 +39,23 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('home') }}">
+      <a class="nav-link" href="">
         <i class="menu-icon mdi mdi-television"></i>
         <span class="menu-title">Painel</span>
       </a>
     </li>
 
       <li class="nav-item">
-          <a class="nav-link" href="{{route('prefeituras.index')}}">
-              <i class="menu-icon fa fa-city"></i>
-              <span class="menu-title">Prefeituras</span>
+          <a class="nav-link" href="{{route('queixas.index')}}">
+              <i class="menu-icon fa fa-diagnoses"></i>
+              <span class="menu-title">Tipos de Queixa</span>
+          </a>
+      </li>
+
+      <li class="nav-item">
+          <a class="nav-link" href="{{route('pontos-de-conduta.index')}}">
+              <i class="menu-icon fa fa-comment-medical"></i>
+              <span class="menu-title">Pontos de Conduta</span>
           </a>
       </li>
 
@@ -60,7 +67,7 @@
       </li>
 
       <li class="nav-item">
-          <a class="nav-link" href="{{route('tipos-de-exame.index')}}">
+          <a class="nav-link" href="">
               <i class="menu-icon fa fa-briefcase-medical"></i>
               <span class="menu-title">Tipos de Exame</span>
           </a>
@@ -68,7 +75,7 @@
 
 
       <li class="nav-item">
-          <a class="nav-link" href="{{route('exames.index')}}">
+          <a class="nav-link" href="">
               <i class="menu-icon fa fa-file-medical"></i>
               <span class="menu-title">Exames de Pacientes</span>
           </a>
@@ -111,7 +118,7 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="https://www.bootstrapdash.com/demo/star-laravel-free/documentation/documentation.html" target="_blank">
+      <a class="nav-link" href="" target="_blank">
         <i class="menu-icon mdi mdi-file-outline"></i>
         <span class="menu-title">Documentação</span>
       </a>

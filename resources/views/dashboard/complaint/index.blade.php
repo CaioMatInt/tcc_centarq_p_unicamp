@@ -12,7 +12,7 @@
                     <div class="row">
 
                         <div class="col-12 col-xl-10">
-                            <h3 class="page-table-title mb-5"><i class="fa fa-city"></i> <span class="ml-2">{{$pageTitle}}</span></h3>
+                            <h3 class="page-table-title mb-5"><i class="fa fa-diagnoses"></i> <span class="ml-2">{{$pageTitle}}</span></h3>
                         </div>
                         <div class="col-12 col-xl-2 text-right mb-2">
                             <a href="{{route(''.$crudRouteName.'.create')}}" class="btn btn-success btn-block text-white"><i class="fa fa-plus"></i> Cadastrar</a>
@@ -24,8 +24,8 @@
                         <thead class="thead-light-dark">
                         <tr>
 
-                            <th width="60%">Nome</th>
-                            <th width="40%" class="text-center">Ações</th>
+                            <th width="70%" >Nome</th>
+                            <th width="30%" class="text-center">Ações</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -35,11 +35,24 @@
 
                             <td>{{$resource->name}}</td>
 
+
+
                             <td class="text-center">
-                                <a class="btn btn-warning-alternative"><i class="fa fa-edit mr-1"></i></a>
-                                <a class="btn btn-danger-alternative"><i class="fa fa-trash mr-1"></i></a>
+                                <a href="{{route(''.$crudRouteName.'.edit', $resource->id)}}" class="btn btn-warning-alternative"><i class="fa fa-edit mr-1"></i></a>
+                                <a>
+                                    <form id="formDestroyComplaint" class="d-inline" method="POST" action="{{route(''.$crudRouteName.'.destroy', $resource->id)}}">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+
+                                        <button id="confirmDeletionOfComplaint" type="button" class="btn btn-danger-alternative"><i class="fa fa-trash mr-1"></i></button>
+
+                                    </form>
+                                </a>
                             </td>
+
                         </tr>
+
+
                         @endforeach
                         </tbody>
                     </table>
@@ -53,3 +66,7 @@
         </div>
 
 @endsection
+
+@push('custom-scripts')
+    <script src="{{asset('/assets/js/dashboard/complaint/index/complaintIndexFunctions.js')}}"></script>
+@endpush

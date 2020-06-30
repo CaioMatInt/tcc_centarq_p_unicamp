@@ -2,39 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreTownHall;
-use App\Services\CityService;
-use App\Services\IbgeApiService;
-use App\Services\TownHallService;
-use App\Http\Controllers\Controller;
-use App\Services\UserService;
+use App\Services\ComplaintService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Mail;
 
-class TownHallController extends Controller
+
+class ComplaintController extends Controller
 {
-    private $townHallService;
-    private $ibgeApiService;
-    private $userService;
-    private $cityService;
-    const stateOfSaoPauloIbgeId = 35;
+    private $complaintService;
     /* Name of this CRUD in Portuguese and in plural */
-    public $pluralName = 'Prefeituras';
+    public $pluralName = 'Queixas';
     /* Name of this CRUD in Portuguese*/
-    public $name = 'Prefeitura';
+    public $name = 'Queixa';
     /* Name of the this CRUD folder, in resources, used along this class in "return views" */
-    public $crudFolder = 'townhall';
-    public $crudRouteName = 'prefeituras';
+    public $crudFolder = 'complaint';
+    public $crudRouteName = 'queixas';
 
-    public function __construct(TownHallService $townHallService, IbgeApiService $ibgeApiService, UserService $userService, CityService $cityService)
+    public function __construct(ComplaintService $complaintService)
     {
-
-        $this->townHallService = $townHallService;
-        $this->ibgeApiService = $ibgeApiService;
-        $this->userService = $userService;
-        $this->cityService = $cityService;
+        $this->complaintService = $complaintService;
     }
 
 
@@ -45,7 +31,7 @@ class TownHallController extends Controller
     {
 
         $data = [
-            'resources' => $this->townHallService->renderListWithCityRelation(),
+            'resources' => $this->complaintService->renderList(),
             'pageTitle' => 'Cadastro de ' . $this->pluralName,
             'crudRouteName' => $this->crudRouteName
 
@@ -61,7 +47,6 @@ class TownHallController extends Controller
     {
         $data = [
             'pageTitle' => 'Cadastrar nova ' . $this->name,
-            'ibgeCitiesArray' => $this->ibgeApiService->renderListOfCitiesByIbgeStateId(self::stateOfSaoPauloIbgeId),
             'crudRouteName' => $this->crudRouteName
         ];
 
@@ -72,7 +57,7 @@ class TownHallController extends Controller
      * @param Request $request
      * @return void
      */
-    public function store(StoreTownHall $request)
+    public function store(Request $request)
     {
 
         try {
@@ -80,29 +65,23 @@ class TownHallController extends Controller
 
             $data = $request->all();
 
-            $cityInserted = $this->cityService->buildInsert($data);
+            $this->complaintService->buildInsert($data);
 
-            $dataToCreateATownHall['image'] = $data['image'];
-            $dataToCreateATownHall['city_id'] = $cityInserted->id;
-
-            $townHallPersistance = $this->townHallService->buildInsert($dataToCreateATownHall);
-
-            $this->userService->buildInsertTownHallAdmins($data['adminRG'], $data['adminEmail'], $data['adminName'], $townHallPersistance->id);
 
             $request->session()->flash('msg', [
                 'type' => 'success',
-                'text' => $this->name . ' de ' . $request->name . ' cadastrada com sucesso',
+                'text' => $this->name . ' "' . $request->name . '" cadastrada com sucesso',
             ]);
 
 
 
         } catch (\Exception $e) {
-dd($e);
+
             DB::rollBack();
 
             $request->session()->flash('msg', [
                 'type' => 'danger',
-                'text' => 'Erro ao cadastrar ' . $this->name . ' de ' . $request->name . '. Por favor, contate o administrador do sistema.',
+                'text' => 'Erro ao cadastrar ' . $this->name . '  ' . $request->name . '. Por favor, contate o administrador do sistema.',
             ]);
 
             return redirect()->route($this->crudRouteName . '.create');
@@ -118,10 +97,9 @@ dd($e);
      */
     public function edit($id)
     {
-
         $data = [
             'pageTitle' => 'Editar ' . $this->name,
-            'resource' => $this->townHallService->renderEdit($id),
+            'resource' => $this->complaintService->renderEdit($id),
             'crudRouteName' => $this->crudRouteName
         ];
 
@@ -138,7 +116,7 @@ dd($e);
 
         try {
             $data = $request->all();
-            $this->townHallService->buildUpdate($id, $data);
+            $this->complaintService->buildUpdate($id, $data);
 
             $request->session()->flash('msg', [
                 'type' => 'success',
@@ -152,7 +130,7 @@ dd($e);
                 'text' => 'Erro ao atualizar ' . $this->name . ' de ' . $request->name,
             ]);
         } finally {
-            return redirect()->route($this->crudRouteName .'.index');
+            return redirect()->route($this->crudRouteName . '.index');
         }
 
     }
@@ -164,7 +142,7 @@ dd($e);
     public function destroy($id)
     {
         try {
-            $this->townHallService->buildDelete($id);
+            $this->complaintService->buildDelete($id);
 
             session()->flash('msg', [
                 'type' => 'success',
@@ -177,7 +155,7 @@ dd($e);
                 'text' => 'Erro ao remover ' . $this->name,
             ]);
         } finally {
-            return redirect()->route($this->crudRouteName);
+            return redirect()->route($this->crudRouteName . '.index');
         }
     }
 

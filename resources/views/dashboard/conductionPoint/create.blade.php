@@ -10,6 +10,7 @@
                 <div class="card">
                     <div class="card-body">
 
+
                         <x-breadcumb-user-location-component :previousLinks="[0 => ['link' => route($crudRouteName . '.index'), 'name' =>
                         'Cadastro de ' . $crudRouteName]]" :pageTitle="$pageTitle"/>
 
@@ -18,6 +19,9 @@
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-xl-4">
                                     <x-input-type-component :name="'name'" :label="'Nome'" :type="'text'" />
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-xl-4">
+                                    <x-input-type-component :name="'description'" :label="'Descrição'" :type="'text'" />
                                 </div>
 
                             </div>

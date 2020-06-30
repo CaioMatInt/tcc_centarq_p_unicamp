@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name
  * @property string $created_at
  * @property string $updated_at
- * @property User[] $users
+ * @property MedicalExamComplaint[] $medicalExamComplaints
  */
-class UserType extends Model
+class Complaint extends Model
 {
     /**
      * @var array
@@ -21,8 +21,8 @@ class UserType extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function users()
+    public function medicalExamComplaints()
     {
-        return $this->hasMany('App\User');
+        return $this->hasMany('App\MedicalExamComplaint');
     }
 }

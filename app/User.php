@@ -17,12 +17,13 @@ class User extends Authenticatable
      */
     protected $fillable = ['name', 'image', 'email', 'email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at', 'rg'];
 
+
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function doctors()
+    public function userType()
     {
-        return $this->hasMany('App\Doctor');
+        return $this->belongsTo('App\UserType');
     }
 
     /**
@@ -32,37 +33,4 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\MedicalExam');
     }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function userPersonalInformations()
-    {
-        return $this->hasMany('App\UserPersonalInformation');
-    }
-
-    /**
-     * The roles that belong to the user.
-     */
-    public function userTypes()
-    {
-        return $this->belongsToMany(UserType::class, 'user_user_types');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function usersHealthUnits()
-    {
-        return $this->hasMany('App\UsersHealthUnit');
-    }
-
-
-    public function townHalls()
-    {
-        return $this->belongsToMany(TownHall::class, 'users_town_halls');
-
-    }
 }
-
-

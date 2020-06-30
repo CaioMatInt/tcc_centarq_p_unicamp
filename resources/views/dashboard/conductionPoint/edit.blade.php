@@ -10,17 +10,25 @@
                 <div class="card">
                     <div class="card-body">
 
+
                         <x-breadcumb-user-location-component :previousLinks="[0 => ['link' => route($crudRouteName . '.index'), 'name' =>
                         'Cadastro de ' . $crudRouteName]]" :pageTitle="$pageTitle"/>
 
-                        <form action="{{route(''.$crudRouteName.'.store')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route(''.$crudRouteName.'.update', $resource->id)}}" method="post" enctype="multipart/form-data">
                             {{ @csrf_field() }}
+                            @method('PUT')
+
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-xl-4">
-                                    <x-input-type-component :name="'name'" :label="'Nome'" :type="'text'" />
+                                <x-input-type-component :name="'name'" :label="'Nome'" :type="'text'" :value="$resource->name" />
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-xl-4">
+                                    <x-input-type-component :name="'description'" :label="'Descrição'" :type="'text'" :value="$resource->description" />
                                 </div>
 
                             </div>
+
+
 
                             <br>
                             <div class="form-group">
@@ -38,6 +46,6 @@
 @endsection
 
 @push('custom-scripts')
-    <script src="{{asset('/assets/js/dashboard/townhall/create/townHallCreateViewfunctions.js')}}"></script>
+
 @endpush
 

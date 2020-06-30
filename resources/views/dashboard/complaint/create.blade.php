@@ -10,6 +10,7 @@
                 <div class="card">
                     <div class="card-body">
 
+
                         <x-breadcumb-user-location-component :previousLinks="[0 => ['link' => route($crudRouteName . '.index'), 'name' =>
                         'Cadastro de ' . $crudRouteName]]" :pageTitle="$pageTitle"/>
 

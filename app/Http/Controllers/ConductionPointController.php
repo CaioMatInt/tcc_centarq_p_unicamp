@@ -2,35 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreMedicalExam;
-use App\Services\CityService;
-use App\Services\IbgeApiService;
-use App\Services\MedicalExamService;
-use App\Services\MedicalExamTypeService;
-use App\Services\TownHallService;
-use App\Services\UserService;
+use App\Services\ConductionPointService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
-class MedicalExamController extends Controller
+class ConductionPointController extends Controller
 {
-    private $medicalExamService;
-    private $townHallService;
-    private $medicalExamTypeService;
+    private $conductionPointService;
     /* Name of this CRUD in Portuguese and in plural */
-    public $pluralName = 'Exames';
+    public $pluralName = 'Pontos de conduta';
     /* Name of this CRUD in Portuguese*/
-    public $name = 'Exame';
+    public $name = 'Ponto de conduta';
     /* Name of the this CRUD folder, in resources, used along this class in "return views" */
-    public $crudFolder = 'medicalExam';
-    public $crudRouteName = 'exames';
+    public $crudFolder = 'conductionPoint';
+    public $crudRouteName = 'pontos-de-conduta';
 
-    public function __construct(MedicalExamService $medicalExamService, TownHallService $townHallService, MedicalExamTypeService $medicalExamTypeService)
+    public function __construct(ConductionPointService $conductionPointService)
     {
-        $this->medicalExamService = $medicalExamService;
-        $this->townHallService = $townHallService;
-        $this->medicalExamTypeService = $medicalExamTypeService;
+        $this->conductionPointService = $conductionPointService;
     }
 
 
@@ -41,7 +31,7 @@ class MedicalExamController extends Controller
     {
 
         $data = [
-            'resources' => $this->medicalExamService->renderList(),
+            'resources' => $this->conductionPointService->renderList(),
             'pageTitle' => 'Cadastro de ' . $this->pluralName,
             'crudRouteName' => $this->crudRouteName
 
@@ -56,10 +46,8 @@ class MedicalExamController extends Controller
     public function create()
     {
         $data = [
-            'pageTitle' => 'Cadastrar novo ' . $this->name,
-            'crudRouteName' => $this->crudRouteName,
-            'townHallsArray' => $this->townHallService->renderArrayForSelectInputWithOnlyNameAndID(),
-            'medicalExamTypesArray' =>  $this->medicalExamTypeService->renderArrayForSelectInputWithOnlyNameAndID(),
+            'pageTitle' => 'Cadastrar nova ' . $this->name,
+            'crudRouteName' => $this->crudRouteName
         ];
 
         return view('dashboard.' . $this->crudFolder . '.create', $data);
@@ -77,18 +65,18 @@ class MedicalExamController extends Controller
 
             $data = $request->all();
 
-            $this->medicalExamService->buildInsert($data);
+            $this->conductionPointService->buildInsert($data);
 
 
             $request->session()->flash('msg', [
                 'type' => 'success',
-                'text' => $this->name . '  ' . $request->name . ' cadastrada com sucesso',
+                'text' => $this->name . ' "' . $request->name . '" cadastrada com sucesso',
             ]);
 
 
 
         } catch (\Exception $e) {
-dd($e);
+
             DB::rollBack();
 
             $request->session()->flash('msg', [
@@ -110,8 +98,9 @@ dd($e);
     public function edit($id)
     {
         $data = [
-            'pageTitle' => 'Editar' . $this->name,
-            'resource' => $this->medicalExamService->renderEdit($id)
+            'pageTitle' => 'Editar ' . $this->name,
+            'resource' => $this->conductionPointService->renderEdit($id),
+            'crudRouteName' => $this->crudRouteName
         ];
 
         return view('dashboard.' . $this->crudFolder . '.edit', $data);
@@ -127,21 +116,21 @@ dd($e);
 
         try {
             $data = $request->all();
-            $this->medicalExamService->buildUpdate($id, $data);
+            $this->conductionPointService->buildUpdate($id, $data);
 
             $request->session()->flash('msg', [
                 'type' => 'success',
-                'text' => $this->name . ' de ' . $request->name . ' atualizada com sucesso',
+                'text' => $this->name . ' "' . $request->name . '" atualizada com sucesso',
             ]);
 
         } catch (\Exception $e) {
 
             $request->session()->flash('msg', [
                 'type' => 'danger',
-                'text' => 'Erro ao atualizar ' . $this->name . ' de ' . $request->name,
+                'text' => 'Erro ao atualizar ' . $this->name . ' ' . $request->name,
             ]);
         } finally {
-            return redirect()->route($this->crudRouteName);
+            return redirect()->route($this->crudRouteName . '.index');
         }
 
     }
@@ -153,11 +142,11 @@ dd($e);
     public function destroy($id)
     {
         try {
-            $this->medicalExamService->buildDelete($id);
+            $this->conductionPointService->buildDelete($id);
 
             session()->flash('msg', [
                 'type' => 'success',
-                'text' => $this->name . ' removida com sucesso',
+                'text' => $this->name . ' removido com sucesso',
             ]);
         } catch (\Exception $e) {
 
@@ -166,7 +155,7 @@ dd($e);
                 'text' => 'Erro ao remover ' . $this->name,
             ]);
         } finally {
-            return redirect()->route($this->crudRouteName);
+            return redirect()->route($this->crudRouteName . '.index');
         }
     }
 

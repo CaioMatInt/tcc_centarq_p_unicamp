@@ -28,9 +28,8 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
 
     Route::get('/', 'HomeController@index')->name('home');
 
-    Route::resource('prefeituras', 'TownHallController');
-    Route::resource('tipos-de-exame', 'MedicalExamTypeController');
-    Route::resource('exames', 'MedicalExamController');
+    Route::resource('queixas', 'ComplaintController');
+    Route::resource('pontos-de-conduta', 'ConductionPointController');
     Route::resource('unidades-de-saude', 'HealthUnitController');
 
     Route::post('renderizar-lista-usuarios-nome-e-id-por-nome', 'UserController@renderUsersListWithRGAndIdByLikeName');

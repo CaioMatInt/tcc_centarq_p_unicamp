@@ -13,8 +13,10 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         \Illuminate\Support\Facades\DB::table('users')->insert([
+            'rg' => '368240125',
             'email' => 'admin@admin.com',
             'name' => 'Administrador Geral',
+            'user_type_id' => 1,
             'image' => '/images/default_user_image.jpg',
             'email_verified_at' => now(),
             'password' => Hash::make('admin123456'),
