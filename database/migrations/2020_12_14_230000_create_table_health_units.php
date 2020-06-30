@@ -16,8 +16,6 @@ class CreateTableHealthUnits extends Migration
         Schema::create('health_units', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('town_hall_id')->unsigned();
-            $table->foreign('town_hall_id')->references('id')->on('town_halls');
             $table->timestamps();
         });
     }
@@ -32,3 +30,4 @@ class CreateTableHealthUnits extends Migration
         Schema::dropIfExists('town_hall');
     }
 }
+

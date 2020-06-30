@@ -20,6 +20,10 @@ Route::get('/', function () {
     return redirect('painel');
 });
 
+Route::get('/home', function () {
+    return redirect('painel');
+});
+
 Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
 
     Route::get('/', 'HomeController@index')->name('home');

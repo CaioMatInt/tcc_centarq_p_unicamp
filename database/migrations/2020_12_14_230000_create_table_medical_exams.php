@@ -15,14 +15,11 @@ class CreateTableMedicalExams extends Migration
     {
         Schema::create('medical_exams', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('path');
+            $table->string('observations');
             $table->integer('user_id')->unsigned();
-            $table->integer('town_hall_id')->unsigned();
-            $table->integer('medical_exam_type_id')->unsigned();
-
-            $table->foreign('town_hall_id')->references('id')->on('town_halls');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('medical_exam_type_id')->references('id')->on('medical_exam_types');
+            $table->integer('health_unit_id')->unsigned();
+            $table->foreign('health_unit_id')->references('id')->on('health_units');
             $table->timestamps();
         });
     }
