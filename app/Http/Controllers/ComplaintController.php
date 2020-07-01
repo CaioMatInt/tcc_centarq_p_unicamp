@@ -47,7 +47,8 @@ class ComplaintController extends Controller
     {
         $data = [
             'pageTitle' => 'Cadastrar nova ' . $this->name,
-            'crudRouteName' => $this->crudRouteName
+            'crudRouteName' => $this->crudRouteName,
+            'pluralName' => $this->pluralName
         ];
 
         return view('dashboard.' . $this->crudFolder . '.create', $data);
@@ -100,7 +101,8 @@ class ComplaintController extends Controller
         $data = [
             'pageTitle' => 'Editar ' . $this->name,
             'resource' => $this->complaintService->renderEdit($id),
-            'crudRouteName' => $this->crudRouteName
+            'crudRouteName' => $this->crudRouteName,
+            'pluralName' => $this->pluralName
         ];
 
         return view('dashboard.' . $this->crudFolder . '.edit', $data);

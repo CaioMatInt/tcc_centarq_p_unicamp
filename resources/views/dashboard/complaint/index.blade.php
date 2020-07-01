@@ -29,7 +29,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($resources as $resource)
+                        @forelse($resources as $resource)
 
                         <tr>
 
@@ -53,7 +53,11 @@
                         </tr>
 
 
-                        @endforeach
+                        @empty
+
+                            <td>Nenhum resultado.</td>
+
+                        @endforelse
                         </tbody>
                     </table>
                     </div>

@@ -2,25 +2,39 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ComplaintService;
 use App\Services\ConductionPointService;
+use App\Services\HealthUnitService;
+use App\Services\MedicalExamService;
+use App\Services\MedicalTreatmentService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
-class ConductionPointController extends Controller
+class MedicalExamController extends Controller
 {
+    private $medicalExamService;
+    private $healthUnitsService;
+    private $complaintsService;
     private $conductionPointService;
-    /* Name of this CRUD in Portuguese and in plural */
-    public $pluralName = 'Pontos de conduta';
-    /* Name of this CRUD in Portuguese*/
-    public $name = 'Ponto de conduta';
-    /* Name of the this CRUD folder, in resources, used along this class in "return views" */
-    public $crudFolder = 'conductionPoint';
-    public $crudRouteName = 'pontos-de-conduta';
+    private $medicalTreatmentService;
 
-    public function __construct(ConductionPointService $conductionPointService)
+    /* Name of this CRUD in Portuguese and in plural */
+    public $pluralName = 'Exames';
+    /* Name of this CRUD in Portuguese*/
+    public $name = 'Exame';
+    /* Name of the this CRUD folder, in resources, used along this class in "return views" */
+    public $crudFolder = 'medicalExam';
+    public $crudRouteName = 'exames';
+
+    public function __construct(MedicalExamService $medicalExamService, HealthUnitService $healthUnitsService, ComplaintService $complaintsService
+        , ConductionPointService $conductionPointService, MedicalTreatmentService $medicalTreatmentService )
     {
+        $this->medicalExamService = $medicalExamService;
+        $this->healthUnitsService = $healthUnitsService;
+        $this->complaintsService = $complaintsService;
         $this->conductionPointService = $conductionPointService;
+        $this->medicalTreatmentService = $medicalTreatmentService;
     }
 
 
@@ -31,7 +45,7 @@ class ConductionPointController extends Controller
     {
 
         $data = [
-            'resources' => $this->conductionPointService->renderList(),
+            'resources' => $this->medicalExamService->renderList(),
             'pageTitle' => 'Cadastro de ' . $this->pluralName,
             'crudRouteName' => $this->crudRouteName
 
@@ -46,9 +60,13 @@ class ConductionPointController extends Controller
     public function create()
     {
         $data = [
-            'pageTitle' => 'Cadastrar nova ' . $this->name,
+            'pageTitle' => 'Cadastrar novo ' . $this->name,
             'crudRouteName' => $this->crudRouteName,
-            'pluralName' => $this->pluralName
+            'pluralName' => $this->pluralName,
+            'healthUnitsArray' => $this->healthUnitsService->renderArrayForSelectInputWithOnlyNameAndID(),
+            'complaintsArray' => $this->complaintsService->renderArrayForSelectInputWithOnlyNameAndID(),
+            'conductionPointsArray' => $this->conductionPointService->renderArrayForSelectInputWithOnlyNameAndID(),
+            'medicalTreatmentArray' => $this->medicalTreatmentService->renderArrayForSelectInputWithOnlyNameAndID(),
         ];
 
         return view('dashboard.' . $this->crudFolder . '.create', $data);
@@ -61,12 +79,13 @@ class ConductionPointController extends Controller
     public function store(Request $request)
     {
 
+
         try {
             DB::beginTransaction();
 
             $data = $request->all();
 
-            $this->conductionPointService->buildInsert($data);
+            $this->medicalExamService->buildInsert($data);
 
 
             $request->session()->flash('msg', [
@@ -100,7 +119,7 @@ class ConductionPointController extends Controller
     {
         $data = [
             'pageTitle' => 'Editar ' . $this->name,
-            'resource' => $this->conductionPointService->renderEdit($id),
+            'resource' => $this->medicalExamService->renderEdit($id),
             'crudRouteName' => $this->crudRouteName,
             'pluralName' => $this->pluralName
         ];
@@ -118,18 +137,18 @@ class ConductionPointController extends Controller
 
         try {
             $data = $request->all();
-            $this->conductionPointService->buildUpdate($id, $data);
+            $this->medicalExamService->buildUpdate($id, $data);
 
             $request->session()->flash('msg', [
                 'type' => 'success',
-                'text' => $this->name . ' "' . $request->name . '" atualizada com sucesso',
+                'text' => $this->name . ' de ' . $request->name . ' atualizada com sucesso',
             ]);
 
         } catch (\Exception $e) {
 
             $request->session()->flash('msg', [
                 'type' => 'danger',
-                'text' => 'Erro ao atualizar ' . $this->name . ' ' . $request->name,
+                'text' => 'Erro ao atualizar ' . $this->name . ' de ' . $request->name,
             ]);
         } finally {
             return redirect()->route($this->crudRouteName . '.index');
@@ -144,11 +163,11 @@ class ConductionPointController extends Controller
     public function destroy($id)
     {
         try {
-            $this->conductionPointService->buildDelete($id);
+            $this->medicalExamService->buildDelete($id);
 
             session()->flash('msg', [
                 'type' => 'success',
-                'text' => $this->name . ' removido com sucesso',
+                'text' => $this->name . ' removida com sucesso',
             ]);
         } catch (\Exception $e) {
 

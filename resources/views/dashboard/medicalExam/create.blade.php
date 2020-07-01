@@ -11,36 +11,35 @@
                     <div class="card-body">
 
 
-                        <x-breadcumb-user-location-component :previousLinks="[0 => ['link' => route('tipos-de-exame.index'), 'name' =>
-                        'Cadastro de ' . $crudRouteName] ]" :pageTitle="$pageTitle"/>
+                        <x-breadcumb-user-location-component :previousLinks="[0 => ['link' => route($crudRouteName . '.index'), 'name' =>
+                        'Cadastro de ' . $pluralName] ]" :pageTitle="$pageTitle"/>
 
                         <form action="{{route(''.$crudRouteName.'.store')}}" method="post" enctype="multipart/form-data">
                             {{ @csrf_field() }}
                             <div class="row">
 
-                                <div class="col-12 col-sm-12 col-md-12 col-xl-3">
-                                    <x-input-select-component :name="'town_hall_id'" :label="'Prefeitura'" :options="$townHallsArray" />
+                                <div class="col-12 col-sm-12 col-md-12 col-xl-4">
+                                    <x-input-select-component :name="'user_id'" :label="'Paciente'" :options="[0 => 'Caio']" />
                                 </div>
 
-                                <div class="col-12 col-sm-12 col-md-12 col-xl-3">
-                                    <x-input-select-component :name="'medical_exam_type_id'" :label="'Tipo de Exame'" :options="$medicalExamTypesArray" />
+                                <div class="col-12 col-sm-12 col-md-12 col-xl-4">
+                                    <x-input-select-component :name="'health_unit_id'" :label="'Unidade de Saúde'" :options="$healthUnitsArray" />
                                 </div>
 
-
-
-                                <div class="col-12 col-sm-12 col-md-12 col-xl-3">
-                                    <label for="selectUser">Nome do paciente</label>
-                                    <select name="user_id" id="selectUser" style="width:100%!important;">
-
-                                    </select>
+                                <div class="col-12 col-sm-12 col-md-12 col-xl-4">
+                                    <x-input-multiple-select2-component :id="'complaintsSelect'" :name="'complaints'" :label="'Queixa(s)'" :options="$complaintsArray" />
                                 </div>
 
-
-                                <div class="col-12 col-sm-12 col-md-12 col-xl-3">
-                                    <x-input-file-component :name="'exam'" :label="'Exame'" />
+                                <div class="col-12 col-sm-12 col-md-12 col-xl-4">
+                                    <x-input-multiple-select2-component :id="'conductionPointsSelect'" :name="'conductionPoints'" :label="'Ponto(s) de Conduta'" :options="$conductionPointsArray" />
                                 </div>
 
-
+                                <div class="col-12 col-sm-12 col-md-12 col-xl-4">
+                                    <x-input-multiple-select2-component :id="'medicalTreatmentsSelect'" :name="'medicalTreatments'" :label="'Tratamento(s)'" :options="$medicalTreatmentArray" />
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-xl-4">
+                                    <x-input-type-component :type="'text'" :name="'observation'" :label="'Observações'" />
+                                </div>
 
                             </div>
 
@@ -60,9 +59,10 @@
 @endsection
 
 @push('custom-scripts')
-    <script src="{{asset('/assets/js/dashboard/townhall/create/townHallCreateViewfunctions.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/i18n/pt-BR.min.js"></script>
+    <script src="{{asset('/assets/js/dashboard/medicalExam/create/medicalExamCreateFunctions.js')}}"></script>
+
 @endpush
 
 @push('custom-css')

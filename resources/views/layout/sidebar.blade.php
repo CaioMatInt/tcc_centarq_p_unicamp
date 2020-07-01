@@ -39,16 +39,30 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="">
+      <a class="nav-link" href="{{route('home')}}">
         <i class="menu-icon mdi mdi-television"></i>
         <span class="menu-title">Painel</span>
       </a>
     </li>
 
       <li class="nav-item">
+          <a class="nav-link" href="{{route('exames.index')}}">
+              <i class="menu-icon fa fa-file-medical"></i>
+              <span class="menu-title">Exames</span>
+          </a>
+      </li>
+
+      <li class="nav-item">
           <a class="nav-link" href="{{route('queixas.index')}}">
               <i class="menu-icon fa fa-diagnoses"></i>
               <span class="menu-title">Tipos de Queixa</span>
+          </a>
+      </li>
+
+      <li class="nav-item">
+          <a class="nav-link" href="{{route('tratamentos-medicos.index')}}">
+              <i class="menu-icon fa fa-band-aid"></i>
+              <span class="menu-title">Tipos de Tratamento</span>
           </a>
       </li>
 
@@ -66,27 +80,8 @@
           </a>
       </li>
 
-      <li class="nav-item">
-          <a class="nav-link" href="">
-              <i class="menu-icon fa fa-briefcase-medical"></i>
-              <span class="menu-title">Tipos de Exame</span>
-          </a>
-      </li>
 
 
-      <li class="nav-item">
-          <a class="nav-link" href="">
-              <i class="menu-icon fa fa-file-medical"></i>
-              <span class="menu-title">Exames de Pacientes</span>
-          </a>
-      </li>
-
-      <li class="nav-item">
-          <a class="nav-link" href="">
-              <i class="menu-icon fa fa-user-md"></i>
-              <span class="menu-title">Médicos</span>
-          </a>
-      </li>
       <li class="nav-item">
           <a class="nav-link" href="">
               <i class="menu-icon fa fa-users"></i>

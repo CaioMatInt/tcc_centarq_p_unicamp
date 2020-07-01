@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\ConductionPointService;
+use App\Services\MedicalTreatmentService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
-class ConductionPointController extends Controller
+class MedicalTreatmentController extends Controller
 {
-    private $conductionPointService;
+    private $medicalTreatmentService;
     /* Name of this CRUD in Portuguese and in plural */
-    public $pluralName = 'Pontos de conduta';
+    public $pluralName = 'Tratamentos Médicos';
     /* Name of this CRUD in Portuguese*/
-    public $name = 'Ponto de conduta';
+    public $name = 'Tratamento Médico';
     /* Name of the this CRUD folder, in resources, used along this class in "return views" */
-    public $crudFolder = 'conductionPoint';
-    public $crudRouteName = 'pontos-de-conduta';
+    public $crudFolder = 'medicalTreatment';
+    public $crudRouteName = 'tratamentos-medicos';
 
-    public function __construct(ConductionPointService $conductionPointService)
+    public function __construct(MedicalTreatmentService $medicalTreatmentService)
     {
-        $this->conductionPointService = $conductionPointService;
+        $this->medicalTreatmentService = $medicalTreatmentService;
     }
 
 
@@ -31,7 +31,7 @@ class ConductionPointController extends Controller
     {
 
         $data = [
-            'resources' => $this->conductionPointService->renderList(),
+            'resources' => $this->medicalTreatmentService->renderList(),
             'pageTitle' => 'Cadastro de ' . $this->pluralName,
             'crudRouteName' => $this->crudRouteName
 
@@ -46,7 +46,7 @@ class ConductionPointController extends Controller
     public function create()
     {
         $data = [
-            'pageTitle' => 'Cadastrar nova ' . $this->name,
+            'pageTitle' => 'Cadastrar novo ' . $this->name,
             'crudRouteName' => $this->crudRouteName,
             'pluralName' => $this->pluralName
         ];
@@ -61,12 +61,13 @@ class ConductionPointController extends Controller
     public function store(Request $request)
     {
 
+
         try {
             DB::beginTransaction();
 
             $data = $request->all();
 
-            $this->conductionPointService->buildInsert($data);
+            $this->medicalTreatmentService->buildInsert($data);
 
 
             $request->session()->flash('msg', [
@@ -100,7 +101,7 @@ class ConductionPointController extends Controller
     {
         $data = [
             'pageTitle' => 'Editar ' . $this->name,
-            'resource' => $this->conductionPointService->renderEdit($id),
+            'resource' => $this->medicalTreatmentService->renderEdit($id),
             'crudRouteName' => $this->crudRouteName,
             'pluralName' => $this->pluralName
         ];
@@ -118,18 +119,18 @@ class ConductionPointController extends Controller
 
         try {
             $data = $request->all();
-            $this->conductionPointService->buildUpdate($id, $data);
+            $this->medicalTreatmentService->buildUpdate($id, $data);
 
             $request->session()->flash('msg', [
                 'type' => 'success',
-                'text' => $this->name . ' "' . $request->name . '" atualizada com sucesso',
+                'text' => $this->name . ' de ' . $request->name . ' atualizada com sucesso',
             ]);
 
         } catch (\Exception $e) {
 
             $request->session()->flash('msg', [
                 'type' => 'danger',
-                'text' => 'Erro ao atualizar ' . $this->name . ' ' . $request->name,
+                'text' => 'Erro ao atualizar ' . $this->name . ' de ' . $request->name,
             ]);
         } finally {
             return redirect()->route($this->crudRouteName . '.index');
@@ -144,11 +145,11 @@ class ConductionPointController extends Controller
     public function destroy($id)
     {
         try {
-            $this->conductionPointService->buildDelete($id);
+            $this->medicalTreatmentService->buildDelete($id);
 
             session()->flash('msg', [
                 'type' => 'success',
-                'text' => $this->name . ' removido com sucesso',
+                'text' => $this->name . ' removida com sucesso',
             ]);
         } catch (\Exception $e) {
 

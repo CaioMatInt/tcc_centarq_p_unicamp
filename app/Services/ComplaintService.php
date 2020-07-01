@@ -8,16 +8,24 @@ class ComplaintService extends EloquentService
 {
 
     private $complaintRepository;
+    private $objectArrayManipulationService;
 
     /**
      * ComplaintService constructor.
      * @param complaintRepository $complaintRepository
      */
-    public function __construct(ComplaintRepository $complaintRepository)
+    public function __construct(ComplaintRepository $complaintRepository, ObjectArrayManipulationService $objectArrayManipulationService)
     {
         $this->complaintRepository = $complaintRepository;
         parent::__construct($complaintRepository);
+        $this->objectArrayManipulationService = $objectArrayManipulationService;
     }
 
+    public function renderArrayForSelectInputWithOnlyNameAndID()
+    {
+        $arrayOfTownHallsWithIdAndRelatedCityName = $this->complaintRepository->getAllWithOnlyNameAndID();
+
+        return $this->objectArrayManipulationService->arrangeObjectToSelectInputComponent($arrayOfTownHallsWithIdAndRelatedCityName, 'id', 'name');
+    }
 
 }

@@ -30,6 +30,8 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
 
     Route::resource('queixas', 'ComplaintController');
     Route::resource('pontos-de-conduta', 'ConductionPointController');
+    Route::resource('tratamentos-medicos', 'MedicalTreatmentController');
+    Route::resource('exames', 'MedicalExamController');
     Route::resource('unidades-de-saude', 'HealthUnitController');
 
     Route::post('renderizar-lista-usuarios-nome-e-id-por-nome', 'UserController@renderUsersListWithRGAndIdByLikeName');

@@ -12,4 +12,10 @@ class ComplaintRepository extends EloquentRepository
         parent::__construct($model);
     }
 
+    public function getAllWithOnlyNameAndID(){
+
+        return $this->model->select('id', 'name')->get();
+
+    }
+
 }

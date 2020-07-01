@@ -11,7 +11,7 @@
                     <div class="card-body">
 
                         <x-breadcumb-user-location-component :previousLinks="[0 => ['link' => route($crudRouteName . '.index'), 'name' =>
-                        'Cadastro de ' . $crudRouteName]]" :pageTitle="$pageTitle"/>
+                        'Cadastro de ' . $pluralName]]" :pageTitle="$pageTitle"/>
 
                         <form action="{{route(''.$crudRouteName.'.store')}}" method="post" enctype="multipart/form-data">
                             {{ @csrf_field() }}
@@ -36,8 +36,4 @@
     </div>
 
 @endsection
-
-@push('custom-scripts')
-    <script src="{{asset('/assets/js/dashboard/townhall/create/townHallCreateViewfunctions.js')}}"></script>
-@endpush
 

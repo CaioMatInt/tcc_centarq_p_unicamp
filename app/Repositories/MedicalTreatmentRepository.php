@@ -2,12 +2,12 @@
 
 namespace App\Repositories;
 
-use App\Models\ConductionPoint;
+use App\Models\MedicalTreatment;
 
-class ConductionPointRepository extends EloquentRepository
+class MedicalTreatmentRepository extends EloquentRepository
 {
 
-    public function __construct(ConductionPoint $model)
+    public function __construct(MedicalTreatment $model)
     {
         parent::__construct($model);
     }
@@ -17,4 +17,5 @@ class ConductionPointRepository extends EloquentRepository
         return $this->model->select('id', 'name')->get();
 
     }
+
 }

@@ -47,7 +47,8 @@ class HealthUnitController extends Controller
     {
         $data = [
             'pageTitle' => 'Cadastrar novo ' . $this->name,
-            'crudRouteName' => $this->crudRouteName
+            'crudRouteName' => $this->crudRouteName,
+            'pluralName' => $this->pluralName
         ];
 
         return view('dashboard.' . $this->crudFolder . '.create', $data);
@@ -98,8 +99,10 @@ class HealthUnitController extends Controller
     public function edit($id)
     {
         $data = [
-            'pageTitle' => 'Editar' . $this->name,
-            'resource' => $this->healthUnitService->renderEdit($id)
+            'pageTitle' => 'Editar ' . $this->name,
+            'resource' => $this->healthUnitService->renderEdit($id),
+            'pluralName' => $this->pluralName,
+            'crudRouteName' => $this->crudRouteName
         ];
 
         return view('dashboard.' . $this->crudFolder . '.edit', $data);
@@ -129,7 +132,7 @@ class HealthUnitController extends Controller
                 'text' => 'Erro ao atualizar ' . $this->name . ' de ' . $request->name,
             ]);
         } finally {
-            return redirect()->route($this->crudRouteName);
+            return redirect()->route($this->crudRouteName . '.index');
         }
 
     }
@@ -154,7 +157,7 @@ class HealthUnitController extends Controller
                 'text' => 'Erro ao remover ' . $this->name,
             ]);
         } finally {
-            return redirect()->route($this->crudRouteName);
+            return redirect()->route($this->crudRouteName . '.index');
         }
     }
 
