@@ -26,4 +26,5 @@ class MedicalTreatment extends Model
     {
         return $this->hasMany('App\MedicalExamMedicalTreatment');
     }
+
 }

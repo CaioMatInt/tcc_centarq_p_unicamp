@@ -90,7 +90,7 @@ class MedicalExamController extends Controller
 
             $request->session()->flash('msg', [
                 'type' => 'success',
-                'text' => $this->name . ' "' . $request->name . '" cadastrada com sucesso',
+                'text' => $this->name . '" cadastrada com sucesso',
             ]);
 
 
@@ -101,7 +101,7 @@ class MedicalExamController extends Controller
 
             $request->session()->flash('msg', [
                 'type' => 'danger',
-                'text' => 'Erro ao cadastrar ' . $this->name . '  ' . $request->name . '. Por favor, contate o administrador do sistema.',
+                'text' => 'Erro ao cadastrar ' . $this->name . '. Por favor, contate o administrador do sistema.',
             ]);
 
             return redirect()->route($this->crudRouteName . '.create');

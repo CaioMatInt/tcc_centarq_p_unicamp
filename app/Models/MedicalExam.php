@@ -39,19 +39,19 @@ class MedicalExam extends Model
         return $this->belongsTo('App\User');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function medicalExamComplaints()
     {
-        return $this->hasMany('App\MedicalExamComplaint');
+        return $this->belongsToMany('App\Models\Complaint', 'medical_exam_complaints', 'medical_exam_id', 'complaint_id');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+
     public function medicalExamConductionPoints()
     {
-        return $this->hasMany('App\MedicalExamConductionPoint');
+        return $this->belongsToMany('App\Models\ConductionPoint', 'medical_exam_conduction_point', 'medical_exam_id', 'conduction_point_id');
+    }
+
+    public function medicalExamMedicalTreatments()
+    {
+        return $this->belongsToMany('App\Models\MedicalTreatment', 'medical_exam_medical_treatment', 'medical_exam_id', 'medical_treatment_id');
     }
 }

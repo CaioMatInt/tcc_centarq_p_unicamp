@@ -13,7 +13,7 @@ class CreateTableMedicalExamComplaint extends Migration
      */
     public function up()
     {
-        Schema::create('medical_exam_complaint', function (Blueprint $table) {
+        Schema::create('medical_exam_complaints', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('medical_exam_id')->unsigned();
             $table->foreign('medical_exam_id')->references('id')->on('medical_exams');

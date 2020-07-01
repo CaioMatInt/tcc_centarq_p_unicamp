@@ -19,7 +19,7 @@
                             <div class="row">
 
                                 <div class="col-12 col-sm-12 col-md-12 col-xl-4">
-                                    <x-input-select-component :name="'user_id'" :label="'Paciente'" :options="[0 => 'Caio']" />
+                                    <x-input-select-component :name="'user_id'" :label="'Paciente'" :options="[]" />
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-xl-4">
@@ -38,9 +38,8 @@
                                     <x-input-multiple-select2-component :id="'medicalTreatmentsSelect'" :name="'medicalTreatments'" :label="'Tratamento(s)'" :options="$medicalTreatmentArray" />
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-12 col-xl-4">
-                                    <x-input-type-component :type="'text'" :name="'observation'" :label="'Observações'" />
+                                    <x-input-type-component :type="'text'" :name="'observations'" :label="'Observações'" />
                                 </div>
-
                             </div>
 
                             <br>

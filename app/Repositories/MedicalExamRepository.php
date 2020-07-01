@@ -12,4 +12,20 @@ class MedicalExamRepository extends EloquentRepository
         parent::__construct($model);
     }
 
+    /**
+     * @param $data
+     * @return mixed
+     */
+    public function create($data)
+    {
+
+        $persistance =  $this->model->create($data);
+
+        $persistance->medicalExamConductionPoints()->sync($data['conductionPoints']);
+        $persistance->medicalExamComplaints()->sync($data['complaints']);
+        $persistance->medicalExamMedicalTreatments()->sync($data['medicalTreatments']);
+ 
+    }
+
+
 }
