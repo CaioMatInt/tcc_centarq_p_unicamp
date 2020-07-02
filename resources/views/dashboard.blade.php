@@ -77,7 +77,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="mb-4 main-session-titles">Meus Exames</h2>
+                    <h2 class="mb-4 main-session-titles">Últimos Exames</h2>
                     <hr>
                     <div class="fluid-container">
                         <div class="row ticket-card mt-3 pb-2 border-bottom pb-3 mb-3">

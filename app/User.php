@@ -15,7 +15,7 @@ class User extends Authenticatable
     /**
      * @var array
      */
-    protected $fillable = ['name', 'image', 'email', 'email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at', 'rg'];
+    protected $fillable = ['name', 'image', 'email', 'email_verified_at', 'user_type_id', 'password', 'remember_token', 'created_at', 'updated_at', 'rg'];
 
 
     /**
@@ -23,7 +23,7 @@ class User extends Authenticatable
      */
     public function userType()
     {
-        return $this->belongsTo('App\UserType');
+        return $this->belongsTo('App\Models\UserType');
     }
 
     /**
@@ -31,6 +31,11 @@ class User extends Authenticatable
      */
     public function medicalExams()
     {
-        return $this->hasMany('App\MedicalExam');
+        return $this->hasMany('App\Models\MedicalExam');
+    }
+
+    public function getImageAttribute($image)
+    {
+        return $image ? 'storage/' . $image : 'images/common_user.png';
     }
 }

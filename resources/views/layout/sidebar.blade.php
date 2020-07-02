@@ -1,3 +1,4 @@
+
 <nav class="sidebar sidebar-offcanvas dynamic-active-class-disabled" id="sidebar">
   <ul class="nav">
     <li class="nav-item nav-profile not-navigation-link">
@@ -10,7 +11,7 @@
             <p class="profile-name">{{ auth()->user()->name  }}</p>
             <div class="dropdown" data-display="static">
               <a href="#" class="nav-link d-flex user-switch-dropdown-toggler" id="UsersettingsDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <small class="designation text-muted">Usuário</small>
+                <small class="designation text-muted">{{ auth()->user()->userType->name  }}</small>
                 <span class="status-indicator online"></span>
               </a>
               <div class="dropdown-menu" aria-labelledby="UsersettingsDropdown">
@@ -83,7 +84,7 @@
 
 
       <li class="nav-item">
-          <a class="nav-link" href="">
+          <a class="nav-link" href="{{route('usuarios.index')}}">
               <i class="menu-icon fa fa-users"></i>
               <span class="menu-title">Usuários</span>
           </a>

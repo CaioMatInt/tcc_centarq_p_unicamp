@@ -8,42 +8,18 @@ use Illuminate\Support\Str;
 class UserService extends EloquentService
 {
 
-    private $townHallAdminUserTypeId = 2;
     private $userRepository;
+    private $imageUploadService;
 
     /**
      * UserService constructor.
      * @param userRepository $userRepository
      */
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository, ImageUploadService $imageUploadService)
     {
         $this->userRepository = $userRepository;
         parent::__construct($userRepository);
-    }
-
-    /**
-     * @param $data
-     * @return mixed
-     */
-    public function buildInsertTownHallAdmins($arrayOfAdminRG, $arrayOfAdminEmails, $arrayOfAdminNames, $townHallId)
-    {
-
-        foreach($arrayOfAdminEmails as $key => $adminEmail){
-            $dataToInsert['email'] = $adminEmail;
-            $dataToInsert['name'] = $arrayOfAdminNames[$key];
-            $dataToInsert['rg'] = $arrayOfAdminRG[$key];
-            $dataToInsert['image'] = '';
-            $dataToInsert['password'] = bcrypt(Str::random(15));
-
-            $insertedUser = $this->userRepository->create($dataToInsert);
-
-            $insertedUser->userTypes()->withTimestamps()->sync([$this->townHallAdminUserTypeId]);
-            $insertedUser->townHalls()->withTimestamps()->sync([$townHallId]);
-
-            //Every created account triggers created() at UserObserver
-
-        }
-
+        $this->imageUploadService = $imageUploadService;
     }
 
     /**
@@ -53,5 +29,30 @@ class UserService extends EloquentService
     {
         return $this->userRepository->getRGAndIdByLikeName($name);
     }
+
+    /**
+     * @param $data
+     * @return mixed
+     */
+    public function buildInsert($data)
+    {
+        $userImageToUpload = $data['image'];
+
+        $data['password'] = bcrypt(Str::random(15));
+        /*Persist null image to firstly get the user ID*/
+        $data['image'] = null;
+
+        $userPersistance = $this->repository->create($data);
+
+
+        $dataToUpdateImage['image'] = $this->imageUploadService->uploadUserImage($userImageToUpload, $userPersistance->id);
+
+        self::buildUpdate($userPersistance->id, $dataToUpdateImage);
+
+        return $userPersistance;
+
+    }
+
+
 
 }
