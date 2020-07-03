@@ -16,7 +16,6 @@ class CreateTableConductionPoints extends Migration
         Schema::create('conduction_points', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description');
             $table->timestamps();
         });
     }

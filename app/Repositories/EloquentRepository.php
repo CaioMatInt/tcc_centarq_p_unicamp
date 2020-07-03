@@ -33,12 +33,39 @@ abstract class EloquentRepository
     }
 
     /**
+     * Expect a array of specific relationships. Example: ['user', healthUnit']
+     * @return mixed
+     */
+    public function getAllWithRelationships($relationships)
+    {
+        return $this->model->with($relationships)->get();
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getAllPaginated($records_per_page)
+    {
+        return $this->model->paginate($records_per_page);
+    }
+
+    /**
      * @param $id
      * @return mixed
      */
     public function getById($id)
     {
         return $this->model->find($id);
+    }
+
+    /**
+     * Expect a array of specific relationships. Example: ['user', healthUnit']
+     * @return mixed
+     */
+    public function getByIdWithRelationships($id, $relationships)
+    {
+        return $this->model->with($relationships)->find($id);
     }
 
     /**

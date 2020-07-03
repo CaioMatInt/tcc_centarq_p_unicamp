@@ -31,7 +31,7 @@ class HealthUnitController extends Controller
     {
 
         $data = [
-            'resources' => $this->healthUnitService->renderList(),
+            'resources' => $this->healthUnitService->renderPaginated(10),
             'pageTitle' => 'Cadastro de ' . $this->pluralName,
             'crudRouteName' => $this->crudRouteName
 

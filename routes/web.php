@@ -30,8 +30,7 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
 
     Route::resource('queixas', 'ComplaintController');
     Route::resource('pontos-de-conduta', 'ConductionPointController');
-    Route::resource('tratamentos-medicos', 'MedicalTreatmentController');
-    Route::resource('exames', 'MedicalExamController');
+    Route::resource('consultas', 'MedicalAppointmentController');
     Route::resource('unidades-de-saude', 'HealthUnitController');
     Route::resource('usuarios', 'UserController');
 

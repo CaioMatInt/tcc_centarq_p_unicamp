@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name
  * @property string $created_at
  * @property string $updated_at
- * @property MedicalExam[] $medicalExams
+ * @property MedicalAppointment[] $medicalAppointments
  */
 class HealthUnit extends Model
 {
+    public $timestamps = true;
     /**
      * @var array
      */
@@ -21,8 +22,8 @@ class HealthUnit extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function medicalExams()
+    public function medicalAppointments()
     {
-        return $this->hasMany('App\MedicalExam');
+        return $this->hasMany('App\Models\MedicalAppointment');
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
-class UserTypesTableSeeder extends Seeder
+class GendersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,26 +13,25 @@ class UserTypesTableSeeder extends Seeder
     public function run()
     {
 
-        \Illuminate\Support\Facades\DB::table('user_types')->insert([
-
+        \Illuminate\Support\Facades\DB::table('genders')->insert([
             [
-                'id' => 1,
-                'name' => 'Funcionário',
+                'name' => 'Homem',
                 'created_at' => \Carbon\Carbon::now()
             ],
             [
-                'id' => 2,
-                'name' => 'Aluno',
+                'name' => 'Mulher',
                 'created_at' => \Carbon\Carbon::now()
             ],
             [
-                'id' => 3,
-                'name' => 'Docente',
+                'name' => 'Homem trans',
                 'created_at' => \Carbon\Carbon::now()
             ],
             [
-                'id' => 4,
-                'name' => 'Externo',
+                'name' => 'Mulher Trans',
+                'created_at' => \Carbon\Carbon::now()
+            ],
+            [
+                'name' => 'Outro/Indefinido',
                 'created_at' => \Carbon\Carbon::now()
             ]
 

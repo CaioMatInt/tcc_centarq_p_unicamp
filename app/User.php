@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    public $timestamps = true;
     use Notifiable;
 
     /**
@@ -29,9 +30,9 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function medicalExams()
+    public function medicalAppointments()
     {
-        return $this->hasMany('App\Models\MedicalExam');
+        return $this->hasMany('App\Models\MedicalAppointment');
     }
 
     public function getImageAttribute($image)

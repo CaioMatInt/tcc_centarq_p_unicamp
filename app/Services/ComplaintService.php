@@ -27,5 +27,10 @@ class ComplaintService extends EloquentService
 
         return $this->objectArrayManipulationService->arrangeObjectToSelectInputComponent($arrayOfTownHallsWithIdAndRelatedCityName, 'id', 'name');
     }
+    
+    public function renderRelatedConductionPointsIdsArrayRelatedToAMedicalAppointment($medical_appointment_id)
+    {
+        return $this->complaintRepository->getRelatedComplaintsIdsArrayRelatedToAMedicalAppointment($medical_appointment_id);
+    }
 
 }

@@ -23,4 +23,5 @@ class HealthUnitRepository extends EloquentRepository
         return $this->model->select('id', 'name')->get();
 
     }
+
 }

@@ -153,6 +153,6 @@
 }
 
 .select2-selection {
-    height: 31px !important;
+    min-height: 31px !important;
     border: solid 1px #8862E0 !important;
 }

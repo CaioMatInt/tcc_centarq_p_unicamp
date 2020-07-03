@@ -44,7 +44,7 @@
                             <i class="fa fa-notes-medical text-success icon-lg"></i>
                         </div>
                         <div class="float-right">
-                            <p class="mb-0 text-right">Exames Realizados</p>
+                            <p class="mb-0 text-right">Consultas Realizados</p>
                             <div class="fluid-container">
                                 <h3 class="font-weight-medium text-right mb-0">5693</h3>
                             </div>
@@ -77,7 +77,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="mb-4 main-session-titles">Últimos Exames</h2>
+                    <h2 class="mb-4 main-session-titles">Últimos Consultas</h2>
                     <hr>
                     <div class="fluid-container">
                         <div class="row ticket-card mt-3 pb-2 border-bottom pb-3 mb-3">

@@ -35,7 +35,7 @@
           </div>
         </div>
           <div class="progress"><div role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-info" style="width: 100%;"></div></div>
-          <button class="btn btn-success btn-block"><i style="font-size: 13px !important" class="fa fa-plus mr-1"></i><span>Novo Exame</span>
+          <button class="btn btn-success btn-block"><i style="font-size: 13px !important" class="fa fa-plus mr-1"></i><span>Nova Consulta</span>
           </button>
       </div>
     </li>
@@ -47,9 +47,9 @@
     </li>
 
       <li class="nav-item">
-          <a class="nav-link" href="{{route('exames.index')}}">
+          <a class="nav-link" href="{{route('consultas.index')}}">
               <i class="menu-icon fa fa-file-medical"></i>
-              <span class="menu-title">Exames</span>
+              <span class="menu-title">Consultas</span>
           </a>
       </li>
 
@@ -57,13 +57,6 @@
           <a class="nav-link" href="{{route('queixas.index')}}">
               <i class="menu-icon fa fa-diagnoses"></i>
               <span class="menu-title">Tipos de Queixa</span>
-          </a>
-      </li>
-
-      <li class="nav-item">
-          <a class="nav-link" href="{{route('tratamentos-medicos.index')}}">
-              <i class="menu-icon fa fa-band-aid"></i>
-              <span class="menu-title">Tipos de Tratamento</span>
           </a>
       </li>
 

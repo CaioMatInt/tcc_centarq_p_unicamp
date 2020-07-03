@@ -31,7 +31,7 @@ class ConductionPointController extends Controller
     {
 
         $data = [
-            'resources' => $this->conductionPointService->renderList(),
+            'resources' => $this->conductionPointService->renderPaginated(10),
             'pageTitle' => 'Cadastro de ' . $this->pluralName,
             'crudRouteName' => $this->crudRouteName
 

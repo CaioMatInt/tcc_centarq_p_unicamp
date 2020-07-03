@@ -25,17 +25,30 @@
                         <tr>
 
                             <th width="80%">Nome</th>
+                            <th width="80%">Data de criação</th>
                             <th class="text-center" width="20%">Ações</th>
                         </tr>
                         </thead>
                         <tbody>
 
-
                             @forelse($resources as $resource)
 
                             <tr>
 
-                                <td>{{$resource->user_id}}</td>
+                                <td>{{$resource->user->name}}</td>
+                                <td>{{$resource->created_at}}</td>
+                                <td class="text-center">
+                                    <a href="{{route(''.$crudRouteName.'.edit', $resource->id)}}" class="btn btn-warning-alternative"><i class="fa fa-edit mr-1"></i></a>
+                                    <a>
+                                        <form id="formDestroyHealthUnit" class="d-inline" method="POST" action="{{route(''.$crudRouteName.'.destroy', $resource->id)}}">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+
+                                            <button id="confirmDeletionOfHealthUnit" type="button" class="btn btn-danger-alternative"><i class="fa fa-trash mr-1"></i></button>
+
+                                        </form>
+                                    </a>
+                                </td>
 
                             </tr>
 

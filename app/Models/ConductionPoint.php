@@ -10,10 +10,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $description
  * @property string $created_at
  * @property string $updated_at
- * @property MedicalExamConductionPoint[] $medicalExamConductionPoints
  */
 class ConductionPoint extends Model
 {
+    public $timestamps = true;
     /**
      * @var array
      */
@@ -22,8 +22,8 @@ class ConductionPoint extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function medicalExamConductionPoints()
+    public function medicalAppointmentConductionPoints()
     {
-        return $this->hasMany('App\MedicalExamConductionPoint');
+        return $this->hasMany('App\Models\MedicalAppointmentConductionPoint');
     }
 }

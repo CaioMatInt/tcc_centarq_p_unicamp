@@ -28,4 +28,9 @@ class ConductionPointService extends EloquentService
         return $this->objectArrayManipulationService->arrangeObjectToSelectInputComponent($arrayOfConductionPointsWithIdAndRelatedCityName, 'id', 'name');
     }
 
+    public function renderRelatedConductionPointsIdsArrayRelatedToAMedicalAppointment($medical_appointment_id)
+    {
+        return $this->conductionPointRepository->getRelatedConductionPointsIdsArrayRelatedToAMedicalAppointment($medical_appointment_id);
+    }
+
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableMedicalExamComplaint extends Migration
+class CreateTableMedicalAppointmentComplaint extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateTableMedicalExamComplaint extends Migration
      */
     public function up()
     {
-        Schema::create('medical_exam_complaints', function (Blueprint $table) {
+        Schema::create('medical_appointment_complaints', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('medical_exam_id')->unsigned();
-            $table->foreign('medical_exam_id')->references('id')->on('medical_exams');
+            $table->integer('medical_appointment_id')->unsigned();
+            $table->foreign('medical_appointment_id')->references('id')->on('medical_appointments');
             $table->integer('complaint_id')->unsigned();
             $table->foreign('complaint_id')->references('id')->on('complaints');
             $table->timestamps();
@@ -30,6 +30,6 @@ class CreateTableMedicalExamComplaint extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medical_exam_conduction_point');
+        Schema::dropIfExists('medical_appointment_conduction_point');
     }
 }

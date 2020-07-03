@@ -2,39 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\ComplaintRepository;
 use App\Services\ComplaintService;
 use App\Services\ConductionPointService;
 use App\Services\HealthUnitService;
-use App\Services\MedicalExamService;
-use App\Services\MedicalTreatmentService;
+use App\Services\MedicalAppointmentService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
-class MedicalExamController extends Controller
+class MedicalAppointmentController extends Controller
 {
-    private $medicalExamService;
+    private $medicalAppointmentService;
     private $healthUnitsService;
     private $complaintsService;
     private $conductionPointService;
-    private $medicalTreatmentService;
 
     /* Name of this CRUD in Portuguese and in plural */
-    public $pluralName = 'Exames';
+    public $pluralName = 'Consultas';
     /* Name of this CRUD in Portuguese*/
     public $name = 'Exame';
     /* Name of the this CRUD folder, in resources, used along this class in "return views" */
-    public $crudFolder = 'medicalExam';
-    public $crudRouteName = 'exames';
+    public $crudFolder = 'medicalAppointment';
+    public $crudRouteName = 'consultas';
 
-    public function __construct(MedicalExamService $medicalExamService, HealthUnitService $healthUnitsService, ComplaintService $complaintsService
-        , ConductionPointService $conductionPointService, MedicalTreatmentService $medicalTreatmentService )
+    public function __construct(MedicalAppointmentService $medicalAppointmentService, HealthUnitService $healthUnitsService, ComplaintService $complaintsService
+        , ConductionPointService $conductionPointService)
     {
-        $this->medicalExamService = $medicalExamService;
+        $this->medicalAppointmentService = $medicalAppointmentService;
         $this->healthUnitsService = $healthUnitsService;
         $this->complaintsService = $complaintsService;
         $this->conductionPointService = $conductionPointService;
-        $this->medicalTreatmentService = $medicalTreatmentService;
     }
 
 
@@ -45,7 +43,7 @@ class MedicalExamController extends Controller
     {
 
         $data = [
-            'resources' => $this->medicalExamService->renderList(),
+            'resources' => $this->medicalAppointmentService->renderListWithRelationships(['user', 'healthUnit']),
             'pageTitle' => 'Cadastro de ' . $this->pluralName,
             'crudRouteName' => $this->crudRouteName
 
@@ -66,7 +64,7 @@ class MedicalExamController extends Controller
             'healthUnitsArray' => $this->healthUnitsService->renderArrayForSelectInputWithOnlyNameAndID(),
             'complaintsArray' => $this->complaintsService->renderArrayForSelectInputWithOnlyNameAndID(),
             'conductionPointsArray' => $this->conductionPointService->renderArrayForSelectInputWithOnlyNameAndID(),
-            'medicalTreatmentArray' => $this->medicalTreatmentService->renderArrayForSelectInputWithOnlyNameAndID(),
+
         ];
 
         return view('dashboard.' . $this->crudFolder . '.create', $data);
@@ -85,12 +83,12 @@ class MedicalExamController extends Controller
 
             $data = $request->all();
 
-            $this->medicalExamService->buildInsert($data);
+            $this->medicalAppointmentService->buildInsert($data);
 
 
             $request->session()->flash('msg', [
                 'type' => 'success',
-                'text' => $this->name . '" cadastrada com sucesso',
+                'text' => $this->name . ' cadastrada com sucesso',
             ]);
 
 
@@ -119,9 +117,14 @@ class MedicalExamController extends Controller
     {
         $data = [
             'pageTitle' => 'Editar ' . $this->name,
-            'resource' => $this->medicalExamService->renderEdit($id),
+            'resource' => $this->medicalAppointmentService->renderEditWithRelationships($id, ['user']),
             'crudRouteName' => $this->crudRouteName,
-            'pluralName' => $this->pluralName
+            'pluralName' => $this->pluralName,
+            'healthUnitsArray' => $this->healthUnitsService->renderArrayForSelectInputWithOnlyNameAndID(),
+            'complaintsArray' => $this->complaintsService->renderArrayForSelectInputWithOnlyNameAndID(),
+            'selectedComplaintsArray' => $this->complaintsService->renderRelatedConductionPointsIdsArrayRelatedToAMedicalAppointment($id),
+            'conductionPointsArray' => $this->conductionPointService->renderArrayForSelectInputWithOnlyNameAndID(),
+            'selectedConductionPointsArray' => $this->conductionPointService->renderRelatedConductionPointsIdsArrayRelatedToAMedicalAppointment($id),
         ];
 
         return view('dashboard.' . $this->crudFolder . '.edit', $data);
@@ -137,18 +140,20 @@ class MedicalExamController extends Controller
 
         try {
             $data = $request->all();
-            $this->medicalExamService->buildUpdate($id, $data);
+            $this->medicalAppointmentService->buildUpdate($id, $data);
 
             $request->session()->flash('msg', [
                 'type' => 'success',
-                'text' => $this->name . ' de ' . $request->name . ' atualizada com sucesso',
+                'text' => $this->name . ' atualizada com sucesso',
             ]);
 
+
         } catch (\Exception $e) {
+            dd($e);
 
             $request->session()->flash('msg', [
                 'type' => 'danger',
-                'text' => 'Erro ao atualizar ' . $this->name . ' de ' . $request->name,
+                'text' => 'Erro ao atualizar ' . $this->name,
             ]);
         } finally {
             return redirect()->route($this->crudRouteName . '.index');
@@ -163,7 +168,7 @@ class MedicalExamController extends Controller
     public function destroy($id)
     {
         try {
-            $this->medicalExamService->buildDelete($id);
+            $this->medicalAppointmentService->buildDelete($id);
 
             session()->flash('msg', [
                 'type' => 'success',

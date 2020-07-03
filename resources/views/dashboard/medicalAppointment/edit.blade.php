@@ -12,35 +12,36 @@
 
 
                         <x-breadcumb-user-location-component :previousLinks="[0 => ['link' => route($crudRouteName . '.index'), 'name' =>
-                        'Cadastro de ' . $pluralName] ]" :pageTitle="$pageTitle"/>
+                        'Cadastro de ' . $pluralName]]" :pageTitle="$pageTitle"/>
 
-                        <form action="{{route(''.$crudRouteName.'.store')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route(''.$crudRouteName.'.update', $resource->id)}}" method="post" enctype="multipart/form-data">
                             {{ @csrf_field() }}
+                            @method('PUT')
+
                             <div class="row">
 
                                 <div class="col-12 col-sm-12 col-md-12 col-xl-4">
-                                    <x-input-select-component :name="'user_id'" :label="'Paciente'" :options="[]" />
+                                    <x-input-select-component :name="'user_id'" :label="'Paciente'" :options="[$resource->user_id => $resource->user->name]" :current="$resource->user_id" />
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-xl-4">
-                                    <x-input-select-component :name="'health_unit_id'" :label="'Unidade de Saúde'" :options="$healthUnitsArray" />
+                                    <x-input-select-component :name="'health_unit_id'" :label="'Unidade de Saúde'" :options="$healthUnitsArray" :current="$resource->health_unit_id" />
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-xl-4">
-                                    <x-input-multiple-select2-component :id="'complaintsSelect'" :name="'complaints'" :label="'Queixa(s)'" :options="$complaintsArray" />
+                                    <x-input-multiple-select2-component :id="'complaintsSelect'" :name="'complaints'" :label="'Queixa(s)'" :options="$complaintsArray" :current="$selectedComplaintsArray" />
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-xl-4">
-                                    <x-input-multiple-select2-component :id="'conductionPointsSelect'" :name="'conductionPoints'" :label="'Ponto(s) de Conduta'" :options="$conductionPointsArray" />
+                                    <x-input-multiple-select2-component :id="'conductionPointsSelect'" :name="'conductionPoints'" :label="'Ponto(s) de Conduta'" :options="$conductionPointsArray" :current="$selectedConductionPointsArray" />
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-xl-4">
-                                    <x-input-multiple-select2-component :id="'medicalTreatmentsSelect'" :name="'medicalTreatments'" :label="'Tratamento(s)'" :options="$medicalTreatmentArray" />
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-12 col-xl-4">
-                                    <x-input-type-component :type="'text'" :name="'observations'" :label="'Observações'" />
+                                    <x-input-type-component :type="'text'" :name="'observations'" :label="'Observações'" :value="$resource->observations" />
                                 </div>
                             </div>
+
+
 
                             <br>
                             <div class="form-group">
@@ -60,9 +61,10 @@
 @push('custom-scripts')
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/i18n/pt-BR.min.js"></script>
-    <script src="{{asset('/assets/js/dashboard/medicalExam/create/medicalExamCreateFunctions.js')}}"></script>
+    <script src="{{asset('/assets/js/dashboard/medicalAppointment/edit/medicalAppointmentEditFunctions.js')}}"></script>
 
 @endpush
+
 
 @push('custom-css')
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />

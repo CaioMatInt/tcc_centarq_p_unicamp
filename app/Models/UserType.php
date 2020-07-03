@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserType extends Model
 {
+    public $timestamps = true;
     /**
      * @var array
      */

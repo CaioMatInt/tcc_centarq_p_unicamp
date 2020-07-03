@@ -1,9 +1,6 @@
 $(document).ready(function() {
     $('#complaintsSelect').select2();
     $('#conductionPointsSelect').select2();
-    $('#medicalTreatmentsSelect').select2();
-    $('#lol').select2();
-
 
 
     /**Code for select2 Input to search for users **/
