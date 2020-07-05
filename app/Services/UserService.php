@@ -22,13 +22,17 @@ class UserService extends EloquentService
         $this->imageUploadService = $imageUploadService;
     }
 
-    /**
-     * @return mixed
-     */
     public function renderJsonListWithRGAndIdByLikeName($name)
     {
         return $this->userRepository->getRGAndIdByLikeName($name);
     }
+
+    public function renderHistoryOfMedicalAppointmensByUserId($id)
+    {
+        return $this->userRepository->getHistoryOfMedicalAppointmensByUserId($id);
+    }
+
+
 
     /**
      * @param $data

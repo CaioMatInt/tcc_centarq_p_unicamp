@@ -41,6 +41,14 @@ class MedicalAppointment extends Model
         return $this->belongsTo('App\User');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function createdByUser()
+    {
+        return $this->belongsTo('App\User');
+    }
+
     public function medicalAppointmentComplaints()
     {
         return $this->belongsToMany('App\Models\Complaint', 'medical_appointment_complaints', 'medical_appointment_id', 'complaint_id')->withTimestamps();
@@ -56,4 +64,6 @@ class MedicalAppointment extends Model
     {
         return Carbon::parse($value)->format('d-m-Y H:m:s');
     }
+
+
 }

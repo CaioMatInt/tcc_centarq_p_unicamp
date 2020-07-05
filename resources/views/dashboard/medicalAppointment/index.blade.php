@@ -23,9 +23,10 @@
                     <table class="table">
                         <thead class="thead-light-dark">
                         <tr>
+                            <th width="20%">Imagem</th>
+                            <th width="20%">Paciente</th>
 
-                            <th width="80%">Nome</th>
-                            <th width="80%">Data de criação</th>
+                            <th width="20%">Data de criação</th>
                             <th class="text-center" width="20%">Ações</th>
                         </tr>
                         </thead>
@@ -34,10 +35,13 @@
                             @forelse($resources as $resource)
 
                             <tr>
-
+                                <td>
+                                    <img height="50" src="{{ url($resource->user->image) }}">
+                                </td>
                                 <td>{{$resource->user->name}}</td>
                                 <td>{{$resource->created_at}}</td>
                                 <td class="text-center">
+                                    <a href="{{route(''.$crudRouteName.'.show', $resource->id)}}" class="btn btn-info-alternative"><i class="fa fa-eye mr-1"></i></a>
                                     <a href="{{route(''.$crudRouteName.'.edit', $resource->id)}}" class="btn btn-warning-alternative"><i class="fa fa-edit mr-1"></i></a>
                                     <a>
                                         <form id="formDestroyHealthUnit" class="d-inline" method="POST" action="{{route(''.$crudRouteName.'.destroy', $resource->id)}}">

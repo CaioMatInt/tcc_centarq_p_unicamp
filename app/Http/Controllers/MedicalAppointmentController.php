@@ -7,6 +7,7 @@ use App\Services\ComplaintService;
 use App\Services\ConductionPointService;
 use App\Services\HealthUnitService;
 use App\Services\MedicalAppointmentService;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -21,7 +22,7 @@ class MedicalAppointmentController extends Controller
     /* Name of this CRUD in Portuguese and in plural */
     public $pluralName = 'Consultas';
     /* Name of this CRUD in Portuguese*/
-    public $name = 'Exame';
+    public $name = 'Consulta';
     /* Name of the this CRUD folder, in resources, used along this class in "return views" */
     public $crudFolder = 'medicalAppointment';
     public $crudRouteName = 'consultas';
@@ -41,7 +42,6 @@ class MedicalAppointmentController extends Controller
      */
     public function index()
     {
-
         $data = [
             'resources' => $this->medicalAppointmentService->renderListWithRelationships(['user', 'healthUnit']),
             'pageTitle' => 'Cadastro de ' . $this->pluralName,
@@ -149,7 +149,6 @@ class MedicalAppointmentController extends Controller
 
 
         } catch (\Exception $e) {
-            dd($e);
 
             $request->session()->flash('msg', [
                 'type' => 'danger',
@@ -159,6 +158,22 @@ class MedicalAppointmentController extends Controller
             return redirect()->route($this->crudRouteName . '.index');
         }
 
+    }
+
+
+    /**
+     * @return void
+     */
+    public function show($id)
+    {
+        $data = [
+            'pageTitle' => 'Visualizar ' . $this->name,
+            'resource' => $this->medicalAppointmentService->renderEditWithRelationships($id, ['user', 'medicalAppointmentComplaints', 'medicalAppointmentConductionPoints', 'healthUnit']),
+            'crudRouteName' => $this->crudRouteName,
+            'pluralName' => $this->pluralName,
+        ];
+
+        return view('dashboard.' . $this->crudFolder . '.show', $data);
     }
 
     /**
@@ -184,5 +199,6 @@ class MedicalAppointmentController extends Controller
             return redirect()->route($this->crudRouteName . '.index');
         }
     }
+
 
 }

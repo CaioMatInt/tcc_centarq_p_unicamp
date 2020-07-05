@@ -35,9 +35,9 @@
 }
 
 
-.btn-green-alternative{
+.btn-success-alternative{
     color: white !important;
-    background-color: #74ab86 !important;
+    background-color: #7db38e !important;
     border: solid 1px darkgrey;
 }
 
@@ -55,6 +55,12 @@
 .btn-warning-alternative{
     color: white !important;
     background-color: #e6ab2c !important;
+    border: none !important;
+}
+
+.btn-purple{
+    color: white !important;
+    background-color: #7C7EB1 !important;
     border: none !important;
 }
 
@@ -156,3 +162,9 @@
     min-height: 31px !important;
     border: solid 1px #8862E0 !important;
 }
+
+
+.badge-info {
+    background-color: #66a4d4 !important;
+}
+
