@@ -88,4 +88,8 @@ abstract class EloquentService
         return $this->repository->delete($id);
     }
 
+    public function renderTotal(){
+        return $this->repository->getTotal();
+    }
+
 }

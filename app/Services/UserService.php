@@ -29,7 +29,22 @@ class UserService extends EloquentService
 
     public function renderHistoryOfMedicalAppointmensByUserId($id)
     {
-        return $this->userRepository->getHistoryOfMedicalAppointmensByUserId($id);
+
+        $medicalAppointments = $this->userRepository->getHistoryOfMedicalAppointmensByUserId($id);
+
+        //Transform the concatenated strings (by group_concat) in arrays
+
+        foreach($medicalAppointments as $key => $medicalAppointment){
+
+            if($medicalAppointment->medicalAppointmentComplaints) {
+                $medicalAppointments[$key]->medicalAppointmentComplaints = explode(",", $medicalAppointment->medicalAppointmentComplaints);
+            }
+            if($medicalAppointment->medicalAppointmentConductionPoints) {
+                $medicalAppointments[$key]->medicalAppointmentConductionPoints = explode(",", $medicalAppointment->medicalAppointmentConductionPoints);
+            }
+        }
+
+        return $medicalAppointments;
     }
 
 

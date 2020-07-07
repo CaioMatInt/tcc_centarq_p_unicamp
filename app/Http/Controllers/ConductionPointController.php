@@ -81,7 +81,7 @@ class ConductionPointController extends Controller
             DB::rollBack();
 
             $request->session()->flash('msg', [
-                'type' => 'danger',
+                'type' => 'error',
                 'text' => 'Erro ao cadastrar ' . $this->name . '  ' . $request->name . '. Por favor, contate o administrador do sistema.',
             ]);
 
@@ -128,7 +128,7 @@ class ConductionPointController extends Controller
         } catch (\Exception $e) {
 
             $request->session()->flash('msg', [
-                'type' => 'danger',
+                'type' => 'error',
                 'text' => 'Erro ao atualizar ' . $this->name . ' ' . $request->name,
             ]);
         } finally {
@@ -153,7 +153,7 @@ class ConductionPointController extends Controller
         } catch (\Exception $e) {
 
             session()->flash('msg', [
-                'type' => 'danger',
+                'type' => 'error',
                 'text' => 'Erro ao remover ' . $this->name,
             ]);
         } finally {

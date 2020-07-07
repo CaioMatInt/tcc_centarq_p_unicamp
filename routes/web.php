@@ -33,6 +33,7 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
     Route::resource('consultas', 'MedicalAppointmentController');
     Route::resource('unidades-de-saude', 'HealthUnitController');
     Route::resource('usuarios', 'UserController');
+    Route::get('usuarios/{usuario}/historico-de-consultas', 'UserController@showHistoryOfMedicalAppointmensByUserId')->name('usuarios.medicalAppointmentsHistory');
 
     Route::post('renderizar-lista-usuarios-nome-e-id-por-nome', 'UserController@renderUsersListWithRGAndIdByLikeName');
 });

@@ -27,7 +27,7 @@ class MedicalAppointmentService extends EloquentService
     {
         $data['created_by_user_id'] = auth()->user()->id;
 
-        return $this->repository->create($data);
+        return $this->medicalAppointmentRepository->create($data);
     }
 
     /**
@@ -39,17 +39,14 @@ class MedicalAppointmentService extends EloquentService
     {
         $data['created_by_user_id'] = auth()->user()->id;
 
-        try {
-            $d = $this->medicalAppointmentRepository->update($id, $data);
-        }catch(\Exception $e){
-            dd($e, 1);
-        }
+        return $this->medicalAppointmentRepository->update($id, $data);
+
 
     }
 
     public function renderComplaintsForSelect2($id)
     {
-        return $this->repository->getComplaintsForSelect2($id);
+        return $this->medicalAppointmentRepository->getComplaintsForSelect2($id);
     }
 
 

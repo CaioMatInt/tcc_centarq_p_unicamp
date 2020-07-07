@@ -7,35 +7,37 @@
                 <div class="card-body">
                     <div class="d-flex flex-md-column flex-xl-row flex-wrap justify-content-between align-items-md-center justify-content-xl-between">
                         <div class="float-left">
-                            <i class="fa fa-city text-info icon-lg"></i>
+                            <i class="fa fa-users text-info icon-lg"></i>
                         </div>
                         <div class="float-right">
-                            <p class="mb-0 text-right">Prefeituras</p>
+                            <p class="mb-0 text-right">Usuários</p>
                             <div class="fluid-container">
-                                <h3 class="font-weight-medium text-right mb-0">8</h3>
+                                <h3 class="font-weight-medium text-right mb-0">{{$totalOfUsers}}</h3>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
             <div class="card card-statistics">
                 <div class="card-body">
                     <div class="d-flex flex-md-column flex-xl-row flex-wrap justify-content-between align-items-md-center justify-content-xl-between">
                         <div class="float-left">
-                            <i class="fa fa-stethoscope text-warning icon-lg"></i>
+                            <i class="fa fa-diagnoses text-warning icon-lg"></i>
                         </div>
                         <div class="float-right">
-                            <p class="mb-0 text-right">Médicos</p>
+                            <p class="mb-0 text-right">Tipos de Queixa</p>
                             <div class="fluid-container">
-                                <h3 class="font-weight-medium text-right mb-0">55</h3>
+                                <h3 class="font-weight-medium text-right mb-0">{{$totalOfComplaints}}</h3>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
             <div class="card card-statistics">
                 <div class="card-body">
@@ -46,24 +48,27 @@
                         <div class="float-right">
                             <p class="mb-0 text-right">Consultas Realizados</p>
                             <div class="fluid-container">
-                                <h3 class="font-weight-medium text-right mb-0">5693</h3>
+                                <h3 class="font-weight-medium text-right mb-0">{{$totalOfMedicalAppointments}}</h3>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
             <div class="card card-statistics">
                 <div class="card-body">
                     <div class="d-flex flex-md-column flex-xl-row flex-wrap justify-content-between align-items-md-center justify-content-xl-between">
                         <div class="float-left">
-                            <i class="fa fa-heartbeat text-primary icon-lg"></i>
+                            <i class="fa fa-comment-medical text-primary icon-lg"></i>
                         </div>
                         <div class="float-right">
-                            <p class="mb-0 text-right">Tipos de Exame</p>
+                            <p class="mb-0 text-right">Pontos de Conduta</p>
                             <div class="fluid-container">
-                                <h3 class="font-weight-medium text-right mb-0">56</h3>
+                                <h3 class="font-weight-medium text-right mb-0">{{$totalOfConductionPoints}}</h3>
                             </div>
                         </div>
                     </div>
@@ -77,7 +82,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="mb-4 main-session-titles">Últimos Consultas</h2>
+                    <h2 class="mb-4 main-session-titles">Últimas Consultas</h2>
                     <hr>
                     <div class="fluid-container">
                         <div class="row ticket-card mt-3 pb-2 border-bottom pb-3 mb-3">

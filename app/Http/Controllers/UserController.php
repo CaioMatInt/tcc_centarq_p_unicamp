@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\GenderService;
 use App\Services\UserService;
 use App\Services\UserTypeService;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     private $userService;
+    private $genderService;
     private $userTypeService;
     /* Name of this CRUD in Portuguese and in plural */
     public $pluralName = 'Usuários';
@@ -20,10 +22,11 @@ class UserController extends Controller
     public $crudFolder = 'user';
     public $crudRouteName = 'usuarios';
 
-    public function __construct(UserService $userService, UserTypeService $userTypeService)
+    public function __construct(UserService $userService, UserTypeService $userTypeService, GenderService $genderService)
     {
         $this->userService = $userService;
         $this->userTypeService = $userTypeService;
+        $this->genderService = $genderService;
     }
 
 
@@ -52,7 +55,8 @@ class UserController extends Controller
             'pageTitle' => 'Cadastrar novo ' . $this->name,
             'crudRouteName' => $this->crudRouteName,
             'pluralName' => $this->pluralName,
-            'userTypesArray' => $this->userTypeService->renderArrayForSelectInputWithOnlyNameAndID()
+            'userTypesArray' => $this->userTypeService->renderArrayForSelectInputWithOnlyNameAndID(),
+            'gendersArray' => $this->genderService->renderArrayForSelectInputWithOnlyNameAndID()
         ];
 
         return view('dashboard.' . $this->crudFolder . '.create', $data);
@@ -81,7 +85,7 @@ class UserController extends Controller
 
 
         } catch (\Exception $e) {
-
+        dd($e);
             DB::rollBack();
 
             $request->session()->flash('msg', [
@@ -186,12 +190,12 @@ class UserController extends Controller
 
         $data = [
             'pageTitle' => 'Visualizar histórico de consultas ',
-            'resource' => $this->userService->renderEditWithRelationships($id, ['user', 'medicalAppointmentComplaints', 'medicalAppointmentConductionPoints', 'healthUnit']),
+            'resources' => $this->userService->renderHistoryOfMedicalAppointmensByUserId($id),
             'crudRouteName' => $this->crudRouteName,
             'pluralName' => $this->pluralName,
         ];
 
-        return view('dashboard.' . $this->crudFolder . '.historyOfMedicalAppointments.blade', $data);
+        return view('dashboard.' . $this->crudFolder . '.historyOfMedicalAppointments', $data);
     }
 
 

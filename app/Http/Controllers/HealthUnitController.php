@@ -81,7 +81,7 @@ class HealthUnitController extends Controller
             DB::rollBack();
 
             $request->session()->flash('msg', [
-                'type' => 'danger',
+                'type' => 'error',
                 'text' => 'Erro ao cadastrar ' . $this->name . '  ' . $request->name . '. Por favor, contate o administrador do sistema.',
             ]);
 
@@ -128,7 +128,7 @@ class HealthUnitController extends Controller
         } catch (\Exception $e) {
 
             $request->session()->flash('msg', [
-                'type' => 'danger',
+                'type' => 'error',
                 'text' => 'Erro ao atualizar ' . $this->name . ' de ' . $request->name,
             ]);
         } finally {
@@ -153,8 +153,8 @@ class HealthUnitController extends Controller
         } catch (\Exception $e) {
 
             session()->flash('msg', [
-                'type' => 'danger',
-                'text' => 'Erro ao remover ' . $this->name,
+                'type' => 'error',
+                'text' => 'Erro ao remover ' . $this->name . '. Caso existam exames cadastrados para esta unidade, exclua todos os relacionados para excluir esta unidade de saúde.',
             ]);
         } finally {
             return redirect()->route($this->crudRouteName . '.index');

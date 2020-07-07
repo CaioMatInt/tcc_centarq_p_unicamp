@@ -32,6 +32,9 @@
                                 <div class="col-12 col-sm-12 col-md-12 col-xl-3">
                                     <x-input-image-component :name="'image'" :label="'Imagem'" />
                                 </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-xl-3">
+                                    <x-input-select-component :id="'genderSelect'" :name="'gender_id'" :label="'Gênero'" :options="$gendersArray" />
+                                </div>
 
                             </div>
 

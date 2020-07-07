@@ -13,9 +13,12 @@
                         <div class="row content-head-title-breadcumb-reverse">
 
                             <div class="pageTitle col-12 col-xl-7">
-                                <h4>{{ $pageTitle }}
-                                    <button href="#" class="ml-1 btn btn-success-alternative"><i class="fa fa-history"></i> Histórico do Paciente</button>
 
+                                <h4>{{ $pageTitle }}
+                                    <a href="{{route('usuarios.medicalAppointmentsHistory', $resource->user->id)}}">
+                                        <button class="ml-1 btn btn-success-alternative"><i class="fa fa-history"></i> Histórico do Paciente
+                                        </button>
+                                    </a>
                                 </h4>
 
                             </div>
@@ -29,7 +32,6 @@
 
                                         <span class="ml-1 mr-1">/</span>
 
-
                                     <li class="active">{{$pageTitle}}</li>
 
                                 </ol>
@@ -37,10 +39,6 @@
                             <br>
                         </div>
 
-
-                        <form action="{{route(''.$crudRouteName.'.update', $resource->id)}}" method="post" enctype="multipart/form-data">
-                            {{ @csrf_field() }}
-                            @method('PUT')
 
                             <div class="card">
 
@@ -69,8 +67,8 @@
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-12 col-xl-4">
                                             <span class="font-weight-bold">Observações:</span>
-                                            @if($resource->observation)
-                                                {{$resource->Observações}}
+                                            @if($resource->observations)
+                                                {{$resource->observations}}
                                             @else
                                                 Sem observações
                                             @endif
@@ -111,10 +109,9 @@
 
                             <br>
                             <div class="form-group">
-
                                 <button type='button' class="btn btn-light"><a href="{{ URL::previous() }}">Cancelar</a></button>
                             </div>
-                        </form>
+
                     </div>
                 </div>
             </div>

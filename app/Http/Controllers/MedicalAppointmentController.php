@@ -98,7 +98,7 @@ class MedicalAppointmentController extends Controller
             DB::rollBack();
 
             $request->session()->flash('msg', [
-                'type' => 'danger',
+                'type' => 'error',
                 'text' => 'Erro ao cadastrar ' . $this->name . '. Por favor, contate o administrador do sistema.',
             ]);
 
@@ -151,7 +151,7 @@ class MedicalAppointmentController extends Controller
         } catch (\Exception $e) {
 
             $request->session()->flash('msg', [
-                'type' => 'danger',
+                'type' => 'error',
                 'text' => 'Erro ao atualizar ' . $this->name,
             ]);
         } finally {
@@ -192,7 +192,7 @@ class MedicalAppointmentController extends Controller
         } catch (\Exception $e) {
 
             session()->flash('msg', [
-                'type' => 'danger',
+                'type' => 'error',
                 'text' => 'Erro ao remover ' . $this->name,
             ]);
         } finally {

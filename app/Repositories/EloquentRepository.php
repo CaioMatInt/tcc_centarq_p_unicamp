@@ -96,4 +96,8 @@ abstract class EloquentRepository
     {
         return $this->model->find($id)->delete();
     }
+
+    public function getTotal(){
+        return $this->model->get()->count();
+    }
 }

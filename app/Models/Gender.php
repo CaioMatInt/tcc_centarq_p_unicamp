@@ -11,9 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $updated_at
  * @property User[] $users
  */
-class UserType extends Model
+class Gender extends Model
 {
-    public $timestamps = true;
     /**
      * @var array
      */
@@ -24,9 +23,6 @@ class UserType extends Model
      */
     public function users()
     {
-        return $this->hasMany('App\Models\User');
+        return $this->hasMany('App\User');
     }
 }
-
-
-
