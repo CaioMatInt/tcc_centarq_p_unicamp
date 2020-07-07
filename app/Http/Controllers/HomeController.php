@@ -41,7 +41,8 @@ class HomeController extends Controller
             'totalOfComplaints' => $this->complaintService->renderTotal(),
             'totalOfUsers' => $this->userService->renderTotal(),
             'totalOfMedicalAppointments' => $this->medicalAppointmentService->renderTotal(),
-            'totalOfConductionPoints' => $this->conductionPointService->renderTotal()
+            'totalOfConductionPoints' => $this->conductionPointService->renderTotal(),
+            'lastMedicalAppointments' => $this->medicalAppointmentService->renderListWithANumberOfAppointmentsWithRelatioships(3, ['user', 'createdByUser', 'healthUnit'])
         ];
 
         return view('dashboard', $data);

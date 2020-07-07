@@ -180,23 +180,4 @@ class UserController extends Controller
 
     }
 
-
-
-    /**
-     * @return void
-     */
-    public function showHistoryOfMedicalAppointmensByUserId($id)
-    {
-
-        $data = [
-            'pageTitle' => 'Visualizar histórico de consultas ',
-            'resources' => $this->userService->renderHistoryOfMedicalAppointmensByUserId($id),
-            'crudRouteName' => $this->crudRouteName,
-            'pluralName' => $this->pluralName,
-        ];
-
-        return view('dashboard.' . $this->crudFolder . '.historyOfMedicalAppointments', $data);
-    }
-
-
 }

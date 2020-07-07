@@ -1,80 +1,16 @@
 @extends('layout.master')
 
 @section('content')
+
+
     <div class="row">
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-            <div class="card card-statistics">
-                <div class="card-body">
-                    <div class="d-flex flex-md-column flex-xl-row flex-wrap justify-content-between align-items-md-center justify-content-xl-between">
-                        <div class="float-left">
-                            <i class="fa fa-users text-info icon-lg"></i>
-                        </div>
-                        <div class="float-right">
-                            <p class="mb-0 text-right">Usuários</p>
-                            <div class="fluid-container">
-                                <h3 class="font-weight-medium text-right mb-0">{{$totalOfUsers}}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-            <div class="card card-statistics">
-                <div class="card-body">
-                    <div class="d-flex flex-md-column flex-xl-row flex-wrap justify-content-between align-items-md-center justify-content-xl-between">
-                        <div class="float-left">
-                            <i class="fa fa-diagnoses text-warning icon-lg"></i>
-                        </div>
-                        <div class="float-right">
-                            <p class="mb-0 text-right">Tipos de Queixa</p>
-                            <div class="fluid-container">
-                                <h3 class="font-weight-medium text-right mb-0">{{$totalOfComplaints}}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-            <div class="card card-statistics">
-                <div class="card-body">
-                    <div class="d-flex flex-md-column flex-xl-row flex-wrap justify-content-between align-items-md-center justify-content-xl-between">
-                        <div class="float-left">
-                            <i class="fa fa-notes-medical text-success icon-lg"></i>
-                        </div>
-                        <div class="float-right">
-                            <p class="mb-0 text-right">Consultas Realizados</p>
-                            <div class="fluid-container">
-                                <h3 class="font-weight-medium text-right mb-0">{{$totalOfMedicalAppointments}}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <x-home-card :title="'Usuários'" :number="$totalOfUsers" :iconClass="'fa-users text-info'" />
+        <x-home-card :title="'Tipos de Queixas'" :number="$totalOfComplaints" :iconClass="'fa-diagnoses text-warning'" />
+        <x-home-card :title="'Consultas Cadastradas'" :number="$totalOfMedicalAppointments" :iconClass="'fa-notes-medical text-success'" />
+        <x-home-card :title="'Pontos de Condução'" :number="$totalOfConductionPoints" :iconClass="'fa-comment-medical text-primary'" />
 
 
-
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-            <div class="card card-statistics">
-                <div class="card-body">
-                    <div class="d-flex flex-md-column flex-xl-row flex-wrap justify-content-between align-items-md-center justify-content-xl-between">
-                        <div class="float-left">
-                            <i class="fa fa-comment-medical text-primary icon-lg"></i>
-                        </div>
-                        <div class="float-right">
-                            <p class="mb-0 text-right">Pontos de Conduta</p>
-                            <div class="fluid-container">
-                                <h3 class="font-weight-medium text-right mb-0">{{$totalOfConductionPoints}}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 
@@ -84,36 +20,49 @@
                 <div class="card-body">
                     <h2 class="mb-4 main-session-titles">Últimas Consultas</h2>
                     <hr>
+
+                    @foreach($lastMedicalAppointments as $medicalAppointment)
+
                     <div class="fluid-container">
                         <div class="row ticket-card mt-3 pb-2 border-bottom pb-3 mb-3">
 
-                            <div class="col-12 col-sm-12 col-md-2 col-xl-2 text-center">
-                                <img class="img-lg" src="https://scontent.fpoa6-1.fna.fbcdn.net/v/t31.0-8/p960x960/1291835_381876865273664_1243818015_o.jpg?_nc_cat=106&_nc_sid=85a577&_nc_eui2=AeF8lEKiyH6kab29M4gZfOcxJifhUpf6yUQmJ-FSl_rJRNeth5zMvTKPEimA0h2gnlwEb_j3gjO0pnwURqvd1m5Z&_nc_ohc=KD7v9GhK5gYAX_i1RYo&_nc_ht=scontent.fpoa6-1.fna&_nc_tp=6&oh=ea1ae1b845e31e7b16dab54f1cae068b&oe=5EC7BC15" alt="profile image">
+                            <div class="col-12 col-sm-12 col-md-2 col-xl-2 text-center profile-image">
+                                <img class="height-40px rounded-circle" src="{{$medicalAppointment->createdByUser->image}}" alt="profile image">
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-4 col-xl-4">
+                                Paciente:<span class="hall-town-health-unit-titles font-weight-bold mr-2 mb-0 no-wrap"> {{$medicalAppointment->user->name}}</span>
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-4 col-xl-4">
                                 <div class="d-flex">
-                                    <p class="hall-town-health-unit-titles font-weight-bold mr-2 mb-0 no-wrap">Prefeitura de Sumaré | Unidade de saúde</p>
+                                    <p class="hall-town-health-unit-titles font-weight-bold mr-2 mb-0 no-wrap">Criado por: {{$medicalAppointment->createdByUser->name}}</p>
                                 </div>
                                 <div class="row text-gray d-md-flex d-none">
                                     <div class="col-12 d-flex">
-                                        <small class="Last-responded mr-2 mb-0 text-muted text-muted">Adicionado em : 15/04/2019</small>
+                                        <small class="Last-responded mr-2 mb-0 text-muted text-muted">Adicionado em : {{$medicalAppointment->created_at}}</small>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-12 col-sm-12 col-md-4 col-xl-4">
-                                <p class="exams-title mb-2">Urina, TCGH, Colesterol Total</p>
-                            </div>
+
 
                             <div class="col-12 col-sm-12 col-md-2 col-xl-2">
 
-                                <button type="button" class="btn btn-block btn-green-alternative"><i class="fa fa-download"></i> Efetuar download </button>
+                                <a href="{{route('consultas.show', $medicalAppointment->id)}}" class="btn btn-block btn-info-alternative"><i class="fa fa-eye"></i> Visualizar </a>
 
                             </div>
-                        </div>
+
+                            </div>
 
                     </div>
+
+
+                    @endforeach
+
+
+
+
                 </div>
             </div>
         </div>

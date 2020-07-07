@@ -29,11 +29,11 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index')->name('home');
 
     Route::resource('queixas', 'ComplaintController');
-    Route::resource('pontos-de-conduta', 'ConductionPointController');
+    Route::resource('pontos-de-conducao', 'ConductionPointController');
     Route::resource('consultas', 'MedicalAppointmentController');
     Route::resource('unidades-de-saude', 'HealthUnitController');
     Route::resource('usuarios', 'UserController');
-    Route::get('usuarios/{usuario}/historico-de-consultas', 'UserController@showHistoryOfMedicalAppointmensByUserId')->name('usuarios.medicalAppointmentsHistory');
+    Route::get('usuarios/{usuario}/historico-de-consultas', 'MedicalAppointmentController@showHistoryOfMedicalAppointmensByUserId')->name('usuarios.medicalAppointmentsHistory');
 
     Route::post('renderizar-lista-usuarios-nome-e-id-por-nome', 'UserController@renderUsersListWithRGAndIdByLikeName');
 });

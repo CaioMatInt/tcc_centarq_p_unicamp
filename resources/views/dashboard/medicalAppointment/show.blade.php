@@ -91,7 +91,7 @@
                                         </div>
 
                                         <div class="mt-2 col-12">
-                                            <span class="font-weight-bold">Pontos de conduta:</span>
+                                            <span class="font-weight-bold">Pontos de condução:</span>
                                             @foreach($resource->medicalAppointmentConductionPoints as $conductionPoint)
                                                 <span class="badge badge-info font-size-15px">
                                                     {{$conductionPoint->name}}

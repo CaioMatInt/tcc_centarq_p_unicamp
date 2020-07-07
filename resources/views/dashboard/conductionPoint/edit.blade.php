@@ -22,9 +22,6 @@
                                 <div class="col-12 col-sm-12 col-md-12 col-xl-4">
                                 <x-input-type-component :name="'name'" :label="'Nome'" :type="'text'" :value="$resource->name" />
                                 </div>
-                                <div class="col-12 col-sm-12 col-md-12 col-xl-4">
-                                    <x-input-type-component :name="'description'" :label="'Descrição'" :type="'text'" :value="$resource->description" />
-                                </div>
 
                             </div>
 

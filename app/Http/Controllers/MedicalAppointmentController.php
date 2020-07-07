@@ -43,7 +43,7 @@ class MedicalAppointmentController extends Controller
     public function index()
     {
         $data = [
-            'resources' => $this->medicalAppointmentService->renderListWithRelationships(['user', 'healthUnit']),
+            'resources' => $this->medicalAppointmentService->renderPaginatedWithRelationships(10, ['user', 'healthUnit']),
             'pageTitle' => 'Cadastro de ' . $this->pluralName,
             'crudRouteName' => $this->crudRouteName
 
@@ -199,6 +199,22 @@ class MedicalAppointmentController extends Controller
             return redirect()->route($this->crudRouteName . '.index');
         }
     }
+
+    /**
+     * @return void
+     */
+    public function showHistoryOfMedicalAppointmensByUserId($id)
+    {
+        $data = [
+            'pageTitle' => 'Visualizar histórico de consultas ',
+            'resources' => $this->medicalAppointmentService->renderHistoryOfMedicalAppointmensByUserId($id),
+            'crudRouteName' => $this->crudRouteName,
+            'pluralName' => $this->pluralName,
+        ];
+
+        return view('dashboard.' . $this->crudFolder . '.historyOfMedicalAppointments', $data);
+    }
+
 
 
 }

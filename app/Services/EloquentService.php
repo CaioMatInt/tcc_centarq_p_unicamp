@@ -40,6 +40,15 @@ abstract class EloquentService
     }
 
     /**
+     * @return mixed
+     */
+    public function renderPaginatedWithRelationships($records_by_page, $relationships)
+    {
+        return $this->repository->getAllPaginatedWithRelationships($records_by_page, $relationships);
+    }
+
+
+    /**
      * @param $id
      * @return mixed
      */

@@ -24,8 +24,8 @@
                         <thead class="thead-light-dark">
                         <tr>
 
-                            <th width="45%" >Nome</th>
-                            <th width="45%" >Descrição</th>
+                            <th width="70%" >Nome</th>
+
                             <th width="30%" class="text-center">Ações</th>
                         </tr>
                         </thead>
@@ -35,10 +35,6 @@
                         <tr>
 
                             <td>{{$resource->name}}</td>
-                            <td>{{$resource->description}}</td>
-
-
-
 
                             <td class="text-center">
                                 <a href="{{route(''.$crudRouteName.'.edit', $resource->id)}}" class="btn btn-warning-alternative"><i class="fa fa-edit mr-1"></i></a>

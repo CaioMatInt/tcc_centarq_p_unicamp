@@ -61,9 +61,9 @@
       </li>
 
       <li class="nav-item">
-          <a class="nav-link" href="{{route('pontos-de-conduta.index')}}">
+          <a class="nav-link" href="{{route('pontos-de-conducao.index')}}">
               <i class="menu-icon fa fa-comment-medical"></i>
-              <span class="menu-title">Pontos de Conduta</span>
+              <span class="menu-title">Pontos de Condução</span>
           </a>
       </li>
 

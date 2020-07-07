@@ -37,7 +37,7 @@
                         <tr>
 
                             <td>
-                                <img height="50" src="{{ url($resource->image) }}">
+                                <img class="rounded-circle height-50px" src="{{ url($resource->image) }}">
                             </td>
                             <td>{{$resource->name}}</td>
                             <td>{{$resource->email}}</td>

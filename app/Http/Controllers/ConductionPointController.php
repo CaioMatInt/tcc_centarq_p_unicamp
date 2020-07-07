@@ -11,12 +11,12 @@ class ConductionPointController extends Controller
 {
     private $conductionPointService;
     /* Name of this CRUD in Portuguese and in plural */
-    public $pluralName = 'Pontos de conduta';
+    public $pluralName = 'Pontos de condução';
     /* Name of this CRUD in Portuguese*/
-    public $name = 'Ponto de conduta';
+    public $name = 'Ponto de condução';
     /* Name of the this CRUD folder, in resources, used along this class in "return views" */
     public $crudFolder = 'conductionPoint';
-    public $crudRouteName = 'pontos-de-conduta';
+    public $crudRouteName = 'pontos-de-conducao';
 
     public function __construct(ConductionPointService $conductionPointService)
     {

@@ -33,7 +33,7 @@
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-xl-4">
-                                    <x-input-multiple-select2-component :id="'conductionPointsSelect'" :name="'conductionPoints'" :label="'Ponto(s) de Conduta'" :options="$conductionPointsArray" :current="$selectedConductionPointsArray" />
+                                    <x-input-multiple-select2-component :id="'conductionPointsSelect'" :name="'conductionPoints'" :label="'Ponto(s) de Condução'" :options="$conductionPointsArray" :current="$selectedConductionPointsArray" />
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-xl-4">

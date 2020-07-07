@@ -36,7 +36,7 @@
 
                             <tr>
                                 <td>
-                                    <img height="50" src="{{ url($resource->user->image) }}">
+                                    <img class="rounded-circle height-50px" src="{{ url($resource->user->image) }}">
                                 </td>
                                 <td>{{$resource->user->name}}</td>
                                 <td>{{$resource->created_at}}</td>
@@ -66,6 +66,13 @@
                         </tbody>
                     </table>
                     </div>
+
+                    <hr />
+
+                    <div class="d-flex justify-content-end mt-5">
+                        {{ $resources->links() }}
+                    </div>
+
 
 
                 </div>
