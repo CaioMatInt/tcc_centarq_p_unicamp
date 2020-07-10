@@ -37,6 +37,6 @@ class User extends Authenticatable
 
     public function getImageAttribute($image)
     {
-        return $image ? 'storage/' . $image : 'images/common_user.png';
+        return $image ? $image : 'images/common_user.png';
     }
 }

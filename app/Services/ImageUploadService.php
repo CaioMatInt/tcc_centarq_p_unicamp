@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class ImageUploadService
 {
@@ -18,9 +19,20 @@ class ImageUploadService
         try {
             $imageExtension   = $imageObject->getClientOriginalExtension();
             $imageName = 'user_' . $userId . '.' .  $imageExtension;
-            $imageObject->storeAs('public/images/user_images/', $imageName);
+            $tempImagePath = 'images/user_temporary_images/' . $imageName;
+            $storagePath = '/public/images/user_images/' . $imageName;
 
-            return 'images/user_images/' . $imageName;
+
+            $resizedImage = Image::make($imageObject)->fit(100);
+            $tempImagePath = public_path($tempImagePath);
+            $resizedImage->save($tempImagePath);
+
+            Storage::put($storagePath, $resizedImage->__toString());
+
+            unlink($tempImagePath);
+
+            return 'storage/images/user_images/' . $imageName;
+
 
         }catch(\Exception $e){
 
