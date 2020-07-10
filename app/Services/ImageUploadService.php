@@ -18,12 +18,12 @@ class ImageUploadService
     {
         try {
             $imageExtension   = $imageObject->getClientOriginalExtension();
-            dd($imageExtension);
+
             $imageName = 'user_' . $userId . '.' .  $imageExtension;
             $tempImagePath = 'images/user_temporary_images/' . $imageName;
             $storagePath = '/public/images/user_images/' . $imageName;
 
-
+            dd($imageObject, $imageName, $tempImagePath, $storagePath);
             $resizedImage = Image::make($imageObject)->fit(100);
             $tempImagePath = public_path($tempImagePath);
             $resizedImage->save($tempImagePath);
