@@ -18,6 +18,7 @@ class ImageUploadService
     {
         try {
             $imageExtension   = $imageObject->getClientOriginalExtension();
+            dd($imageExtension);
             $imageName = 'user_' . $userId . '.' .  $imageExtension;
             $tempImagePath = 'images/user_temporary_images/' . $imageName;
             $storagePath = '/public/images/user_images/' . $imageName;
@@ -30,6 +31,8 @@ class ImageUploadService
             Storage::put($storagePath, $resizedImage->__toString());
 
             unlink($tempImagePath);
+//            Image::make($file)->save(Storage::path($filePath));
+
 
             return 'storage/images/user_images/' . $imageName;
 
