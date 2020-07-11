@@ -28,26 +28,22 @@
                                             <span class="font-weight-bold">Registro criado por:</span> {{$resource->createdByUserName}}
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-12 col-xl-4">
-                                            <span class="font-weight-bold">Data da Consulta:</span> {{$resource->created_at}}
+                                            <span class="font-weight-bold">Data da Consulta:</span> {{$resource->date}}
                                         </div>
 
+                                        <div class="col-12 col-sm-12 col-md-12 col-xl-4">
+                                            <span class="font-weight-bold">Tipo de frequência:</span> {{$resource->frequency_type}}
+                                        </div>
                                     </div>
 
                                     <div class="mt-3 row">
 
                                         <div class="col-12 col-sm-12 col-md-12 col-xl-4">
-                                            <span class="font-weight-bold">Tipo de frequência:</span> {{$resource->frequency_type}}
-                                        </div>
-                                        <div class="col-12 col-sm-12 col-md-12 col-xl-4">
                                             <span class="font-weight-bold">Unidade de saúde:</span> {{$resource->healthUnitName}}
                                         </div>
+
                                         <div class="col-12 col-sm-12 col-md-12 col-xl-4">
-                                            <span class="font-weight-bold">Observações:</span>
-                                            @if($resource->observations)
-                                                {{$resource->observations}}
-                                            @else
-                                                Sem observações
-                                            @endif
+                                            <span class="font-weight-bold">Criado em:</span> {{$resource->created_at}}
                                         </div>
 
                                     </div>
@@ -77,6 +73,21 @@
                                         </div>
 
                                     </div>
+
+                                    @if($resource->observations)
+
+                                        <hr />
+
+                                        <div class="mt-2 row">
+                                            <div class="col-12 col-sm-12 col-md-12 col-xl-4">
+                                                <span class="font-weight-bold">Observações:</span>
+
+                                                {{$resource->observations}}
+                                            </div>
+
+                                        </div>
+
+                                    @endif
 
                                 </div>
 

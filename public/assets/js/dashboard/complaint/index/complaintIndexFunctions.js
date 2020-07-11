@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-    $('#confirmDeletionOfComplaint').click(function() {
+    $('.confirmDeletionOfComplaint').click(function() {
         Swal.fire({
             title: 'Tem certeza que deseja remover este registro?',
             text: "Não há como reverter esta remoção",
@@ -9,7 +9,7 @@ $( document ).ready(function() {
             confirmButtonText: 'Remover'
         }).then((result) => {
             if (result.value) {
-                $('#formDestroyComplaint').submit();
+                $(this).parent().submit();
             }
         })
 

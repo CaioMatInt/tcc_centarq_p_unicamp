@@ -38,11 +38,11 @@
                             <td class="text-center">
                                 <a href="{{route(''.$crudRouteName.'.edit', $resource->id)}}" class="btn btn-warning-alternative"><i class="fa fa-edit mr-1"></i></a>
                                 <a>
-                                    <form id="formDestroyHealthUnit" class="d-inline" method="POST" action="{{route(''.$crudRouteName.'.destroy', $resource->id)}}">
+                                    <form class="d-inline formDestroyHealthUnit" method="POST" action="{{route(''.$crudRouteName.'.destroy', $resource->id)}}">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
 
-                                        <button id="confirmDeletionOfHealthUnit" type="button" class="btn btn-danger-alternative"><i class="fa fa-trash mr-1"></i></button>
+                                        <button type="button" class="btn btn-danger-alternative confirmDeletionOfHealthUnit"><i class="fa fa-trash mr-1"></i></button>
 
                                     </form>
                                 </a>

@@ -25,8 +25,7 @@
                         <tr>
                             <th width="20%">Imagem</th>
                             <th width="20%">Paciente</th>
-
-                            <th width="20%">Data de criação</th>
+                            <th width="20%">Data de consulta</th>
                             <th class="text-center" width="20%">Ações</th>
                         </tr>
                         </thead>
@@ -39,7 +38,7 @@
                                     <img class="rounded-circle height-50px" src="{{ url($resource->user->image) }}">
                                 </td>
                                 <td>{{$resource->user->name}}</td>
-                                <td>{{$resource->created_at}}</td>
+                                <td>{{$resource->date}}</td>
                                 <td class="text-center">
                                     <a href="{{route(''.$crudRouteName.'.show', $resource->id)}}" class="btn btn-info-alternative"><i class="fa fa-eye mr-1"></i></a>
                                     <a href="{{route(''.$crudRouteName.'.edit', $resource->id)}}" class="btn btn-warning-alternative"><i class="fa fa-edit mr-1"></i></a>

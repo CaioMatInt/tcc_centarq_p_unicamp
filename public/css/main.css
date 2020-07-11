@@ -174,3 +174,12 @@
 .height-40px{
     height: 40px
 }
+
+.select2-container--default .select2-selection--multiple{
+    padding-bottom: 0 !important;
+}
+
+.defaultSelectInputStyle{
+    border: solid 1px #8862E0 !important;
+    border-radius: 4px;
+}

@@ -1,7 +1,7 @@
 
 <div class="form-group {{ $errors->has($name) ? 'has-error' : '' }}">
     <label for="{{$id}}">{{$label}} </label>
-    <select class="form-control" name="{{$name}}" id="{{$id}}">
+    <select class="form-control defaultSelectInputStyle" name="{{$name}}" id="{{$id}}">
 
         {{--Se o usuário já selecionou uma opção e enviou o formulário, mas o backend retornou erros, é necessário re-selecionar a opção anteriormente selecionada--}}
         @if(old($name))

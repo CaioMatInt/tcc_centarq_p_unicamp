@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property int $id
@@ -20,10 +21,11 @@ use Illuminate\Database\Eloquent\Model;
 class MedicalAppointment extends Model
 {
     public $timestamps = true;
+    use SoftDeletes;
     /**
      * @var array
      */
-    protected $fillable = ['user_id', 'health_unit_id', 'observations', 'created_at', 'created_by_user_id', 'updated_at'];
+    protected $fillable = ['user_id', 'health_unit_id', 'observations', 'created_at', 'created_by_user_id', 'updated_at', 'date', 'deleted_at', 'frequency_type'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -65,5 +67,9 @@ class MedicalAppointment extends Model
         return Carbon::parse($value)->format('d-m-Y H:m');
     }
 
+    public function getDateAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
 
 }

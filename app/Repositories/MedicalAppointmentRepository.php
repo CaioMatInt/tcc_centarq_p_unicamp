@@ -46,7 +46,7 @@ class MedicalAppointmentRepository extends EloquentRepository
 
     public function getHistoryOfMedicalAppointmensByUserId($id)
     {
-        return \DB::select("SELECT m.frequency_type, m.observations, m.created_at, u.name as userName, s.name as createdByUserName, h.name as healthUnitName,
+        return \DB::select("SELECT m.date, m.frequency_type, m.observations, m.created_at, u.name as userName, s.name as createdByUserName, h.name as healthUnitName,
         group_concat(DISTINCT c.name separator ',') as medicalAppointmentComplaints, group_concat(DISTINCT cp.name separator ',') as medicalAppointmentConductionPoints
         FROM medical_appointments as m
 		INNER JOIN users as s ON m.created_by_user_id=s.id
@@ -55,15 +55,17 @@ class MedicalAppointmentRepository extends EloquentRepository
         INNER JOIN complaints as c ON mac.complaint_id = c.id
         INNER JOIN medical_appointment_conduction_point as macp ON m.id = macp.medical_appointment_id 
         INNER JOIN conduction_points as cp ON macp.conduction_point_id = cp.id 
-        INNER JOIN users as u ON m.user_id=u.id WHERE m.user_id = ?
-        group by m.id, m.frequency_type, m.observations, m.created_at, u.name, s.name, h.name", [$id]);
+        INNER JOIN users as u ON m.user_id=u.id
+        WHERE m.user_id = ?
+        AND m.deleted_at IS NULL 
+        group by m.id, m.frequency_type, m.observations, m.created_at, u.name, s.name, h.name, m.date", [$id]);
 
     }
 
 
     public function getLastMedicalAppointments($total_of_appointments)
     {
-        return \DB::select("SELECT m.frequency_type, m.observations, m.created_at, u.name as userName, s.name as createdByUserName, h.name as healthUnitName,
+        return \DB::select("SELECT m.date, m.frequency_type, m.observations, m.created_at, u.name as userName, s.name as createdByUserName, h.name as healthUnitName,
         group_concat(DISTINCT c.name separator ',') as medicalAppointmentComplaints, group_concat(DISTINCT cp.name separator ',') as medicalAppointmentConductionPoints
         FROM medical_appointments as m 
         INNER JOIN users as u ON m.user_id=u.id
@@ -72,7 +74,8 @@ class MedicalAppointmentRepository extends EloquentRepository
         INNER JOIN medical_appointment_complaints as mac ON m.id = mac.medical_appointment_id
         INNER JOIN complaints as c ON mac.complaint_id = c.id
         INNER JOIN medical_appointment_conduction_point as macp ON m.id = macp.medical_appointment_id 
-        INNER JOIN conduction_points as cp ON macp.conduction_point_id = cp.id group by m.id, m.frequency_type, m.observations, m.created_at, u.name, s.name, h.name
+        INNER JOIN conduction_points as cp ON macp.conduction_point_id = cp.id group by m.id, m.frequency_type, m.observations, m.created_at, u.name, s.name, h.name, m.date
+        m.deleted_at IS NULL
         LIMIT ?", [$total_of_appointments]);
 
     }

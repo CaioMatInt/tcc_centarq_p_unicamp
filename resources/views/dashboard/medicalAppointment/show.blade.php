@@ -52,7 +52,7 @@
                                             <span class="font-weight-bold">Registro criado por:</span> {{$resource->createdByUser->name}}
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-12 col-xl-4">
-                                            <span class="font-weight-bold">Data da Consulta:</span> {{$resource->created_at}}
+                                            <span class="font-weight-bold">Data da Consulta:</span> {{$resource->date}}
                                         </div>
 
                                     </div>
@@ -66,13 +66,9 @@
                                             <span class="font-weight-bold">Unidade de saúde:</span> {{$resource->healthUnit->name}}
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-12 col-xl-4">
-                                            <span class="font-weight-bold">Observações:</span>
-                                            @if($resource->observations)
-                                                {{$resource->observations}}
-                                            @else
-                                                Sem observações
-                                            @endif
+                                            <span class="font-weight-bold">Criado em:</span> {{$resource->created_at}}
                                         </div>
+
 
                                     </div>
 
@@ -101,6 +97,21 @@
                                         </div>
 
                                     </div>
+
+                                    @if($resource->observations)
+
+                                    <hr />
+
+                                    <div class="mt-2 row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-xl-4">
+                                            <span class="font-weight-bold">Observações:</span>
+
+                                                {{$resource->observations}}
+                                        </div>
+
+                                    </div>
+
+                                    @endif
 
                                 </div>
 

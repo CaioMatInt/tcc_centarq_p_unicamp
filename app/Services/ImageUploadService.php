@@ -30,8 +30,6 @@ class ImageUploadService
             Storage::put($storagePath, $resizedImage->__toString());
 
             unlink($tempImagePath);
-//            Image::make($file)->save(Storage::path($filePath));
-
 
             return 'storage/images/user_images/' . $imageName;
 

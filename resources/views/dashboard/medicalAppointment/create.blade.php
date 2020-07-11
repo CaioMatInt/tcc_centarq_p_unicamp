@@ -35,8 +35,17 @@
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-xl-4">
+                                    <x-input-type-component :type="'date'" :name="'date'" :label="'Data da consulta'" />
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-xl-4">
+                                    <x-input-select-component :name="'frequency_type'" :label="'Tipo de Frequência'" :options="['Primeira vez'=>'Primeira vez', 'Retorno'=>'Retorno', 'Eventual'=>'Eventual']" />
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-xl-4">
                                     <x-input-type-component :type="'text'" :name="'observations'" :label="'Observações'" />
                                 </div>
+
                             </div>
 
                             <br>

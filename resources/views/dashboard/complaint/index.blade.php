@@ -40,11 +40,11 @@
                             <td class="text-center">
                                 <a href="{{route(''.$crudRouteName.'.edit', $resource->id)}}" class="btn btn-warning-alternative"><i class="fa fa-edit mr-1"></i></a>
                                 <a>
-                                    <form id="formDestroyComplaint" class="d-inline" method="POST" action="{{route(''.$crudRouteName.'.destroy', $resource->id)}}">
+                                    <form class="d-inline formDestroyComplaint" method="POST" action="{{route(''.$crudRouteName.'.destroy', $resource->id)}}">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
 
-                                        <button id="confirmDeletionOfComplaint" type="button" class="btn btn-danger-alternative"><i class="fa fa-trash mr-1"></i></button>
+                                        <button type="button" class="btn btn-danger-alternative confirmDeletionOfComplaint"><i class="fa fa-trash mr-1"></i></button>
 
                                     </form>
                                 </a>
