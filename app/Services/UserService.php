@@ -43,9 +43,9 @@ class UserService extends EloquentService
         $userPersistance = $this->userRepository->create($data);
 
 
-        $dataToUpdateImage['image'] = $this->imageUploadService->uploadUserImage($userImageToUpload, $userPersistance->id);
+        $imageToUpdate = $this->imageUploadService->uploadUserImage($userImageToUpload, $userPersistance->id);
 
-        self::buildUpdate($userPersistance->id, $dataToUpdateImage);
+        self::buildUpdateUserImage($userPersistance->id, $imageToUpdate);
 
         return $userPersistance;
 
@@ -76,6 +76,16 @@ class UserService extends EloquentService
     }
 
 
+    /**
+     * @param $id
+     * @param $data
+     * @return bool
+     */
+    public function buildUpdateUserImage($id, $image)
+    {
+        $this->repository->update($id, ['image' => $image]);
+
+    }
 
 
 

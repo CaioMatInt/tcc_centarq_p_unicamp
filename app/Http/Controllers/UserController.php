@@ -136,7 +136,7 @@ class UserController extends Controller
             ]);
 
         } catch (\Exception $e) {
-            dd($e);
+
 
             $request->session()->flash('msg', [
                 'type' => 'error',
