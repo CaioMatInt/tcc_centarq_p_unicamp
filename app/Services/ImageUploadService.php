@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -16,15 +17,18 @@ class ImageUploadService
 
     public function uploadUserImage($imageObject, $userId)
     {
-        try {
+
             $imageExtension   = $imageObject->getClientOriginalExtension();
 
-            $imageName = 'user_' . $userId . '.' .  $imageExtension;
+            $imageName = 'user_' . $userId . '_' . Carbon::now()->format('d_m_y') . '.' .  $imageExtension;
             $tempImagePath = 'images/user_temporary_images/' . $imageName;
             $storagePath = '/public/images/user_images/' . $imageName;
 
             $resizedImage = Image::make($imageObject)->fit(100);
             $tempImagePath = public_path($tempImagePath);
+
+            /*Fix mobile flipping of the photo*/
+            $resizedImage->orientate();
             $resizedImage->save($tempImagePath);
 
             Storage::put($storagePath, $resizedImage->__toString());
@@ -33,11 +37,6 @@ class ImageUploadService
 
             return 'storage/images/user_images/' . $imageName;
 
-
-        }catch(\Exception $e){
-
-            throw new \Exception('Failed to upload image, error: ' .  $e);
-        }
 
     }
 

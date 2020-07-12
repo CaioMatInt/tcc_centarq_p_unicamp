@@ -110,7 +110,9 @@ class UserController extends Controller
             'pageTitle' => 'Editar ' . $this->name,
             'resource' => $this->userService->renderEdit($id),
             'crudRouteName' => $this->crudRouteName,
-            'pluralName' => $this->pluralName
+            'pluralName' => $this->pluralName,
+            'userTypesArray' => $this->userTypeService->renderArrayForSelectInputWithOnlyNameAndID(),
+            'gendersArray' => $this->genderService->renderArrayForSelectInputWithOnlyNameAndID()
         ];
 
         return view('dashboard.' . $this->crudFolder . '.edit', $data);
@@ -134,6 +136,7 @@ class UserController extends Controller
             ]);
 
         } catch (\Exception $e) {
+            dd($e);
 
             $request->session()->flash('msg', [
                 'type' => 'error',
