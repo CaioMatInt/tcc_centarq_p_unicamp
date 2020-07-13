@@ -17,37 +17,60 @@ $( document ).ready(function() {
 
 
     initUserDatatables = function (ajaxListRoute, defaultEditRouteName, defaultMedicalAppointmentHistoryRoute) {
-            $('#user_datatable').DataTable({
-                processing: true,
-                serverSide: true,
-                responsive: true,
-                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-                language: {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese-Brasil.json"
-                },
-                ajax: ajaxListRoute,
-                columns: [
-                    {
-                        data: 'image',
-                        name: 'image',
-                        render: function (data, type, row) {
-                            /* Replace default -1 ID in URL to the actual ID */
-                            return `
-                              <img class="rounded-circle height-50px" src="${window.location.origin + '/' + data }"> `
-                        }
-                    },
-                    {data: 'name', name: 'name'},
-                    {data: 'email', name: 'email'},
-                    {data: 'rg', name: 'rg'},
-                    {
-                        data: 'id',
-                        name: 'Ações',
-                        render: function (data, type, row) {
-                            /* Replace default -1 ID in URL to the actual ID */
-                            let currentEditRoute = defaultEditRouteName.replace(-1, data);
-                            let currentMedicalAppointmentHistoryRoute = defaultMedicalAppointmentHistoryRoute.replace(-1, data);
+        var table = $('#user_datatable').DataTable({
+            processing: true,
+            serverSide: true,
+            responsive: true,
+            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
 
-                            return `
+            language: {
+                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese-Brasil.json",
+            },
+            dom: '<"row"<"col-12"B>><"row mt-3"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>  <"top"rt><"bottom"ip><"clear">',
+            buttons: [
+                {
+                    extend: 'excelHtml5', className: 'btn btn-data-tables mdi mdi-file-excel',
+                    exportOptions: {
+                        columns: [1, 2, 3]
+                    }
+                },
+                {
+                    extend: 'csvHtml5', className: 'btn btn-data-tables mdi mdi-file-excel',
+                    exportOptions: {
+                        columns: [1, 2, 3]
+                    }
+                },
+                {
+                    extend: 'pdfHtml5', className: 'btn btn-data-tables mdi mdi-file-pdf',
+                    exportOptions: {
+                        columns: [1, 2, 3]
+                    }
+                }
+            ],
+            ajax: ajaxListRoute,
+            columns: [
+                {
+                    data: 'image',
+                    name: 'image',
+                    render: function (data, type, row) {
+                        /* Replace default -1 ID in URL to the actual ID */
+                        return `
+                              <img class="rounded-circle height-50px" src="${window.location.origin + '/' + data}"> `
+
+                    }
+                },
+                {data: 'name', name: 'name'},
+                {data: 'email', name: 'email'},
+                {data: 'rg', name: 'rg'},
+                {
+                    data: 'id',
+                    name: 'Ações',
+                    render: function (data, type, row) {
+                        /* Replace default -1 ID in URL to the actual ID */
+                        let currentEditRoute = defaultEditRouteName.replace(-1, data);
+                        let currentMedicalAppointmentHistoryRoute = defaultMedicalAppointmentHistoryRoute.replace(-1, data);
+
+                        return `
                               <div class="text-center">
                                     <a data-toggle="tooltip" data-placement="top" title="Visualizar histórico de consultas" href="${currentMedicalAppointmentHistoryRoute}"
                                         class="ml-1 btn btn-info-alternative"><i class="fa fa-history"></i>
@@ -55,12 +78,13 @@ $( document ).ready(function() {
                                     <a href="${currentEditRoute}" class="btn btn-warning-alternative"><i class="fa fa-edit mr-1"></i>
                                     </a>
                               </div> `
-                        }
-                    },
+                    }
+                },
 
-                ],
-            });
-        }
+            ],
+        });
+
+    }
 
 
 });

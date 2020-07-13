@@ -27,6 +27,27 @@ $( document ).ready(function() {
                 "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese-Brasil.json"
             },
             ajax: ajaxListRoute,
+            dom: '<"row"<"col-12"B>><"row mt-3"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>  <"top"rt><"bottom"ip><"clear">',
+            buttons: [
+                {
+                    extend: 'excelHtml5', className: 'btn btn-data-tables mdi mdi-file-excel',
+                    exportOptions: {
+                        columns: [1, 2]
+                    }
+                },
+                {
+                    extend: 'csvHtml5', className: 'btn btn-data-tables mdi mdi-file-excel',
+                    exportOptions: {
+                        columns: [1, 2]
+                    }
+                },
+                {
+                    extend: 'pdfHtml5', className: 'btn btn-data-tables mdi mdi-file-pdf',
+                    exportOptions: {
+                        columns: [1, 2]
+                    }
+                }
+            ],
             columns: [
                 {
                     data: 'user.image',

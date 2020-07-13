@@ -12,7 +12,7 @@
                     <div class="row">
 
                         <div class="col-12 col-xl-10">
-                            <h3 class="page-table-title mb-5"><i class="fa fa-comment-medical"></i> <span class="ml-2">{{$pageTitle}}</span></h3>
+                            <h3 class="page-table-title mb-4"><i class="fa fa-comment-medical"></i> <span class="ml-2">{{$pageTitle}}</span></h3>
                         </div>
                         <div class="col-12 col-xl-2 text-right mb-2">
                             <a href="{{route(''.$crudRouteName.'.create')}}" class="btn btn-success btn-block text-white"><i class="fa fa-plus"></i> Cadastrar</a>

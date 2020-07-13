@@ -64,6 +64,13 @@
     border: none !important;
 }
 
+.btn-data-tables{
+    color: #7C7EB1 !important;
+    background-color: white;
+    border-color: #7C7EB1 !important;
+    border-radius: 5px;
+}
+
 .strippedAdminLine{
     background: #fcfcfc; border-radius: 5px;
 }
@@ -183,3 +190,4 @@
     border: solid 1px #8862E0 !important;
     border-radius: 4px;
 }
+
