@@ -17,6 +17,8 @@ $( document ).ready(function() {
 
 
     initUserDatatables = function (ajaxListRoute, defaultEditRouteName, defaultMedicalAppointmentHistoryRoute) {
+        let nowHourAndMinutesToDataTables = getNowHourAndMinutesToDataTables();
+
         var table = $('#user_datatable').DataTable({
             processing: true,
             serverSide: true,
@@ -31,19 +33,22 @@ $( document ).ready(function() {
                 {
                     extend: 'excelHtml5', className: 'btn btn-data-tables mdi mdi-file-excel',
                     exportOptions: {
-                        columns: [1, 2, 3]
+                        columns: [1, 2, 3],
+                        title: 'Usuarios_' + nowHourAndMinutesToDataTables
                     }
                 },
                 {
                     extend: 'csvHtml5', className: 'btn btn-data-tables mdi mdi-file-excel',
                     exportOptions: {
-                        columns: [1, 2, 3]
+                        columns: [1, 2, 3],
+                        title: 'Usuarios_' + nowHourAndMinutesToDataTables
                     }
                 },
                 {
                     extend: 'pdfHtml5', className: 'btn btn-data-tables mdi mdi-file-pdf',
                     exportOptions: {
-                        columns: [1, 2, 3]
+                        columns: [1, 2, 3],
+                        title: 'Usuarios_' + nowHourAndMinutesToDataTables
                     }
                 }
             ],

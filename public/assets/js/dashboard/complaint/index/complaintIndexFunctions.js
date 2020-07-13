@@ -17,7 +17,9 @@ $( document ).ready(function() {
 
 
     initComplaintDatatables = function (ajaxListRoute, defaultEditRouteName, defaultDestroyRouteName, csrf_token_field) {
-            $('#complaints_datatable').DataTable({
+        let nowHourAndMinutesToDataTables = getNowHourAndMinutesToDataTables();
+
+        $('#complaints_datatable').DataTable({
                 processing: true,
                 serverSide: true,
                 responsive: true,
@@ -32,18 +34,21 @@ $( document ).ready(function() {
                         extend: 'excelHtml5', className: 'btn btn-data-tables mdi mdi-file-excel',
                         exportOptions: {
                             columns: [0]
-                        }
+                        },
+                        title: 'Queixas_' + nowHourAndMinutesToDataTables
                     },
                     {
                         extend: 'csvHtml5', className: 'btn btn-data-tables mdi mdi-file-excel',
                         exportOptions: {
-                            columns: [0]
+                            columns: [0],
+                            title: 'Queixas_' + nowHourAndMinutesToDataTables
                         }
                     },
                     {
                         extend: 'pdfHtml5', className: 'btn btn-data-tables mdi mdi-file-pdf',
                         exportOptions: {
-                            columns: [0]
+                            columns: [0],
+                            title: 'Queixas_' + nowHourAndMinutesToDataTables
                         }
                     }
                 ],

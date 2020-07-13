@@ -17,6 +17,8 @@ $( document ).ready(function() {
 
 
     initConductionPointsDatatables = function (ajaxListRoute, defaultEditRouteName, defaultDestroyRouteName, csrf_token_field) {
+        let nowHourAndMinutesToDataTables = getNowHourAndMinutesToDataTables();
+
         $('#conduction_points_datatable').DataTable({
             processing: true,
             serverSide: true,
@@ -32,19 +34,22 @@ $( document ).ready(function() {
                     extend: 'excelHtml5', className: 'btn btn-data-tables mdi mdi-file-excel',
                     exportOptions: {
                         columns: [0]
-                    }
+                    },
+                    title: 'Pontos_de_conducao_' + nowHourAndMinutesToDataTables
                 },
                 {
                     extend: 'csvHtml5', className: 'btn btn-data-tables mdi mdi-file-excel',
                     exportOptions: {
                         columns: [0]
-                    }
+                    },
+                    title: 'Pontos_de_conducao_' + nowHourAndMinutesToDataTables
                 },
                 {
                     extend: 'pdfHtml5', className: 'btn btn-data-tables mdi mdi-file-pdf',
                     exportOptions: {
                         columns: [0]
-                    }
+                    },
+                    title: 'Pontos_de_conducao_' + nowHourAndMinutesToDataTables
                 }
             ],
             columns: [

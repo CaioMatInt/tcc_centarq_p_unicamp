@@ -18,6 +18,8 @@ $( document ).ready(function() {
 
 
     initMedicalAppointmentsDatatables = function (ajaxListRoute, defaultEditRouteName, defaultShowRouteName, defaultDestroyRouteName , csrf_token_field) {
+        let nowHourAndMinutesToDataTables = getNowHourAndMinutesToDataTables();
+
         $('#medical_appointments_table').DataTable({
             processing: true,
             serverSide: true,
@@ -30,22 +32,26 @@ $( document ).ready(function() {
             dom: '<"row"<"col-12"B>><"row mt-3"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>  <"top"rt><"bottom"ip><"clear">',
             buttons: [
                 {
-                    extend: 'excelHtml5', className: 'btn btn-data-tables mdi mdi-file-excel',
+                    extend: 'excelHtml5',
+                    className: 'btn btn-data-tables mdi mdi-file-excel',
                     exportOptions: {
                         columns: [1, 2]
-                    }
+                    },
+                    title: 'Consultas_' + nowHourAndMinutesToDataTables
                 },
                 {
                     extend: 'csvHtml5', className: 'btn btn-data-tables mdi mdi-file-excel',
                     exportOptions: {
                         columns: [1, 2]
-                    }
+                    },
+                    title: 'Consultas_' + nowHourAndMinutesToDataTables
                 },
                 {
                     extend: 'pdfHtml5', className: 'btn btn-data-tables mdi mdi-file-pdf',
                     exportOptions: {
                         columns: [1, 2]
-                    }
+                    },
+                    title: 'Consultas_' + nowHourAndMinutesToDataTables
                 }
             ],
             columns: [

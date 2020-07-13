@@ -26,3 +26,11 @@
             text: textError
         }).show();
     }
+
+
+    function getNowHourAndMinutesToDataTables(){
+        let date = new Date();
+        let min = date.getMinutes();
+        let hour = date.getHours();
+        return hour + '_' + min;
+    }
