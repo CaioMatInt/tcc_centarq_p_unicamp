@@ -70,7 +70,7 @@
 
     <div class="row">
 
-        <div class="col-6">
+        <div class="col-12">
 
         <div class="card mt-3">
             <div class="p-4 pr-5 border-bottom bg-light d-sm-flex justify-content-between">
@@ -84,19 +84,6 @@
 
         </div>
 
-        <div class="col-6">
-
-            <div class="card mt-3">
-                <div class="p-4 pr-5 border-bottom bg-light d-sm-flex justify-content-between">
-                    <h4 class="">Gráfico de Queixas</h4>
-                    <div id="pie-chart-legend" class="mr-4"></div>
-                </div>
-                <div class="card-body d-flex">
-                    <canvas class="my-auto" id="pieChart" height="50"></canvas>
-                </div>
-            </div>
-
-        </div>
 
     </div>
 
@@ -136,7 +123,7 @@
                                     ]
                                 }
                             ],
-                            labels: ["Dor na febre", "Dor nas pernas", "Dor nas mãos"]
+                            labels: ["febre", "Dor nas pernas", "Dor nas mãos"]
                         },
                         options: {
                             responsive: true,
