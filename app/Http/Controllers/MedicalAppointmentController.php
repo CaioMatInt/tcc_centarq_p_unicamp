@@ -215,6 +215,14 @@ class MedicalAppointmentController extends Controller
         return view('dashboard.' . $this->crudFolder . '.historyOfMedicalAppointments', $data);
     }
 
+    public function medicalAppointmentsListInDatatablesFormat()
+    {
+        $users = $this->medicalAppointmentService->renderList();
+
+        return datatables()->of($users)
+            ->make(true);
+    }
+
 
 
 }

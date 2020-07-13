@@ -161,4 +161,12 @@ class ComplaintController extends Controller
         }
     }
 
+    public function complaintsListInDatatablesFormat()
+    {
+        $users = $this->complaintService->renderList();
+
+        return datatables()->of($users)
+            ->make(true);
+    }
+
 }

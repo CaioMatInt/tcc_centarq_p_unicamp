@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.css">
     <link rel="stylesheet" href="{{asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.css')}}">
+    <link  href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     @stack('custom-css')
 
@@ -53,7 +54,7 @@
   <!-- end plugin js -->
 
   <!-- common js -->
-
+  <script src="{{asset('assets/js/dashboard/globalHelpers/globalHelpers.js')}}"></script>
   <script src="{{asset('assets/js/off-canvas.js')}}"></script>
   <script src="{{asset('assets/js/hoverable-collapse.js')}}"></script>
   <script src="{{asset('assets/js/misc.js')}}"></script>
@@ -61,8 +62,9 @@
   <script src="{{asset('assets/js/todolist.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/js/all.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.js"></script>
-  <script src="{{asset('assets/js/dashboard/globalHelpers/globalHelpers.js')}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 
 
 

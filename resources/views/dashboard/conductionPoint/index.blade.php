@@ -20,43 +20,16 @@
                     </div>
 
                     <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" id="conduction_points_datatable">
                         <thead class="thead-light-dark">
                         <tr>
 
                             <th width="70%" >Nome</th>
-
                             <th width="30%" class="text-center">Ações</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @forelse($resources as $resource)
 
-                        <tr>
-
-                            <td>{{$resource->name}}</td>
-
-                            <td class="text-center">
-                                <a href="{{route(''.$crudRouteName.'.edit', $resource->id)}}" class="btn btn-warning-alternative"><i class="fa fa-edit mr-1"></i></a>
-                                <a>
-                                    <form class="d-inline formDestroyConductionPoint" method="POST" action="{{route(''.$crudRouteName.'.destroy', $resource->id)}}">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-
-                                        <button type="button" class="btn btn-danger-alternative confirmDeletionOfConductionPoint"><i class="fa fa-trash mr-1"></i></button>
-
-                                    </form>
-                                </a>
-                            </td>
-
-                        </tr>
-
-
-                        @empty
-
-                            <td>Nenhum resultado.</td>
-
-                        @endforelse
                         </tbody>
                     </table>
                     </div>
@@ -77,4 +50,20 @@
 
 @push('custom-scripts')
     <script src="{{asset('/assets/js/dashboard/conductionPoint/index/conductionPointIndexFunctions.js')}}"></script>
+
+    <script>
+        /* DataTables Script*/
+
+        $(document).ready( function () {
+            /* Get the necessary routes from PHP to action buttons of the listing */
+            let defaultEditRouteName = '{{route(''.$crudRouteName.'.edit', -1)}}';
+            let defaultDestroyRouteName = '{{route(''.$crudRouteName.'.destroy', -1)}}';
+            let ajaxListRoute = '{{ route(''.$crudRouteName.'.lista') }}';
+            let csrf_token_field = '{{ csrf_field() }}';
+
+            initConductionPointsDatatables(ajaxListRoute,defaultEditRouteName, defaultDestroyRouteName, csrf_token_field);
+
+        });
+
+    </script>
 @endpush

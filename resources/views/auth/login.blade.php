@@ -37,7 +37,7 @@
                                             <div class="offset-1 col-10">
                                                 <label for="email" hidden class="col-md-4 control-label">Email</label>
                                                 <input id="email"
-                                                       placeholder="&#xf0e0; E-mail" type="email" class="font-awesome-default form-control" name="email" value="{{ old('email') }}" required autofocus>
+                                                       placeholder="&#xf0e0; E-mail" type="email" class="font-awesome-default form-control" name="email" value="{{ 'admin@admin.com',old('email') }}" required autofocus>
 
                                             </div>
 
@@ -49,7 +49,7 @@
                                             <div class="offset-1 col-10">
                                                 <label for="password" hidden class="col-md-4 control-label">Password</label>
                                                 <input id="password"
-                                                       placeholder="&#xf11c; Senha" type="password" class="font-awesome-default form-control" name="password" required>
+                                                       placeholder="&#xf11c; Senha" type="password" class="font-awesome-default form-control" name="password" value="admin123456" required>
 
                                                 @if ($errors->has('email') || $errors->has('password'))
                                                     <span class="help-block">

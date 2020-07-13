@@ -161,4 +161,12 @@ class ConductionPointController extends Controller
         }
     }
 
+    public function conductionPointsListInDatatablesFormat()
+    {
+        $users = $this->conductionPointService->renderList();
+
+        return datatables()->of($users)
+            ->make(true);
+    }
+
 }

@@ -1,3 +1,4 @@
+
     function notyMsg(type, timeout, text){
        new Noty({
            theme: 'bootstrap-v4',

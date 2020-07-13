@@ -28,13 +28,27 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
 
     Route::get('/', 'HomeController@index')->name('home');
 
+    Route::group(['prefix' => 'queixas', 'middleware' => 'auth'], function () {
+        Route::get('lista-de-queixas', 'ComplaintController@complaintsListInDatatablesFormat')->name('queixas.lista');
+    });
     Route::resource('queixas', 'ComplaintController');
+
+    Route::group(['prefix' => 'pontos-de-conducao', 'middleware' => 'auth'], function () {
+        Route::get('lista-de-pontos-de-conducao', 'ConductionPointController@conductionPointsListInDatatablesFormat')->name('pontos-de-conducao.lista');
+    });
     Route::resource('pontos-de-conducao', 'ConductionPointController');
+
+    Route::group(['prefix' => 'consultas', 'middleware' => 'auth'], function () {
+        Route::get('lista-de-consultas', 'MedicalAppointmentController@medicalAppointmentsListInDatatablesFormat')->name('consultas.lista');
+    });
     Route::resource('consultas', 'MedicalAppointmentController');
+
+
     Route::resource('unidades-de-saude', 'HealthUnitController');
+
     Route::resource('usuarios', 'UserController');
     Route::get('usuarios/{usuario}/historico-de-consultas', 'MedicalAppointmentController@showHistoryOfMedicalAppointmensByUserId')->name('usuarios.medicalAppointmentsHistory');
-
+    Route::get('lista-de-usuarios', 'UserController@usersListInDatatablesFormat')->name('usuarios.lista');
     Route::post('renderizar-lista-usuarios-nome-e-id-por-nome', 'UserController@renderUsersListWithRGAndIdByLikeName');
 });
 

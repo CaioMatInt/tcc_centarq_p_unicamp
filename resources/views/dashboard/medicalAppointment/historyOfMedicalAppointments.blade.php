@@ -13,9 +13,10 @@
                         <x-breadcumb-user-location-component :previousLinks="[0 => ['link' => route($crudRouteName . '.index'), 'name' =>
                         'Cadastro de ' . $pluralName]]" :pageTitle="$pageTitle"/>
 
-                        <h5>Paciente: <span class="font-weight-bold">{{$resources[0]->userName}}</span></h5>
-
                         @if($resources)
+
+                            <h5>Paciente: <span class="font-weight-bold">{{$resources[0]->userName}}</span></h5>
+
 
                             @foreach($resources as $resource)
 
@@ -102,7 +103,7 @@
                                 <div class="card-body">
                                     <div class="row">
 
-                                        Sem registros.
+                                        Sem registros para o usuário solicitado
 
                                     </div>
                                 </div>

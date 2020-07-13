@@ -37,7 +37,7 @@ class UserController extends Controller
     {
 
         $data = [
-            'resources' => $this->userService->renderPaginated(10),
+            'resources' => $this->userService->renderList(),
             'pageTitle' => 'Cadastro de ' . $this->pluralName,
             'crudRouteName' => $this->crudRouteName
 
@@ -181,6 +181,14 @@ class UserController extends Controller
         $name = $request->all()['name'];
         return $this->userService->renderJsonListWithRGAndIdByLikeName($name);
 
+    }
+
+    public function usersListInDatatablesFormat()
+    {
+        $users = $this->userService->renderList();
+
+        return datatables()->of($users)
+            ->make(true);
     }
 
 }

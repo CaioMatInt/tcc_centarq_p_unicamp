@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-    $(document).on("click", '.confirmDeletionOfComplaint', function(){
+    $('.confirmDeletionOfUser').click(function() {
         Swal.fire({
             title: 'Tem certeza que deseja remover este registro?',
             text: "Não há como reverter esta remoção",
@@ -16,8 +16,8 @@ $( document ).ready(function() {
     });
 
 
-    initComplaintDatatables = function (ajaxListRoute, defaultEditRouteName, defaultDestroyRouteName, csrf_token_field) {
-            $('#complaints_datatable').DataTable({
+    initUserDatatables = function (ajaxListRoute, defaultEditRouteName, defaultMedicalAppointmentHistoryRoute) {
+            $('#user_datatable').DataTable({
                 processing: true,
                 serverSide: true,
                 responsive: true,
@@ -27,26 +27,30 @@ $( document ).ready(function() {
                 },
                 ajax: ajaxListRoute,
                 columns: [
+                    {
+                        data: 'image',
+                        name: 'image',
+                        render: function (data, type, row) {
+                            /* Replace default -1 ID in URL to the actual ID */
+                            return `
+                              <img class="rounded-circle height-50px" src="${window.location.origin + '/' + data }"> `
+                        }
+                    },
                     {data: 'name', name: 'name'},
-
+                    {data: 'email', name: 'email'},
+                    {data: 'rg', name: 'rg'},
                     {
                         data: 'id',
                         name: 'Ações',
                         render: function (data, type, row) {
                             /* Replace default -1 ID in URL to the actual ID */
                             let currentEditRoute = defaultEditRouteName.replace(-1, data);
-                            let currentDestroyRoute = defaultDestroyRouteName.replace(-1, data);
+                            let currentMedicalAppointmentHistoryRoute = defaultMedicalAppointmentHistoryRoute.replace(-1, data);
 
                             return `
                               <div class="text-center">
-                                     <a>
-                                    <form class="d-inline formDestroyComplaint" method="POST" action="${currentDestroyRoute}">
-                                        ${csrf_token_field}
-                                        <input type="hidden" name="_method" value="DELETE">
-
-                                        <button type="button" class="btn btn-danger-alternative confirmDeletionOfComplaint"><i class="fa fa-trash mr-1"></i></button>
-
-                                    </form>
+                                    <a data-toggle="tooltip" data-placement="top" title="Visualizar histórico de consultas" href="${currentMedicalAppointmentHistoryRoute}"
+                                        class="ml-1 btn btn-info-alternative"><i class="fa fa-history"></i>
                                     </a>
                                     <a href="${currentEditRoute}" class="btn btn-warning-alternative"><i class="fa fa-edit mr-1"></i>
                                     </a>

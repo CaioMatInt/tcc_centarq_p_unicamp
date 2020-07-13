@@ -20,58 +20,20 @@
                     </div>
 
                     <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" id="medical_appointments_table">
                         <thead class="thead-light-dark">
                         <tr>
                             <th width="20%">Imagem</th>
-                            <th width="20%">Paciente</th>
+                            <th width="40%">Paciente</th>
                             <th width="20%">Data de consulta</th>
                             <th class="text-center" width="20%">Ações</th>
                         </tr>
                         </thead>
-                        <tbody>
 
-                            @forelse($resources as $resource)
-
-                            <tr>
-                                <td>
-                                    <img class="rounded-circle height-50px" src="{{ url($resource->user->image) }}">
-                                </td>
-                                <td>{{$resource->user->name}}</td>
-                                <td>{{$resource->date}}</td>
-                                <td class="text-center">
-                                    <a href="{{route(''.$crudRouteName.'.show', $resource->id)}}" class="btn btn-info-alternative"><i class="fa fa-eye mr-1"></i></a>
-                                    <a href="{{route(''.$crudRouteName.'.edit', $resource->id)}}" class="btn btn-warning-alternative"><i class="fa fa-edit mr-1"></i></a>
-                                    <a>
-                                        <form class="d-inline" method="POST" action="{{route(''.$crudRouteName.'.destroy', $resource->id)}}">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-
-                                            <button type="button" class="btn btn-danger-alternative confirmDeletionOfMedicalAppointment"><i class="fa fa-trash mr-1"></i></button>
-
-                                        </form>
-                                    </a>
-                                </td>
-
-                            </tr>
-
-
-                            @empty
-
-                            <td>Nenhum resultado.</td>
-
-                            @endforelse
-
-                        </tbody>
                     </table>
                     </div>
 
                     <hr />
-
-                    <div class="d-flex justify-content-end mt-5">
-                        {{ $resources->links() }}
-                    </div>
-
 
 
                 </div>
@@ -84,4 +46,20 @@
 
 @push('custom-scripts')
     <script src="{{asset('/assets/js/dashboard/medicalAppointment/index/medicalAppointmentIndexFunctions.js')}}"></script>
+
+    <script>
+        /* DataTables Script*/
+
+        $(document).ready( function () {
+            /* Get the necessary routes from PHP to action buttons of the listing */
+            let defaultEditRouteName = '{{route(''.$crudRouteName.'.edit', -1)}}';
+            let defaultDestroyRouteName = '{{route(''.$crudRouteName.'.destroy', -1)}}';
+            let ajaxListRoute = '{{ route(''.$crudRouteName.'.lista') }}';
+            let csrf_token_field = '{{ csrf_field() }}';
+
+            initMedicalAppointmentsDatatables(ajaxListRoute,defaultEditRouteName, defaultDestroyRouteName, csrf_token_field);
+
+        });
+
+    </script>
 @endpush
