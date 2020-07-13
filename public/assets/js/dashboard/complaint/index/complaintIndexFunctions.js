@@ -40,16 +40,18 @@ $( document ).ready(function() {
                     {
                         extend: 'csvHtml5', className: 'btn btn-data-tables mdi mdi-file-excel',
                         exportOptions: {
-                            columns: [0],
-                            title: 'Queixas_' + nowHourAndMinutesToDataTables
-                        }
+                            columns: [0]
+                        },
+                        title: 'Queixas_' + nowHourAndMinutesToDataTables
+
                     },
                     {
                         extend: 'pdfHtml5', className: 'btn btn-data-tables mdi mdi-file-pdf',
                         exportOptions: {
-                            columns: [0],
-                            title: 'Queixas_' + nowHourAndMinutesToDataTables
-                        }
+                            columns: [0]
+                        },
+                        title: 'Queixas_' + nowHourAndMinutesToDataTables
+
                     }
                 ],
                 columns: [
