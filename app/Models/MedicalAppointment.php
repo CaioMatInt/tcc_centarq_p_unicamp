@@ -22,7 +22,6 @@ class MedicalAppointment extends Model
 {
     public $timestamps = true;
     use SoftDeletes;
-    public $with = ['user'];
     /**
      * @var array
      */

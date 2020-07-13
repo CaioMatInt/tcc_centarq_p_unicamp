@@ -31,7 +31,6 @@ class ComplaintController extends Controller
     {
 
         $data = [
-            'resources' => $this->complaintService->renderPaginated(10),
             'pageTitle' => 'Cadastro de ' . $this->pluralName,
             'crudRouteName' => $this->crudRouteName
 

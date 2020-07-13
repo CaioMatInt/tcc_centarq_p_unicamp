@@ -36,9 +36,9 @@ abstract class EloquentRepository
      * Expect a array of specific relationships. Example: ['user', healthUnit']
      * @return mixed
      */
-    public function getAllWithRelationships($relationships, $records_per_page)
+    public function getAllWithRelationships($relationships)
     {
-        return $this->model->with($relationships)->paginate($records_per_page);
+        return $this->model->with($relationships)->get();
     }
 
 

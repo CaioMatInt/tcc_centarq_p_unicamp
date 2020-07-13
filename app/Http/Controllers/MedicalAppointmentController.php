@@ -43,7 +43,6 @@ class MedicalAppointmentController extends Controller
     public function index()
     {
         $data = [
-            'resources' => $this->medicalAppointmentService->renderPaginatedWithRelationships(10, ['user', 'healthUnit']),
             'pageTitle' => 'Cadastro de ' . $this->pluralName,
             'crudRouteName' => $this->crudRouteName
 
@@ -217,7 +216,7 @@ class MedicalAppointmentController extends Controller
 
     public function medicalAppointmentsListInDatatablesFormat()
     {
-        $users = $this->medicalAppointmentService->renderList();
+        $users = $this->medicalAppointmentService->renderListWithRelationships(['user']);
 
         return datatables()->of($users)
             ->make(true);
