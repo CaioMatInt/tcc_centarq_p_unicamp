@@ -43,11 +43,11 @@
                                     <a href="{{route(''.$crudRouteName.'.show', $resource->id)}}" class="btn btn-info-alternative"><i class="fa fa-eye mr-1"></i></a>
                                     <a href="{{route(''.$crudRouteName.'.edit', $resource->id)}}" class="btn btn-warning-alternative"><i class="fa fa-edit mr-1"></i></a>
                                     <a>
-                                        <form id="formDestroyHealthUnit" class="d-inline" method="POST" action="{{route(''.$crudRouteName.'.destroy', $resource->id)}}">
+                                        <form class="d-inline" method="POST" action="{{route(''.$crudRouteName.'.destroy', $resource->id)}}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
 
-                                            <button id="confirmDeletionOfHealthUnit" type="button" class="btn btn-danger-alternative"><i class="fa fa-trash mr-1"></i></button>
+                                            <button type="button" class="btn btn-danger-alternative confirmDeletionOfMedicalAppointment"><i class="fa fa-trash mr-1"></i></button>
 
                                         </form>
                                     </a>
@@ -81,3 +81,7 @@
         </div>
 
 @endsection
+
+@push('custom-scripts')
+    <script src="{{asset('/assets/js/dashboard/medicalAppointment/index/medicalAppointmentIndexFunctions.js')}}"></script>
+@endpush

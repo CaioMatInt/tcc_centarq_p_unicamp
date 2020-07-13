@@ -35,8 +35,8 @@
           </div>
         </div>
           <div class="progress"><div role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-info" style="width: 100%;"></div></div>
-          <button class="btn btn-success btn-block"><i style="font-size: 13px !important" class="fa fa-plus mr-1"></i><span>Nova Consulta</span>
-          </button>
+          <a href="{{route('consultas.create')}}" class="btn btn-success btn-block"><i style="font-size: 13px !important" class="fa fa-plus mr-1"></i><span>Nova Consulta</span>
+          </a>
       </div>
     </li>
     <li class="nav-item">
