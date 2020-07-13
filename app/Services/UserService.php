@@ -58,18 +58,24 @@ class UserService extends EloquentService
      */
     public function buildUpdate($id, $data)
     {
-        $userImageToUpload = $data['image'];
+        if(isset($data['image'])) {
 
-        /*Persist null image to firstly get the user ID*/
-        $data['image'] = null;
+            $userImageToUpload = $data['image'];
 
-        $userPersistance = $this->userRepository->update($id, $data);
+            /*Persist null image to firstly get the user ID*/
+            $data['image'] = null;
+
+            $userPersistance = $this->userRepository->update($id, $data);
 
 
-        $dataToUpdateImage['image'] = $this->imageUploadService->uploadUserImage($userImageToUpload, $id);
+            $dataToUpdateImage['image'] = $this->imageUploadService->uploadUserImage($userImageToUpload, $id);
 
 
-        $this->userRepository->update($id, $dataToUpdateImage);
+            $this->userRepository->update($id, $dataToUpdateImage);
+
+        }else{
+            $userPersistance = $this->userRepository->update($id, $data);
+        }
 
         return $userPersistance;
 
@@ -83,7 +89,7 @@ class UserService extends EloquentService
      */
     public function buildUpdateUserImage($id, $image)
     {
-        $this->repository->update($id, ['image' => $image]);
+        return $this->repository->update($id, ['image' => $image]);
 
     }
 

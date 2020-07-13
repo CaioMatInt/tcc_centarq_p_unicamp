@@ -51,11 +51,12 @@
         $(document).ready( function () {
             /* Get the necessary routes from PHP to action buttons of the listing */
             let defaultEditRouteName = '{{route(''.$crudRouteName.'.edit', -1)}}';
+            let defaultShowRouteName = '{{route(''.$crudRouteName.'.show', -1)}}';
             let defaultDestroyRouteName = '{{route(''.$crudRouteName.'.destroy', -1)}}';
             let ajaxListRoute = '{{ route(''.$crudRouteName.'.lista') }}';
             let csrf_token_field = '{{ csrf_field() }}';
 
-            initMedicalAppointmentsDatatables(ajaxListRoute,defaultEditRouteName, defaultDestroyRouteName, csrf_token_field);
+            initMedicalAppointmentsDatatables(ajaxListRoute,defaultEditRouteName, defaultShowRouteName, defaultDestroyRouteName, csrf_token_field);
 
         });
 

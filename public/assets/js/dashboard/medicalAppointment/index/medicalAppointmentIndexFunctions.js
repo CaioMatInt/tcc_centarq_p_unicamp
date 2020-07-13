@@ -17,7 +17,7 @@ $( document ).ready(function() {
     });
 
 
-    initMedicalAppointmentsDatatables = function (ajaxListRoute, defaultEditRouteName, defaultDestroyRouteName , csrf_token_field) {
+    initMedicalAppointmentsDatatables = function (ajaxListRoute, defaultEditRouteName, defaultShowRouteName, defaultDestroyRouteName , csrf_token_field) {
         $('#medical_appointments_table').DataTable({
             processing: true,
             serverSide: true,
@@ -46,10 +46,13 @@ $( document ).ready(function() {
                     render: function (data, type, row) {
                         /* Replace default -1 ID in URL to the actual ID */
                         let currentEditRoute = defaultEditRouteName.replace(-1, data);
+                        let currentShowRoute = defaultShowRouteName.replace(-1, data);
                         let currentDestroyRoute = defaultDestroyRouteName.replace(-1, data);
 
                         return `
                               <div class="text-center">
+                                    <a href="${currentShowRoute}" class="btn btn-info-alternative"><i class="fa fa-eye mr-1"></i>
+                                    </a> 
                                      <a>
                                     <form class="d-inline" method="POST" action="${currentDestroyRoute}">
                                         ${csrf_token_field}
