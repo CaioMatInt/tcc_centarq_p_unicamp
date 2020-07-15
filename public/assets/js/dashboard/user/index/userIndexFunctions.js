@@ -16,7 +16,7 @@ $( document ).ready(function() {
     });
 
 
-    initUserDatatables = function (ajaxListRoute, defaultEditRouteName, defaultMedicalAppointmentHistoryRoute) {
+    initUserDatatables = function (ajaxListRoute, defaultEditRouteName, defaultShowRouteName, defaultMedicalAppointmentHistoryRoute) {
         let nowHourAndMinutesToDataTables = getNowHourAndMinutesToDataTables();
 
         var table = $('#user_datatable').DataTable({
@@ -73,13 +73,17 @@ $( document ).ready(function() {
                     render: function (data, type, row) {
                         /* Replace default -1 ID in URL to the actual ID */
                         let currentEditRoute = defaultEditRouteName.replace(-1, data);
+                        let currentShowRoute = defaultShowRouteName.replace(-1, data);
                         let currentMedicalAppointmentHistoryRoute = defaultMedicalAppointmentHistoryRoute.replace(-1, data);
 
                         return `
                               <div class="text-center">
+                              
                                     <a data-toggle="tooltip" data-placement="top" title="Visualizar histórico de consultas" href="${currentMedicalAppointmentHistoryRoute}"
-                                        class="ml-1 btn btn-info-alternative"><i class="fa fa-history"></i>
+                                        class="ml-1 btn btn-alternative-secondary"><i class="fa fa-history"></i>
                                     </a>
+                                    <a href="${currentShowRoute}" class="btn btn-info-alternative"><i class="fa fa-eye mr-1"></i>
+                                    </a> 
                                     <a href="${currentEditRoute}" class="btn btn-warning-alternative"><i class="fa fa-edit mr-1"></i>
                                     </a>
                               </div> `

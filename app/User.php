@@ -29,6 +29,15 @@ class User extends Authenticatable
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function gender()
+    {
+        return $this->belongsTo('App\Models\Gender');
+    }
+
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function medicalAppointments()

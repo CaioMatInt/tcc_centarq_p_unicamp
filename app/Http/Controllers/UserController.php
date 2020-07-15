@@ -106,6 +106,21 @@ class UserController extends Controller
     /**
      * @return void
      */
+    public function show($id)
+    {
+        $data = [
+            'pageTitle' => 'Visualizar ' . $this->name,
+            'resource' => $this->userService->renderEditWithRelationships($id,['gender', 'userType']),
+            'crudRouteName' => $this->crudRouteName,
+            'pluralName' => $this->pluralName,
+        ];
+
+        return view('dashboard.' . $this->crudFolder . '.show', $data);
+    }
+
+    /**
+     * @return void
+     */
     public function edit($id)
     {
         $data = [
@@ -138,7 +153,7 @@ class UserController extends Controller
             ]);
 
         } catch (\Exception $e) {
-            dd($e);
+
             $request->session()->flash('msg', [
                 'type' => 'error',
                 'text' => 'Erro ao atualizar ' . $this->name . ' de ' . $request->name,

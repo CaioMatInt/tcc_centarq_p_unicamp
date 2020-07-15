@@ -1,3 +1,25 @@
+@media (max-width: 1200px) {
+
+    .content-head-title-breadcumb-reverse {
+        flex-direction: column-reverse;
+    }
+
+    .pageTitle{
+        padding-bottom: 40px;
+    }
+}
+
+@media (max-width: 479px) {
+
+    .td-user-information {
+        font-size: 11px !important;
+    }
+    .name-user-information {
+        font-size: 19px !important;
+    }
+
+}
+
 
 .table .thead-light-dark th {
     color: #fff;
@@ -62,6 +84,12 @@
     color: white !important;
     background-color: #7C7EB1 !important;
     border: none !important;
+}
+
+.btn-alternative-secondary{
+    background-color: #DDE4EB;
+    border: 1px solid #c3c4d9;
+    color: #696BA3;
 }
 
 .btn-data-tables{
@@ -142,18 +170,11 @@
     max-width: 150px;
 }
 
-@media (max-width: 1200px) {
-
-    .content-head-title-breadcumb-reverse {
-        flex-direction: column-reverse;
-    }
-
-    .pageTitle{
-        padding-bottom: 40px;
-
-    }
-
+.max-height-100px{
+    max-width: 100px;
 }
+
+
 
 
 .page-item.active .page-link {
@@ -191,3 +212,11 @@
     border-radius: 4px;
 }
 
+.table-alternative-striped>tbody>tr:nth-child(odd)>td,
+.table-alternative-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #ebecf7;
+}
+
+.text-purple{
+    color: #7C7EB1;
+}

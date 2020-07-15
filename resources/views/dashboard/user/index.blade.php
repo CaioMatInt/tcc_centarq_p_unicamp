@@ -53,10 +53,11 @@
 
             /* Get the necessary routes from PHP to action buttons of the listing */
             let defaultEditRouteName = '{{route(''.$crudRouteName.'.edit', -1)}}';
+            let defaultShowRouteName = '{{route(''.$crudRouteName.'.show', -1)}}';
             let defaultMedicalAppointmentHistoryRoute = '{{route('usuarios.medicalAppointmentsHistory', -1)}}';
             let ajaxListRoute = '{{ route(''.$crudRouteName.'.lista') }}';
 
-            initUserDatatables(ajaxListRoute,defaultEditRouteName, defaultMedicalAppointmentHistoryRoute);
+            initUserDatatables(ajaxListRoute,defaultEditRouteName, defaultShowRouteName, defaultMedicalAppointmentHistoryRoute);
 
         });
     </script>
