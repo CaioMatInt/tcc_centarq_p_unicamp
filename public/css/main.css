@@ -90,6 +90,9 @@
     background-color: #91b4bd;
     color: white;
 }
+.btn-alternative-secondary:hover{
+    color: white !important;
+}
 
 .btn-data-tables{
     color: #7C7EB1 !important;
