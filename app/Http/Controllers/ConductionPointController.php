@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreConductionPointRequest;
+use App\Http\Requests\UpdateConductionPointRequest;
 use App\Services\ConductionPointService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -57,7 +59,7 @@ class ConductionPointController extends Controller
      * @param Request $request
      * @return void
      */
-    public function store(Request $request)
+    public function store(StoreConductionPointRequest $request)
     {
 
         try {
@@ -112,7 +114,7 @@ class ConductionPointController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update($id, Request $request)
+    public function update($id, UpdateConductionPointRequest $request)
     {
 
         try {

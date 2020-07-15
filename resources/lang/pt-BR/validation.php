@@ -179,6 +179,12 @@ return [
         'image' => 'imagem',
         'ibge_city_id' => 'cidade',
         'password_confirmation' => 'confirmação da senha',
+        'frequency_type' => 'tipo de frequência',
+        'observations' => 'observações',
+        'health_unit_id' => 'unidade de saúde',
+        'user_id' => 'usuário',
+        'complaints' => 'queixas',
+        'conductionPoints' => 'pontos de conducao',
     ],
 
 ];

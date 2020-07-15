@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class StoreMedicalAppointmentType extends FormRequest
+class StoreUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,13 @@ class StoreMedicalAppointmentType extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255|unique:medical_exam_types',
+            'name' => 'required|max:100|unique:users',
+            'cellphone' => 'nullable|max:25',
+            'rg' => 'required|max:20|unique:users',
+            'email' => 'required|email|max:100|unique:users',
+            'gender_id' => 'required|exists:genders,id',
+            'user_type_id' => 'required|exists:user_types,id',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,wbep,ico,bmp,tif|max:10240',
         ];
     }
 }

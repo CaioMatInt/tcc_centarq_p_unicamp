@@ -16,7 +16,7 @@ class CreateTableMedicalAppointments extends Migration
         Schema::create('medical_appointments', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date');
-            $table->string('observations')->nullable();
+            $table->string('observations', 1000)->nullable();
             $table->enum('frequency_type', ['Primeira vez', 'Retorno', 'Eventual']);
             $table->integer('created_by_user_id')->unsigned();
             $table->foreign('created_by_user_id')->references('id')->on('users');

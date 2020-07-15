@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreMedicalAppointmentRequest;
+use App\Http\Requests\UpdateMedicalAppointmentRequest;
 use App\Repositories\ComplaintRepository;
 use App\Services\ComplaintService;
 use App\Services\ConductionPointService;
@@ -73,9 +75,8 @@ class MedicalAppointmentController extends Controller
      * @param Request $request
      * @return void
      */
-    public function store(Request $request)
+    public function store(StoreMedicalAppointmentRequest $request)
     {
-
 
         try {
             DB::beginTransaction();
@@ -134,7 +135,7 @@ class MedicalAppointmentController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update($id, Request $request)
+    public function update($id, UpdateMedicalAppointmentRequest $request)
     {
 
         try {

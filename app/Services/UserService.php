@@ -34,20 +34,32 @@ class UserService extends EloquentService
      */
     public function buildInsert($data)
     {
-        $userImageToUpload = $data['image'];
+        if(isset($data['image'])) {
+
+            $userImageToUpload = $data['image'];
+
+            $data['password'] = bcrypt(Str::random(15));
+            /*Persist null image to firstly get the user ID*/
+            $data['image'] = null;
+
+            $userPersistance = $this->userRepository->create($data);
+
+            $imageToUpdate = $this->imageUploadService->uploadUserImage($userImageToUpload, $userPersistance->id);
+
+            $this->buildUpdateUserImage($userPersistance->id, $imageToUpdate);
+
+            return $userPersistance;
+
+        }
 
         $data['password'] = bcrypt(Str::random(15));
-        /*Persist null image to firstly get the user ID*/
+
         $data['image'] = null;
 
         $userPersistance = $this->userRepository->create($data);
 
-
-        $imageToUpdate = $this->imageUploadService->uploadUserImage($userImageToUpload, $userPersistance->id);
-
-        self::buildUpdateUserImage($userPersistance->id, $imageToUpdate);
-
         return $userPersistance;
+
 
     }
 
@@ -74,7 +86,9 @@ class UserService extends EloquentService
             $this->userRepository->update($id, $dataToUpdateImage);
 
         }else{
+
             $userPersistance = $this->userRepository->update($id, $data);
+
         }
 
         return $userPersistance;

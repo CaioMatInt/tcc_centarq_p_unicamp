@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreComplaintRequest;
+use App\Http\Requests\UpdateComplaintRequest;
 use App\Services\ComplaintService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -57,7 +59,7 @@ class ComplaintController extends Controller
      * @param Request $request
      * @return void
      */
-    public function store(Request $request)
+    public function store(StoreComplaintRequest $request)
     {
 
         try {
@@ -112,7 +114,7 @@ class ComplaintController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update($id, Request $request)
+    public function update($id, UpdateComplaintRequest $request)
     {
 
         try {

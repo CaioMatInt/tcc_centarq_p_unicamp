@@ -10,7 +10,6 @@
                 <div class="card">
                     <div class="card-body">
 
-
                         <x-breadcumb-user-location-component :previousLinks="[0 => ['link' => route($crudRouteName . '.index'), 'name' =>
                         'Cadastro de ' . $pluralName]]" :pageTitle="$pageTitle"/>
 
@@ -34,6 +33,14 @@
 
                                 <div class="col-12 col-sm-12 col-md-12 col-xl-4">
                                     <x-input-multiple-select2-component :id="'conductionPointsSelect'" :name="'conductionPoints'" :label="'Ponto(s) de Condução'" :options="$conductionPointsArray" :current="$selectedConductionPointsArray" />
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-xl-4">
+                                    <x-input-type-component :type="'date'" :name="'date'" :label="'Data da consulta'" :value="$resource->getRawOriginal('date')" />
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-xl-4">
+                                    <x-input-select-component :name="'frequency_type'" :label="'Tipo de Frequência'" :options="['Primeira vez'=>'Primeira vez', 'Retorno'=>'Retorno', 'Eventual'=>'Eventual']" :current="$resource->frequency_type" />
                                 </div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-xl-4">
