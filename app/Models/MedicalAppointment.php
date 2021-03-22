@@ -25,7 +25,7 @@ class MedicalAppointment extends Model
     /**
      * @var array
      */
-    protected $fillable = ['user_id', 'health_unit_id', 'observations', 'created_at', 'created_by_user_id', 'updated_at', 'date', 'deleted_at', 'frequency_type'];
+    protected $fillable = ['user_id', 'health_unit_id', 'observations', 'created_at', 'created_by_user_id', 'updated_at', 'date', 'frequency_type'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

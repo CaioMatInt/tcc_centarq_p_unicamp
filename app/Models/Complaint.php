@@ -19,7 +19,7 @@ class Complaint extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name', 'created_at', 'updated_at', 'deleted_at'];
+    protected $fillable = ['name', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
