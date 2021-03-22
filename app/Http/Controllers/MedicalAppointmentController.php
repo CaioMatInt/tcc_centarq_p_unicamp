@@ -59,7 +59,7 @@ class MedicalAppointmentController extends Controller
     public function create()
     {
         $data = [
-            'pageTitle' => 'Cadastrar novo ' . $this->name,
+            'pageTitle' => 'Cadastrar nova ' . $this->name,
             'crudRouteName' => $this->crudRouteName,
             'pluralName' => $this->pluralName,
             'healthUnitsArray' => $this->healthUnitsService->renderArrayForSelectInputWithOnlyNameAndID(),

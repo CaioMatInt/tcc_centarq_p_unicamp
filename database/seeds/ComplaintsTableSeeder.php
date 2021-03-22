@@ -38,10 +38,7 @@ class ComplaintsTableSeeder extends Seeder
                 'name' => 'Dor Aguda (punho)',
                 'created_at' => \Carbon\Carbon::now()
             ],
-            [
-                'name' => 'Dor Aguda (punho)',
-                'created_at' => \Carbon\Carbon::now()
-            ],
+
             [
                 'name' => 'Dor Aguda (quadril)',
                 'created_at' => \Carbon\Carbon::now()
@@ -85,10 +82,6 @@ class ComplaintsTableSeeder extends Seeder
             ],
             [
                 'name' => 'Dor Crônica (cotovelo)',
-                'created_at' => \Carbon\Carbon::now()
-            ],
-            [
-                'name' => 'Dor Crônica (punho)',
                 'created_at' => \Carbon\Carbon::now()
             ],
             [

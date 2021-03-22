@@ -2,7 +2,7 @@
 <td class="header">
 <a href="{{ $url }}" style="display: inline-block;">
 
-<img src="https://cdn1.bbcode0.com/uploads/2020/6/12/0107c2114861ab149a972899c98137f1-full.png" class="logo" alt="Centarq Logo">
+<img src="https://i.postimg.cc/d0c7YQPM/logocentarq.png" class="logo" alt="Centarq Logo">
 
 </a>
 </td>

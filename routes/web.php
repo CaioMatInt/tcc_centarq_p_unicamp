@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/', function () {
     return redirect('painel');
@@ -49,6 +49,7 @@ Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function () {
     Route::resource('usuarios', 'UserController');
     Route::get('usuarios/{usuario}/historico-de-consultas', 'MedicalAppointmentController@showHistoryOfMedicalAppointmensByUserId')->name('usuarios.medicalAppointmentsHistory');
     Route::get('lista-de-usuarios', 'UserController@usersListInDatatablesFormat')->name('usuarios.lista');
+
     Route::post('renderizar-lista-usuarios-nome-e-id-por-nome', 'UserController@renderUsersListWithRGAndIdByLikeName');
 });
 
