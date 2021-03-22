@@ -68,25 +68,6 @@
         </div>
     </div>
 
-    <div class="row">
-
-        <div class="col-12">
-
-        <div class="card mt-3">
-            <div class="p-4 pr-5 border-bottom bg-light d-sm-flex justify-content-between">
-                <h4 class="">Gráfico de Queixas</h4>
-                <div id="pie-chart-legend" class="mr-4"></div>
-            </div>
-            <div class="card-body d-flex">
-                <canvas class="my-auto" id="pieChart" height="50"></canvas>
-            </div>
-        </div>
-
-        </div>
-
-
-    </div>
-
 
 
         @endsection
@@ -99,70 +80,5 @@
 
         @push('custom-scripts')
             <script src="{{asset('/assets/js/dashboard.js')}}"></script>
-            <script>
-
-                if ($("#pieChart").length) {
-                    var pieChartCanvas = $("#pieChart")
-                        .get(0)
-                        .getContext("2d");
-                    var pieChart = new Chart(pieChartCanvas, {
-                        type: "pie",
-                        data: {
-                            datasets: [
-                                {
-                                    data: [30, 40, 30],
-                                    backgroundColor: [
-                                        ChartColor[0],
-                                        ChartColor[1],
-                                        ChartColor[2]
-                                    ],
-                                    borderColor: [
-                                        ChartColor[0],
-                                        ChartColor[1],
-                                        ChartColor[2]
-                                    ]
-                                }
-                            ],
-                            labels: ["febre", "Dor nas pernas", "Dor nas mãos"]
-                        },
-                        options: {
-                            responsive: true,
-                            animation: {
-                                animateScale: true,
-                                animateRotate: true
-                            },
-                            legend: {
-                                display: false
-                            },
-                            legendCallback: function(chart) {
-                                var text = [];
-                                text.push('<div class="chartjs-legend"><ul>');
-                                for (
-                                    var i = 0;
-                                    i < chart.data.datasets[0].data.length;
-                                    i++
-                                ) {
-                                    text.push(
-                                        '<li><span style="background-color:' +
-                                        chart.data.datasets[0].backgroundColor[i] +
-                                        '">'
-                                    );
-                                    text.push("</span>");
-                                    if (chart.data.labels[i]) {
-                                        text.push(chart.data.labels[i]);
-                                    }
-                                    text.push("</li>");
-                                }
-                                text.push("</div></ul>");
-                                return text.join("");
-                            }
-                        }
-                    });
-                    document.getElementById(
-                        "pie-chart-legend"
-                    ).innerHTML = pieChart.generateLegend();
-                }
-
-            </script>
 
         @endpush

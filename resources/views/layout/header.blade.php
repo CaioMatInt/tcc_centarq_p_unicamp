@@ -18,7 +18,6 @@
           <span class="profile-text d-none d-md-inline-flex">{{ auth()->user()->name  }}</span>
           <img class="img-xs rounded-circle" src="{{ url(auth()->user()->image) }}" alt="Profile image"> </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-          <a class="dropdown-item mt-2"> Minha Conta </a>
             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();" class="dropdown-item"> Sair </a>
             <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}

@@ -87,11 +87,6 @@
 
 
     <li class="nav-item">
-      <a class="nav-link" data-toggle="collapse" href="#user-pages" aria-expanded="" aria-controls="user-pages">
-        <i class="menu-icon mdi mdi-lock-outline"></i>
-        <span class="menu-title">Minha Conta</span>
-        <i class="menu-arrow"></i>
-      </a>
       <div class="collapse " id="user-pages">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item">
@@ -105,12 +100,6 @@
           </li>
         </ul>
       </div>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="" target="_blank">
-        <i class="menu-icon mdi mdi-file-outline"></i>
-        <span class="menu-title">Documentação</span>
-      </a>
     </li>
   </ul>
 </nav>
