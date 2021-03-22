@@ -27,7 +27,7 @@
                         <div class="row ticket-card mt-3 pb-2 border-bottom pb-3 mb-3">
 
                             <div class="col-12 col-sm-12 col-md-2 col-xl-2 text-center profile-image">
-                                <img class="height-40px rounded-circle" src="{{$medicalAppointment->createdByUser->image}}" alt="profile image">
+                                <img class="height-40px rounded-circle" src="{{$medicalAppointment->user->image}}" alt="profile image">
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-4 col-xl-4">
