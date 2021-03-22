@@ -12,7 +12,6 @@ class User extends Authenticatable
 {
     public $timestamps = true;
     use Notifiable;
-    use SoftDeletes;
 
     /**
      * @var array
