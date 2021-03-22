@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class MedicalAppointment extends Model
 {
     public $timestamps = true;
-    use SoftDeletes;
+
     /**
      * @var array
      */

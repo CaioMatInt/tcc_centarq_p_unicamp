@@ -25,7 +25,7 @@ class CreateTableMedicalAppointments extends Migration
             $table->integer('health_unit_id')->unsigned();
             $table->foreign('health_unit_id')->references('id')->on('health_units');
             $table->timestamps();
-            $table->softDeletes();
+
         });
     }
 

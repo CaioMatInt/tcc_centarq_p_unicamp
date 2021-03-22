@@ -82,7 +82,6 @@ abstract class EloquentRepository
      */
     public function create($data)
     {
-
         return $this->model->create($data);
     }
 

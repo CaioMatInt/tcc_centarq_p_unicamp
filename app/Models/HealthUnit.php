@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class HealthUnit extends Model
 {
     public $timestamps = true;
-    use SoftDeletes;
+
     /**
      * @var array
      */

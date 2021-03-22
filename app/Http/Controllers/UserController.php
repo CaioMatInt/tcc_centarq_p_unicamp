@@ -87,7 +87,7 @@ class UserController extends Controller
 
 
         } catch (\Exception $e) {
-            dd($e);
+
             DB::rollBack();
 
             $request->session()->flash('msg', [
