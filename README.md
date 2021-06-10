@@ -1,8 +1,7 @@
 ## Dear reader / Caro leitor
 ```diff
  English:
-    This project no longer reflected my current knowledge, please check others
-    public projects of my own.
+    This project no longer reflected my current knowledge, please check others public projects of my own.
     Major refactoring needed.
 
  Portuguese:
